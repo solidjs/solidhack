@@ -76,7 +76,7 @@ const Hack: Component = () => {
         </p>
         <Countdown></Countdown>
         <div class="mt-20 mb-5 text-solid-medium">
-          We're pleased to anounce our competition categories:
+          We're pleased to announce our competition categories:
         </div>
         <div class="max-w-3xl border divide-y rounded-xl">
           <div class="grid gap-8 grid-cols-12 p-10">
@@ -106,7 +106,7 @@ const Hack: Component = () => {
               </h2>
               Create a utility, package or port an existing library. The Solid
               community is hungry for ecosystem solutions. This is your
-              opportunity to show off you front-end and tooling abilities.
+              opportunity to show off your front-end and tooling abilities.
               <div class="mt-5">Prize: $5000</div>
             </div>
           </div>
@@ -133,8 +133,8 @@ const Hack: Component = () => {
 
       <div class="max-w-4xl p-5">
         <Box title="What">
-          <b>SolidHack</b> is a public hackathon presented by the Solid Team and
-          corporate sponsors. We've got USD$12,000 to give away to the best
+          <strong>SolidHack</strong> is a public hackathon presented by the Solid Team
+          and corporate sponsors. We've got USD$12,000 to give away to the best
           projects across three categories. It's free to enter, you've got three
           months to build your project, and winners will be selected by public
           vote. Join our{" "}
@@ -272,7 +272,7 @@ const Hack: Component = () => {
             <li>
               Submissions must be posted on Github and remain publicly
               accessible and readable upon submission to the end of the
-              competition. Those that do not comply will be disqualified.
+              competition. Non-compliance leads to disqualification.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
@@ -281,8 +281,8 @@ const Hack: Component = () => {
           <ul class="list-disc ml-3">
             <li>All projects must have a working demo.</li>
             <li>
-              Submissions posted after the submission closing date will be
-              disqualified.
+              Submissions posted after the submission closing date will not be
+              judged.
             </li>
             <li>
               Entries must be original ideas started written after January 7th,
@@ -302,14 +302,14 @@ const Hack: Component = () => {
             <li>
               Submissions will be vetted by SolidHack Planning Committee
               members. 3 members or more may vote to disqualify a submission due
-              to a project breaking the Rules & Regulations.
+              to a project breaking the Rules &amp; Regulations.
             </li>
             <li>
-              All projects must have their licenseing document clearly state in
+              All projects must have their licensing document clearly state in
               their repositories. Only open-source licenses will be allowed.
             </li>
             <li>
-              All submisisons will be treated as publicly contributed
+              All submissions will be treated as publicly contributed
               intellectual property bound by the selected open-source friendly
               license model of the user.
             </li>
@@ -323,7 +323,7 @@ const Hack: Component = () => {
           <ul class="list-disc ml-3">
             <li>
               Contestants agree to act fairly and responsibly during the
-              contest. SolidHack Planning Committe may vote to disqualify
+              contest. SolidHack Planning Committee may vote to disqualify a
               submissions. One warning will be supplied.
             </li>
             <li>
@@ -332,7 +332,7 @@ const Hack: Component = () => {
               mediums.
             </li>
             <li>
-              In most cases contestants that fail to meet the submission
+              In most cases contestants who fail to meet the submission
               requirements will be notified of issues. This will be done via PRs
               to a project and require adjustment within 24h of notice.
             </li>
@@ -352,10 +352,10 @@ const Hack: Component = () => {
             </li>
             <li>
               Votes will be tallied from active Github accounts registered
-              before the competitiond date.
+              before the competition date.
             </li>
             <li>
-              Prize money will only be awarded to contesants that reside in a
+              Prize money will only be awarded to contestants who reside in a
               country from which fund transfers are allowed (any country that
               PayPal and OpenCollective support).
             </li>
@@ -369,7 +369,7 @@ const Hack: Component = () => {
               OpenCollective.
             </li>
             <li>
-              Winners may choose to donate funds to a charitable cause that's
+              Winners may choose to donate funds to a charitable cause
               approved by the SolidHack Planning Committee.
             </li>
           </ul>
@@ -378,7 +378,7 @@ const Hack: Component = () => {
           </h4>
           <ul class="list-disc ml-3">
             <li>
-              SolidHack is run by an organizing committe on behalf of corporate
+              SolidHack is run by an organizing committee on behalf of corporate
               and individual sponsors. Similar to software licensing, the
               Planning Committee is providing this service as a best-effort.
               Individuals involved commit to acting fairly and responsibly to
