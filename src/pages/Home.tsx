@@ -80,8 +80,10 @@ const Hack: Component = () => {
         </div>
         <div class="max-w-3xl border divide-y rounded-xl">
           <div class="grid gap-8 grid-cols-12 p-10">
-            <div class="col-span-3 text-3xl text-center mb-5">
-              <img alt="Award" src="/img/award-best-app.png" />
+            <div class="col-span-3 text-3xl flex justify-center mb-5">
+              <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
+                <img alt="Award" src="/img/award-best-app.svg" />
+              </figure>
             </div>
             <div class="col-span-9 text-md">
               <h2 class="text-xl mb-2 font-semibold">Best App Award</h2>
@@ -93,8 +95,10 @@ const Hack: Component = () => {
             </div>
           </div>
           <div class="grid gap-8 grid-cols-12 p-10">
-            <div class="col-span-3 text-3xl text-center mb-5">
-              <img alt="Award" src="/img/award-ecosystem.png" />
+            <div class="col-span-3 text-3xl flex justify-center mb-5">
+              <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
+                <img alt="Award" src="/img/award-ecosystem.svg" />
+              </figure>
             </div>
             <div class="col-span-9 text-md">
               <h2 class="text-xl mb-2 font-semibold">
@@ -107,8 +111,10 @@ const Hack: Component = () => {
             </div>
           </div>
           <div class="grid gap-8 grid-cols-12 p-10">
-            <div class="col-span-3 text-3xl text-center mb-5">
-              <img alt="Award" src="/img/award-student-project.png" />
+            <div class="col-span-3 text-3xl flex justify-center mb-5">
+              <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
+                <img alt="Award" src="/img/award-student-project.svg" />
+              </figure>
             </div>
             <div class="col-span-9 text-md">
               <h2 class="text-xl mb-2 font-semibold">

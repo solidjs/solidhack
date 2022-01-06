@@ -5,11 +5,11 @@ workers_dev = true
 compatibility_date = "2021-10-23"
 
 [env.development]
-name = "hack"
+name = "solidhack-dev"
 route = "dev-hack.solidjs.com/*"
 
 [env.production]
-name = "solidjs"
+name = "solidhack"
 route = "hack.solidjs.com/*"
 
 [site]
