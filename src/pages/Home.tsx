@@ -133,11 +133,11 @@ const Hack: Component = () => {
 
       <div class="max-w-4xl p-5">
         <Box title="What">
-          <strong>SolidHack</strong> is a public hackathon presented by the Solid Team
-          and corporate sponsors. We've got USD$12,000 to give away to the best
-          projects across three categories. It's free to enter, you've got three
-          months to build your project, and winners will be selected by public
-          vote. Join our{" "}
+          <strong>SolidHack</strong> is a public hackathon presented by the
+          Solid Team and corporate sponsors. We've got USD$12,000 to give away
+          to the best projects across three categories. It's free to enter,
+          you've got three months to build your project, and winners will be
+          selected by public vote. Join our{" "}
           <a
             target="_blank"
             href="https://discord.gg/solidjs"
@@ -260,8 +260,12 @@ const Hack: Component = () => {
           </h4>
           <ul class="list-disc ml-3">
             <li>
-              Contestants of all age and skill levels are welcomed to contribute
-              except SolidJS core and SolidHack Planning Committee members.
+              Contestants of all age
+              <a href="#fn1" id="fn1-anchor">
+                <sup>1</sup>
+              </a>
+              and skill levels are welcomed to contribute except SolidJS core
+              and SolidHack Planning Committee members.
             </li>
             <li>Projects must be written and based off SolidJS.</li>
             <li>
@@ -369,8 +373,8 @@ const Hack: Component = () => {
               OpenCollective.
             </li>
             <li>
-              Winners may choose to donate funds to a charitable cause
-              approved by the SolidHack Planning Committee.
+              Winners may choose to donate funds to a charitable cause approved
+              by the SolidHack Planning Committee.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
@@ -415,6 +419,19 @@ const Hack: Component = () => {
             to the competition may be directed to hack@solidjs.com. The Planning
             Committee maintains the right to enforce, adapt or cancel terms of
             the competition in the spirit of fairness.
+          </small>
+        </div>
+        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 mb-20 p-10 rounded-xl">
+          <small>
+            <ol class="list-style-none">
+              <li>
+                1. Underage participants require written permission from a
+                parent or legal guardian{" "}
+                <a id="fn1" href="fn1-anchor">
+                  back
+                </a>
+              </li>
+            </ol>
           </small>
         </div>
       </div>
