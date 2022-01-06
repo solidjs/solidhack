@@ -18,8 +18,8 @@ const Box: Component<BoxProps> = (props) => (
 );
 
 const Countdown: Component = () => {
-  const startDate = new Date(1646155800000);
-  const endDate = new Date(1646155800000);
+  const startDate = new Date(1645205400000);
+  const endDate = new Date(1645205400000);
   const countdownValues = createCountdown(
     new Date().getTime() < startDate.getTime() ? startDate : endDate
   );
@@ -63,7 +63,7 @@ const Hack: Component = () => {
       }
     >
       <div
-        class="w-full bg-white items-center flex flex-col pb-8 bg-hack bg-no-repeat bg-top bg-contain"
+        class="w-full bg-white items-center flex flex-col pb-8 bg-hack bg-no-repeat bg-top bg-contain px-10"
         style={{}}
       >
         <img class="mx-auto mt-20 w-36" src="/img/hack/icon.png" />
@@ -72,7 +72,7 @@ const Hack: Component = () => {
           src="/img/hack/title.png"
         />
         <p class="text-2xl mb-8 mt-5">
-          Start hacking! Submissions open March 1, 2022
+          Start hacking! Early submissions open February 18, 2022
         </p>
         <Countdown></Countdown>
         <div class="mt-20 mb-5 text-solid-medium">
@@ -129,20 +129,13 @@ const Hack: Component = () => {
         </div>
       </div>
 
-      <div class="max-w-4xl">
+      <div class="max-w-4xl p-5">
         <Box title="What">
           <b>SolidHack</b> is a public hackathon presented by the Solid Team and
           corporate sponsors. We've got USD$12,000 to give away to the best
           projects across three categories. It's free to enter, you've got three
           months to build your project, and winners will be selected by public
-          vote.
-        </Box>
-        <Box title="When">
-          The event begins <strong>January 7th</strong> and you can start
-          building then. The submissions portal will open in mid February, but
-          you'll have until April 7th to submit. More details on categories and
-          official rules and regulations will be announced via Solid News before
-          the start date. Sign up below or join the{" "}
+          vote. Join our{" "}
           <a
             target="_blank"
             href="https://discord.gg/solidjs"
@@ -150,7 +143,46 @@ const Hack: Component = () => {
           >
             Solid Discord
           </a>{" "}
-          to make sure you're up-to-date!
+          to ask questions and chat with our community.
+        </Box>
+        <Box title="When">
+          <div class="space-y-5">
+            <div class="grid grid-cols-12 border-b py-2 text-green-700">
+              <div class="col-span-1 text-center">
+                <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                  ✓
+                </figure>
+              </div>
+              <div class="col-span-3">January 7th</div>
+              <div class="col-span-8">
+                Categories Announced and Contest Begins
+              </div>
+            </div>
+            <div class="grid grid-cols-12 border-b py-2">
+              <div class="col-span-1 text-center">
+                <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                  ~
+                </figure>
+              </div>
+              <div class="col-span-3">February 18th</div>
+              <div class="col-span-8">Submissions Portal Opens</div>
+            </div>
+            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+              <div class="col-span-1 text-center">&nbsp;</div>
+              <div class="col-span-3">April 7th</div>
+              <div class="col-span-8">Submissions Close and Voting Begins</div>
+            </div>
+            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+              <div class="col-span-1 text-center">&nbsp;</div>
+              <div class="col-span-3">April 28th</div>
+              <div class="col-span-8">Voting Ends</div>
+            </div>
+            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+              <div class="col-span-1 text-center">&nbsp;</div>
+              <div class="col-span-3">May 4th</div>
+              <div class="col-span-8">Winners Announced</div>
+            </div>
+          </div>
         </Box>
         <Box title="Who">
           The hackathon is open to anyone: experienced Solid users and newcomers
