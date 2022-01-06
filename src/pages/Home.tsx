@@ -123,7 +123,9 @@ const Hack: Component = () => {
               We didn't forget about students! Create an consumer-grade app or
               ecosystem utility. This award is for currently enrolled students
               itching to break into OSS and the corporate world.
-              <div class="mt-5">Prize: $2000 + Internship Opportunity</div>
+              <div class="mt-5">
+                Prize: $2000 + Internship Opportunity with 402
+              </div>
             </div>
           </div>
         </div>
@@ -219,7 +221,7 @@ const Hack: Component = () => {
               target="_blank"
               class="hover:opacity-70 transition duration-300"
               rel="noopener"
-              href="#"
+              href="https://www.402.so"
             >
               <img class="inline-block w-24" src={FourOhTwo} />
             </a>
