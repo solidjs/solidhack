@@ -296,7 +296,7 @@ const Hack: Component = () => {
             </li>
             <li>
               Submissions must have been started on or after January 7th 2022.
-              Old projects and/or previously posted code are not allowed.
+              Old projects and projects that include previously posted code are not allowed.
               Projects ported from other ecosystems are allowed.
             </li>
             <li>Submissions must not change after the submission date.</li>
@@ -320,7 +320,7 @@ const Hack: Component = () => {
             </li>
             <li>
               All source code for a submission must be visible and accessible.
-              Private software or service dependencies are not permitted.
+              Closed-source dependencies are not permitted. Any dependencies or APIs used must be open-source or publicly accessible for free.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
@@ -399,7 +399,7 @@ const Hack: Component = () => {
           </h4>
           <ul class="list-disc ml-3">
             <li>
-              SolidHack is run by an organizing committee on behalf of corporate
+              SolidHack is run by an organizing committee made up of SolidJS community members on behalf of corporate
               and individual sponsors. Similar to software licensing, the
               Planning Committee is providing this service as a best-effort.
               Individuals involved commit to acting fairly and responsibly to
