@@ -131,13 +131,13 @@ const Hack: Component = () => {
         </div>
       </div>
 
-      <div class="max-w-4xl p-5">
+      <div class="max-w-4xl p-5 leading-7">
         <Box title="What">
           <strong>SolidHack</strong> is a public hackathon presented by the
-          Solid Team and corporate sponsors. We've got USD$12,000 to give away
-          to the best projects across three categories. It's free to enter,
-          you've got three months to build your project, and winners will be
-          selected by public vote. Join our{" "}
+          Solid Team, corporate sponsors and individuals. We've got USD$12,000
+          to give away to the best projects across three categories. It's free
+          to enter, you've got three months to build your project and winners
+          will be selected by public vote. Join our{" "}
           <a
             target="_blank"
             href="https://discord.gg/solidjs"
@@ -171,7 +171,7 @@ const Hack: Component = () => {
             </div>
             <div class="grid grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">&nbsp;</div>
-              <div class="col-span-3">April 7th</div>
+              <div class="col-span-3">April 7th @ 23:59 (GMT-5)</div>
               <div class="col-span-8">Submissions Close and Voting Begins</div>
             </div>
             <div class="grid grid-cols-12 border-b py-2 text-gray-400">
@@ -260,65 +260,67 @@ const Hack: Component = () => {
           </h4>
           <ul class="list-disc ml-3">
             <li>
-              Contestants of all age
+              Contestants of legal age
               <a href="#fn1" id="fn1-anchor">
                 <sup>1</sup>
-              </a>
-              and skill levels are welcomed to contribute except SolidJS core
-              and SolidHack Planning Committee members.
+              </a>{" "}
+              and skill levels are welcomed to contribute. SolidJS Core and
+              SolidHack Planning Committee members are excluded from
+              participation.
             </li>
-            <li>Projects must be written and based off SolidJS.</li>
             <li>
-              All contestants must be Github registered users as of the start
-              date of the competition.
+              Projects must include SolidJS as a dependency and use it in a
+              meaningful way.
             </li>
-            <li>Teams of 2-3 members will be allowed to compete together.</li>
             <li>
               Submissions must be posted on Github and remain publicly
-              accessible and readable upon submission to the end of the
-              competition. Non-compliance leads to disqualification.
+              accessible and readable for until winners are announced.
+            </li>
+            <li>
+              Submissions may be made by an individual or as teams of 2-3
+              members. All members must be clearly stated within the projects
+              documentation or configuration.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
             Submissions
           </h4>
           <ul class="list-disc ml-3">
-            <li>All projects must have a working demo.</li>
             <li>
-              Submissions posted after the submission closing date will not be
-              judged.
+              All projects must have a working demo or video accessible via a
+              URL. URL must be provided with your submission.
             </li>
             <li>
-              Entries must be original ideas started written after January 7th,
-              2022. Old projects and previously posted concepts are not allowed.
+              Submissions posted after the submission closing date (April 7th
+              23:59 GMT-5) will not be accepted.
             </li>
             <li>
-              Re-writes, refactors or anything mostly written prior to the
-              competition date are not allowed. You are however allowed to use
-              previously written support tools to enhance your project.
+              Entries must have been started after the competition start date.
+              Old projects and/or previously posted code are not allowed.
+              Projects ported from other ecosystems are allowed.
             </li>
             <li>Submissions must not change after the submission date.</li>
-            <li>
-              Re-writes, refactors or anything mostly written prior to the
-              competition date are not allowed. You are however allowed to use
-              previously written support tools to enhance your project.
-            </li>
             <li>
               Submissions will be vetted by SolidHack Planning Committee
               members. 3 members or more may vote to disqualify a submission due
               to a project breaking the Rules &amp; Regulations.
             </li>
             <li>
-              All projects must have their licensing document clearly state in
-              their repositories. Only open-source licenses will be allowed.
+              All projects must have their licensing terms clearly stated in
+              their repositories. Only open-source licenses
+              <a href="#fn2" id="fn2-anchor">
+                <sup>2</sup>
+              </a>{" "}
+              will be allowed.
             </li>
             <li>
-              All submissions will be treated as publicly contributed
-              intellectual property bound by the selected open-source friendly
-              license model of the user.
+              All submissions will be treated as open-source/publicly
+              contributed Intellectual Property bound by the selected
+              open-source license model of the participant(s).
             </li>
             <li>
               All source code for a submission must be visible and accessible.
+              Private software or service dependencies are also not permitted.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
@@ -327,50 +329,65 @@ const Hack: Component = () => {
           <ul class="list-disc ml-3">
             <li>
               Contestants agree to act fairly and responsibly during the
-              contest. SolidHack Planning Committee may vote to disqualify a
-              submissions. One warning will be supplied.
+              contest. The SolidHack Planning Committee may vote to disqualify a
+              submission or contestant. One written warning will be supplied.
             </li>
             <li>
-              Contestants will treat others with respect. This includes public
-              discussions, Twitter and other private and personal communication
-              mediums.
+              Contestants and competition participants will treat each other
+              with respect. This includes public discussions, Twitter and other
+              social media, private and personal communication mediums.
             </li>
             <li>
-              In most cases contestants who fail to meet the submission
-              requirements will be notified of issues. This will be done via PRs
-              to a project and require adjustment within 24h of notice.
-            </li>
-            <li>
-              Voting with fake accounts or more than one account per user is
-              strictly forbidden. All voters Github accounts will be made public
-              on the SolidHack submissions page.
+              Contestants who fail to meet the submission requirements will be
+              notified of issues. This will be done via a Pull Request or Github
+              Issue to a project and require corrections by the end of the next
+              work day.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
-            Winners
+            Voting & Winners
           </h4>
           <ul class="list-disc ml-3">
             <li>
-              Winners of the three competition categories will be decided by a
-              community vote.
+              Voting with fake accounts
+              <a href="#fn3" id="fn3-anchor">
+                <sup>3</sup>
+              </a>{" "}
+              or more than one account per user is strictly forbidden. All
+              voters Github accounts will be made public on the SolidHack
+              submissions page.
+            </li>
+            <li>Submissions may only be submitted to one category.</li>
+            <li>Winners may only win one category.</li>
+            <li>
+              Only students are eligible to submit to the Best Student Project
+              Award. Proof of Enrollment for the duration of the competition
+              will be required.
+            </li>
+            <li>
+              Student internership will be awarded based on requirements by 402.
+              The internship will be for a duration of 3 months.
             </li>
             <li>
               Votes will be tallied from active Github accounts registered
-              before the competition date.
+              before the competition start date (January 7th 2022).
             </li>
             <li>
-              Prize money will only be awarded to contestants who reside in a
-              country from which fund transfers are allowed (any country that
-              PayPal and OpenCollective support).
-            </li>
-            <li>
-              Prize money will be distributed to submission author(s)
-              individually. All authors need to be clearly stated within a
-              projects README.
+              Winners of the competition categories will be decided by a
+              community vote.
             </li>
             <li>
               Prizes money will be collected from sponsors and distributed via
               OpenCollective.
+            </li>
+            <li>
+              Prize money will only be awarded to contestants who reside in a
+              country to which fund transfers are allowed (any country that
+              PayPal and OpenCollective support).
+            </li>
+            <li>
+              Prize money will be distributed to submission author(s)
+              individually.
             </li>
             <li>
               Winners may choose to donate funds to a charitable cause approved
@@ -386,21 +403,25 @@ const Hack: Component = () => {
               and individual sponsors. Similar to software licensing, the
               Planning Committee is providing this service as a best-effort.
               Individuals involved commit to acting fairly and responsibly to
-              ensure rules and regulations are enacted fairly.
+              ensure rules and regulations are enacted appropriately.
             </li>
             <li>
-              Participants of the competition cannot not hold SolidJS Core,
-              SolidHack Planning Committee or sponsors liable in any manner.
-              Participating in SolidHack is at your discretion.
+              Participants of the competition and third-parties cannot hold
+              SolidJS Core Team, SolidHack Planning Committee or sponsors liable
+              in any manner. Participating in SolidHack is at your discretion.
             </li>
             <li>
               Terms and conditions of this competition may change at the
               discretion of the SolidHack Planning Committee. Contestants will
-              be notified via email on publication of such changes.
+              be notified via SolidHack Newsletter and published via a Rules and
+              Regulations changelog.
             </li>
+            <li>Submissions may be withdrawn via email to hack@solidjs.com.</li>
             <li>
-              Submissions may be withdrawn via written email to
-              hack@solidjs.com.
+              The SolidHack Planning Committee commits to making a best effort
+              to protect the privacy of contestants. All information will be
+              collected and distributed for the exclusive purpose of operating
+              the competition.
             </li>
           </ul>
         </Box>
@@ -411,7 +432,7 @@ const Hack: Component = () => {
           </div>
           <Newsletter title="Sign up for Solid News" />
         </div>
-        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 mb-20 p-10 rounded-xl">
+        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 p-10 rounded-xl">
           <small>
             SolidHack is operated by volunteers and funded by corporate
             sponsors. The SolidHack Planning Committee is responsible for
@@ -421,13 +442,30 @@ const Hack: Component = () => {
             the competition in the spirit of fairness.
           </small>
         </div>
-        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 mb-20 p-10 rounded-xl">
+        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mb-20 p-10 rounded-xl">
           <small>
             <ol class="list-style-none">
               <li>
                 1. Underage participants require written permission from a
                 parent or legal guardian{" "}
                 <a id="fn1" href="fn1-anchor">
+                  back
+                </a>
+              </li>
+              <li>
+                2. According to{" "}
+                <a href="https://opensource.org/licenses">
+                  https://opensource.org/licenses
+                </a>{" "}
+                <a id="fn2" href="fn2-anchor">
+                  back
+                </a>
+              </li>
+              <li>
+                3. Fake accounts refers to: previously inactive, newly created
+                for the purpose of manipulating votes or any use of voting
+                automation or botting.{" "}
+                <a id="fn3" href="fn3-anchor">
                   back
                 </a>
               </li>
