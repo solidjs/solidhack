@@ -104,7 +104,7 @@ const Hack: Component = () => {
               <h2 class="text-xl mb-2 font-semibold">
                 Best Ecosystem Utility Award
               </h2>
-              Create a utility, package or port an existing library. The SolidJS
+              Create a utility or package, or port an existing library. The SolidJS
               community is hungry for ecosystem solutions. This is your
               opportunity to show off your front-end and tooling abilities.
               <div class="mt-5">Prize: $5000</div>
@@ -124,7 +124,7 @@ const Hack: Component = () => {
               ecosystem utility. This award is for currently enrolled students
               itching to break into OSS and the corporate world.
               <div class="mt-5">
-                Prize: $2000 + Internship Opportunity with 402
+                Prize: $2000 + Internship Opportunity with <a class="underline" href="http://402.so">402</a>
               </div>
             </div>
           </div>
@@ -361,11 +361,11 @@ const Hack: Component = () => {
             <li>Winners may only win one category.</li>
             <li>
               Only students are eligible to submit to the Best Student Project
-              Award. Proof of Enrollment for the duration of the competition
+              Award. Proof of student enrollment for the duration of the competition
               will be required.
             </li>
             <li>
-              Student internership will be awarded based on requirements by 402.
+              Student internship will be awarded at 402's discretion, based on an interview.
               The internship will be for a duration of 3 months.
             </li>
             <li>
@@ -448,8 +448,8 @@ const Hack: Component = () => {
               <li>
                 1. Underage participants require written permission from a
                 parent or legal guardian{" "}
-                <a id="fn1" href="fn1-anchor">
-                  back
+                <a id="fn1" class="font-semibold" href="#fn1-anchor">
+                  (back)
                 </a>
               </li>
               <li>
@@ -457,16 +457,16 @@ const Hack: Component = () => {
                 <a href="https://opensource.org/licenses">
                   https://opensource.org/licenses
                 </a>{" "}
-                <a id="fn2" href="fn2-anchor">
-                  back
+                <a id="fn2" class="font-semibold" href="#fn2-anchor">
+                  (back)
                 </a>
               </li>
               <li>
-                3. Fake account refers to: previously inactive, newly created
-                for the purpose of manipulating votes or any use of voting
+                3. Fake account includes: previously inactive, newly created
+                for the purpose of manipulating votes, or any use of voting
                 automation or botting.{" "}
-                <a id="fn3" href="fn3-anchor">
-                  back
+                <a id="fn3" class="font-semibold" href="#fn3-anchor">
+                  (back)
                 </a>
               </li>
             </ol>
