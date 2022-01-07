@@ -88,8 +88,8 @@ const Hack: Component = () => {
             <div class="col-span-9 text-md">
               <h2 class="text-xl mb-2 font-semibold">Best App Award</h2>
               Build a consumer-grade application that solves a problem,
-              entertains or informs. Your project should be judged on technical
-              complexity, use of Solid and general use or entertainment to the
+              entertains or informs. Your project will be judged on technical
+              complexity, use of SolidJS and general use or entertainment to the
               users.
               <div class="mt-5">Prize: $5000</div>
             </div>
@@ -104,7 +104,7 @@ const Hack: Component = () => {
               <h2 class="text-xl mb-2 font-semibold">
                 Best Ecosystem Utility Award
               </h2>
-              Create a utility, package or port an existing library. The Solid
+              Create a utility, package or port an existing library. The SolidJS
               community is hungry for ecosystem solutions. This is your
               opportunity to show off your front-end and tooling abilities.
               <div class="mt-5">Prize: $5000</div>
@@ -134,7 +134,7 @@ const Hack: Component = () => {
       <div class="max-w-4xl p-5 leading-7">
         <Box title="What">
           <strong>SolidHack</strong> is a public hackathon presented by the
-          Solid Team, corporate sponsors and individuals. We've got USD$12,000
+          SolidJS Team, corporate sponsors and individuals. We've got USD$12,000
           to give away to the best projects across three categories. It's free
           to enter, you've got three months to build your project and winners
           will be selected by public vote. Join our{" "}
@@ -143,7 +143,7 @@ const Hack: Component = () => {
             href="https://discord.gg/solidjs"
             class="underline"
           >
-            Solid Discord
+            SolidJS Discord
           </a>{" "}
           to ask questions and chat with our community.
         </Box>
@@ -187,10 +187,10 @@ const Hack: Component = () => {
           </div>
         </Box>
         <Box title="Who">
-          The hackathon is open to anyone: experienced Solid users and newcomers
+          The hackathon is open to anyone: experienced SolidJS users and newcomers
           alike. You'll use your GitHub account to verify your identity when you
           submit your project and when you cast your vote. The competition is
-          supported by corporate supporters of Solid and the open-source
+          supported by corporate sponsors of SolidJS and the open-source
           ecosystem.
           <div class="flex items-center space-y-5 flex-col md:space-y-0 md:flex-row mt-3 md:space-x-8 bg-white/20 p-4 px-7 rounded-xl">
             <a
@@ -227,10 +227,10 @@ const Hack: Component = () => {
             </a>
           </div>
           <small class="mt-3 block">
-            To participate as a sponsor contact{" "}
+            To participate as a sponsor, contact{" "}
             <a href="mailto:community@solidjs.com">community@solidjs.com</a>.
             <br />
-            <br />A special thanks to others who have submitted personal
+            <br />A special thanks to supporters who have submitted personal
             donations including:{" "}
             <a target="_blank" href="https://github.com/Brendan-csel">
               Brendan-csel
@@ -244,14 +244,14 @@ const Hack: Component = () => {
         </Box>
         <Box title="Why">
           <p class="mb-3">
-            Solid has made its mark on the JavaScript ecosystem. It's a
+            SolidJS has made its mark on the JavaScript ecosystem. It's a
             flourishing community and we want you to be a part of it.
           </p>
           <p>
             We know that this kind of initiative is new for the open-source
             world, and we're looking to push the boundaries of what a hackathon
             can be and what open-source projects can do. Ultimately, we want to
-            give you an opportunity to give Solid a try.
+            give you an opportunity to give SolidJS a try.
           </p>
         </Box>
         <Box title="Rules">
@@ -264,7 +264,7 @@ const Hack: Component = () => {
               <a href="#fn1" id="fn1-anchor">
                 <sup>1</sup>
               </a>{" "}
-              and skill levels are welcomed to contribute. SolidJS Core and
+              and all skill levels are welcomed to contribute. SolidJS Core Team and
               SolidHack Planning Committee members are excluded from
               participation.
             </li>
@@ -274,11 +274,11 @@ const Hack: Component = () => {
             </li>
             <li>
               Submissions must be posted on Github and remain publicly
-              accessible and readable for until winners are announced.
+              accessible and readable until winners are announced.
             </li>
             <li>
               Submissions may be made by an individual or as teams of 2-3
-              members. All members must be clearly stated within the projects
+              members. All members must be clearly stated within the project's
               documentation or configuration.
             </li>
           </ul>
@@ -288,14 +288,14 @@ const Hack: Component = () => {
           <ul class="list-disc ml-3">
             <li>
               All projects must have a working demo or video accessible via a
-              URL. URL must be provided with your submission.
+              URL. The URL must be provided with your submission.
             </li>
             <li>
               Submissions posted after the submission closing date (April 7th
               23:59 GMT-5) will not be accepted.
             </li>
             <li>
-              Entries must have been started after the competition start date.
+              Submissions must have been started on or after January 7th 2022.
               Old projects and/or previously posted code are not allowed.
               Projects ported from other ecosystems are allowed.
             </li>
@@ -303,10 +303,10 @@ const Hack: Component = () => {
             <li>
               Submissions will be vetted by SolidHack Planning Committee
               members. 3 members or more may vote to disqualify a submission due
-              to a project breaking the Rules &amp; Regulations.
+              to the submission breaking the Rules &amp; Regulations.
             </li>
             <li>
-              All projects must have their licensing terms clearly stated in
+              Submissions must have their licensing terms clearly stated in
               their repositories. Only open-source licenses
               <a href="#fn2" id="fn2-anchor">
                 <sup>2</sup>
@@ -314,13 +314,13 @@ const Hack: Component = () => {
               will be allowed.
             </li>
             <li>
-              All submissions will be treated as open-source/publicly
+              Submissions will be treated as open-source/publicly
               contributed Intellectual Property bound by the selected
-              open-source license model of the participant(s).
+              open-source license model provided by the participant(s).
             </li>
             <li>
               All source code for a submission must be visible and accessible.
-              Private software or service dependencies are also not permitted.
+              Private software or service dependencies are not permitted.
             </li>
           </ul>
           <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
@@ -377,7 +377,7 @@ const Hack: Component = () => {
               community vote.
             </li>
             <li>
-              Prizes money will be collected from sponsors and distributed via
+              Prize money will be collected from sponsors and distributed via
               OpenCollective.
             </li>
             <li>
@@ -403,17 +403,17 @@ const Hack: Component = () => {
               and individual sponsors. Similar to software licensing, the
               Planning Committee is providing this service as a best-effort.
               Individuals involved commit to acting fairly and responsibly to
-              ensure rules and regulations are enacted appropriately.
+              ensure Rules &amp; Regulations are enacted appropriately.
             </li>
             <li>
-              Participants of the competition and third-parties cannot hold
+              Participants of the competition and third-parties cannot hold the
               SolidJS Core Team, SolidHack Planning Committee or sponsors liable
               in any manner. Participating in SolidHack is at your discretion.
             </li>
             <li>
-              Terms and conditions of this competition may change at the
+              Rules &amp; Regulations of this competition may change at the
               discretion of the SolidHack Planning Committee. Contestants will
-              be notified via SolidHack Newsletter and published via a Rules and
+              be notified via SolidHack Newsletter and published via a Rules &amp;
               Regulations changelog.
             </li>
             <li>Submissions may be withdrawn via email to hack@solidjs.com.</li>
@@ -427,10 +427,10 @@ const Hack: Component = () => {
         </Box>
         <div class="bg-white/50 text-gray-700 max-w-3xl mx-auto mt-5 p-10 rounded-xl shadow-xl backdrop-blur-md">
           <div class="mb-5">
-            Stay up-to-date on SolidHack, major Solid releases, and community
+            Stay up-to-date on SolidHack, major SolidJS releases, and community
             updates.
           </div>
-          <Newsletter title="Sign up for Solid News" />
+          <Newsletter title="Sign up for SolidJS News" />
         </div>
         <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 p-10 rounded-xl">
           <small>
@@ -462,7 +462,7 @@ const Hack: Component = () => {
                 </a>
               </li>
               <li>
-                3. Fake accounts refers to: previously inactive, newly created
+                3. Fake account refers to: previously inactive, newly created
                 for the purpose of manipulating votes or any use of voting
                 automation or botting.{" "}
                 <a id="fn3" href="fn3-anchor">
