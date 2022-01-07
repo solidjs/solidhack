@@ -75,11 +75,11 @@ const Hack: Component = () => {
           Start hacking! Early submissions open February 18, 2022
         </p>
         <Countdown></Countdown>
-        <div class="mt-20 mb-5 text-solid-medium">
+        <div class="mt-20 mb-5 text-solid-medium text-center md:">
           We're pleased to announce our competition categories:
         </div>
         <div class="max-w-3xl border divide-y rounded-xl">
-          <div class="grid gap-8 grid-cols-12 p-10">
+          <div class="md:grid md:gap-8 md:grid-cols-12 p-10">
             <div class="col-span-3 text-3xl flex justify-center mb-5">
               <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
                 <img alt="Award" src="/img/award-best-app.svg" />
@@ -94,7 +94,7 @@ const Hack: Component = () => {
               <div class="mt-5">Prize: $5000</div>
             </div>
           </div>
-          <div class="grid gap-8 grid-cols-12 p-10">
+          <div class="md:grid md:gap-8 md:grid-cols-12 p-10">
             <div class="col-span-3 text-3xl flex justify-center mb-5">
               <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
                 <img alt="Award" src="/img/award-ecosystem.svg" />
@@ -110,7 +110,7 @@ const Hack: Component = () => {
               <div class="mt-5">Prize: $5000</div>
             </div>
           </div>
-          <div class="grid gap-8 grid-cols-12 p-10">
+          <div class="md:grid md:gap-8 md:grid-cols-12 p-10">
             <div class="col-span-3 text-3xl flex justify-center mb-5">
               <figure class="bg-solid-medium rounded-full w-32 h-32 flex p-2">
                 <img alt="Award" src="/img/award-student-project.svg" />
@@ -148,8 +148,8 @@ const Hack: Component = () => {
           to ask questions and chat with our community.
         </Box>
         <Box title="When">
-          <div class="space-y-5">
-            <div class="grid grid-cols-12 border-b py-2 text-green-700">
+          <div class="space-y-5 text-center md:text-left">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
               <div class="col-span-1 text-center">
                 <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
                   ✓
@@ -160,7 +160,7 @@ const Hack: Component = () => {
                 Categories Announced and Contest Begins
               </div>
             </div>
-            <div class="grid grid-cols-12 border-b py-2">
+            <div class="md:grid md:grid-cols-12 border-b py-2">
               <div class="col-span-1 text-center">
                 <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
                   ~
@@ -169,61 +169,64 @@ const Hack: Component = () => {
               <div class="col-span-3">February 18th</div>
               <div class="col-span-8">Submissions Portal Opens</div>
             </div>
-            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">&nbsp;</div>
-              <div class="col-span-3">April 7th @ 23:59 (GMT-5)</div>
+              <div class="col-span-3">April 7th</div>
               <div class="col-span-8">Submissions Close and Voting Begins</div>
             </div>
-            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">&nbsp;</div>
               <div class="col-span-3">April 28th</div>
               <div class="col-span-8">Voting Ends</div>
             </div>
-            <div class="grid grid-cols-12 border-b py-2 text-gray-400">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">&nbsp;</div>
               <div class="col-span-3">May 4th</div>
               <div class="col-span-8">Winners Announced</div>
             </div>
+            <small class="text-center mt-4 block">
+              Exact closing time for above listed dates is 23:59 (GMT-5).
+            </small>
           </div>
         </Box>
         <Box title="Who">
-          The hackathon is open to anyone: experienced Solid users and newcomers
-          alike. You'll use your GitHub account to verify your identity when you
-          submit your project and when you cast your vote. The competition is
-          supported by corporate supporters of Solid and the open-source
-          ecosystem.
+          SolidHack is open to anyone including experienced Solid users and
+          newcomers alike. You'll use your GitHub account to verify your
+          identity when you submit your project and when you cast your vote. The
+          competition is supported by corporate supporters of Solid and the
+          open-source ecosystem.
           <div class="flex items-center space-y-5 flex-col md:space-y-0 md:flex-row mt-3 md:space-x-8 bg-white/20 p-4 px-7 rounded-xl">
             <a
               target="_blank"
-              class="hover:opacity-70 transition duration-300"
+              class="hover:opacity-70 transition duration-300 text-center"
               rel="noopener"
               href="https://www.stytch.com"
             >
-              <img class="inline-block w-24" src={stytch} />
+              <img class="inline-block w-4/6 md:w-24" src={stytch} />
             </a>
             <a
               target="_blank"
-              class="hover:opacity-70 transition duration-300"
+              class="hover:opacity-70 transition duration-300 text-center"
               rel="noopener"
               href="https://www.builder.io"
             >
-              <img class="inline-block w-24" src={builder} />
+              <img class="inline-block w-4/6 md:w-24" src={builder} />
             </a>
             <a
               target="_blank"
-              class="hover:opacity-70 transition duration-300"
+              class="hover:opacity-70 transition duration-300 text-center"
               rel="noopener"
               href="https://www.clearspend.com/"
             >
-              <img class="inline-block w-40" src={clearspend} />
+              <img class="inline-block w-4/6 md:w-40" src={clearspend} />
             </a>{" "}
             <a
               target="_blank"
-              class="hover:opacity-70 transition duration-300"
+              class="hover:opacity-70 transition duration-300 text-center"
               rel="noopener"
               href="https://www.402.so"
             >
-              <img class="inline-block w-24" src={FourOhTwo} />
+              <img class="inline-block w-4/6 md:w-24" src={FourOhTwo} />
             </a>
           </div>
           <small class="mt-3 block">
