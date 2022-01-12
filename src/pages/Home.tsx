@@ -29,8 +29,10 @@ const Countdown: Component = () => {
       props.value >= 10 ? props.value.toString() : "0" + props.value.toString();
 
     return (
-      <div class="flex flex-col items-center text-white py-4 px-4 md:py-5 md:px-7">
-        <div class="font-mono text-5xl">{fixed}</div>
+      <div class="flex flex-col items-center text-white text-[length:clamp(5px,4vw,18px)] px-[clamp(5px,4vw,16px)] py-4 md:py-5 md:px-7">
+        <div class="font-mono text-[length:clamp(5px,6vw,48px)] leading-[1]">
+          {fixed}
+        </div>
         {props.label}
       </div>
     );
