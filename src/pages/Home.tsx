@@ -18,8 +18,8 @@ const Box: Component<BoxProps> = (props) => (
 );
 
 const Countdown: Component = () => {
-  const startDate = new Date(1645205400000);
-  const endDate = new Date(1645205400000);
+  const startDate = new Date(1649390340000);
+  const endDate = new Date(1649390340000);
   const countdownValues = createCountdown(
     new Date().getTime() < startDate.getTime() ? startDate : endDate
   );
@@ -37,7 +37,6 @@ const Countdown: Component = () => {
       </div>
     );
   };
-
   return (
     <div
       class="flex flex-row w-min gap-2 rounded-md"
@@ -76,6 +75,7 @@ const Hack: Component = () => {
         <p class="text-2xl mb-8 mt-5">
           Start hacking! Early submissions open February 18, 2022
         </p>
+        <small class="mb-3">Countdown to final contest closing date:</small>
         <Countdown></Countdown>
         <div class="mt-20 mb-5 text-solid-medium text-center md:">
           We're pleased to announce our competition categories:
@@ -481,6 +481,9 @@ const Hack: Component = () => {
               </li>
             </ol>
           </small>
+        </div>
+        <div class="text-center text-sm">
+          Last updated January 13 @ 4:30pm EST
         </div>
       </div>
     </div>
