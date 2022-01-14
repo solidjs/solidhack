@@ -122,7 +122,7 @@ const Hack: Component = () => {
               <h2 class="text-xl mb-2 font-semibold">
                 Best Student Project Award
               </h2>
-              We didn't forget about students! Create an consumer-grade app or
+              We didn't forget about students! Create a consumer-grade app or
               ecosystem utility. This award is for currently enrolled students
               itching to break into OSS and the corporate world.
               <div class="mt-5">
