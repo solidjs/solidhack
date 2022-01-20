@@ -5,23 +5,23 @@
   "nav": [
     {
       "title": "Guides",
-      "path": "/guides"
+      "path": "https://www.solidjs.com/guides"
     },
     {
       "title": "Docs",
-      "path": "/docs/latest/api"
+      "path": "https://www.solidjs.com/docs/latest/api"
     },
     {
       "title": "Resources",
-      "path": "/resources"
+      "path": "https://www.solidjs.com/resources"
     },
     {
       "title": "Tutorial",
-      "path": "/tutorial"
+      "path": "https://www.solidjs.com/tutorial"
     },
     {
       "title": "Examples",
-      "path": "/examples"
+      "path": "https://www.solidjs.com/examples"
     },
     {
       "title": "Playground",
@@ -41,17 +41,17 @@
         {
           "title": "Blog",
           "description": "News and updates from our community",
-          "path": "/blog"
+          "path": "https://www.solidjs.com/blog"
         },
         {
           "title": "Team & Contributions",
           "description": "Solid team members and supporters",
-          "path": "/contributors"
+          "path": "https://www.solidjs.com/contributors"
         },
         {
           "title": "Media",
           "description": "Brand elements for media use",
-          "path": "/media"
+          "path": "https://www.solidjs.com/media"
         },
         {
           "title": "OpenCollective",
@@ -76,7 +76,7 @@
   "footer": {
     "declaration": "Solid is an open-source project supported by a team of public contributors. It's distributed under <a target=\"_blank\" class=\"underline hover:text-gray-500\" href=\"{{license}}\" rel=\"noopener\">an MIT license</a>. This library and community are made possible by a <a class=\"underline hover:text-gray-500\" href=\"{{contributors}}\">core team and dedicated contributors</a>.",
     "license": "https://github.com/solidjs/solid/blob/master/LICENSE",
-    "contributors": "/contributors",
+    "contributors": "https://www.solidjs.com/contributors",
     "sponsored_by": "Sponsored by",
     "updated": "Last updated {{date}} on Solid v{{version}}"
   }

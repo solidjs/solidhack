@@ -115,7 +115,7 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
   return (
     <li>
       <NavLink
-        href={`https://www.solidjs.com${props.path}`}
+        href={props.path}
         class="inline-flex items-center transition text-[15px] sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-white pointer-fine:hover:bg-solid-medium whitespace-nowrap"
         activeClass="bg-solid-medium text-white pointer-fine:group-hover:bg-solid-default"
       >

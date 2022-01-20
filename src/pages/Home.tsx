@@ -483,7 +483,7 @@ const Hack: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated January 13 @ 4:30pm EST
+          Last updated January 20 @ 8:00am EST
         </div>
       </div>
     </div>
