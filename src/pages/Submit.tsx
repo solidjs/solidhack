@@ -25,10 +25,9 @@ const Submit: Component = () => {
           Start Your Submission
         </h2>
         <p class="mb-5">
-          Submitting to SolidHack is easy! Follow the following 3 steps to
-          prepare and submit your project. The following process is important
-          for and helps ensure that your project abides by the rules and general
-          requirements of the competition. All submissions are vetted to ensure
+          Submitting to SolidHack is easy! Follow these 3 steps to
+          prepare and submit your project. The following process allows us to make sure that your project abides by the rules and 
+          requirements of the competition. All submissions are manually vetted to ensure
           that they comply.
         </p>
         <div class="flex border-b pb-3 items-center space-x-3 my-5 font-semibold ">
@@ -37,13 +36,12 @@ const Submit: Component = () => {
           </figure>
           <span>Step 1</span>
         </div>
-        Let's make sure your project abides by the{" "}
+        Double-check the {" "}
         <Link class="text-solid-medium hover:text-solid-dark" href="/rules">
           Rules and Regulations
-        </Link>
-        . Please read through them carefully if you haven't already. Most
-        importantly let's ensure that your project abides by these three
-        critical rules.
+        </Link> and make sure your project complies. Most
+        importantly:
+
         <ol class="list-decimal ml-10 my-5">
           <li>Your project is hosted on Github and publicly available.</li>
           <li>
@@ -53,17 +51,14 @@ const Submit: Component = () => {
           <li>Your package.json is configured properly as described below.</li>
         </ol>
         <p>
-          If you're confident that you are abiding by the rules of SolidHack
-          feel free continue to Step 2. If you have any questions that require
-          clarification please feel free to ask directly on the #solidhack
+         Please feel free to ask directly on the #solidhack
           channel of our{" "}
           <a
             class="text-solid-medium"
             href="https://discord.com/invite/solidjs"
           >
             Discord
-          </a>
-          .
+          </a> if you have any questions or need clarification on the rules.
         </p>
         <div class="flex border-b pb-3  items-center space-x-3 my-5 font-semibold ">
           <figure class="flex justify-center items-center rounded-full bg-solid-medium w-10 h-10 text-white">
@@ -71,13 +66,16 @@ const Submit: Component = () => {
           </figure>
           <span>Step 2</span>
         </div>
-        Ensure that your repository contains a package.json that resembles the
+        Make sure that your repository contains a package.json that resembles the
         following:
         <pre
           class="my-5 border overflow-x-scroll rounded-xl p-5 border-gray-300"
           innerHTML={json}
         />
-        The fields above are described below:
+        This gives us the information we need to include your project in the competition.
+        Critically, the <em>solidhack</em> keyword must be present along with the category you're entering.
+        You must also provide a link to a working demo or landing page for the project in the <code>homepage</code> entry.
+         Check to make sure you've included all of these fields:
         <table class="border p-10 my-5">
           <tbody>
             <tr class="bg-gray-100">
@@ -183,14 +181,14 @@ const Submit: Component = () => {
         >
           https://github.com/solidjs/solidhack-submissions
         </a>{" "}
-        and submit a Pull Request with your package listed in the correct
-        category. Once your PR is reviewed it will be accepted and merged,
-        indcating your submission was accepted.
+        and submit a pull request with your package listed in the correct
+        category. Once your PR is reviewed, it will be merged,
+        indicating your submission was accepted.
         <p class="mt-5">
           Remember that you can continue working on your submission even after
           submitting it. You'll be able to do so until April 7th, when
-          submissions close and voting begins. Feel free to improve, augment and
-          share your project out with the world.
+          submissions close and voting begins. Feel free to improve, iterate, and
+          share your project with the world!
         </p>
       </div>
     </div>
