@@ -4,61 +4,20 @@
   "locale": "en-US",
   "nav": [
     {
-      "title": "Guides",
-      "path": "https://www.solidjs.com/guides"
+      "title": "Info",
+      "path": "/"
     },
     {
-      "title": "Docs",
-      "path": "https://www.solidjs.com/docs/latest/api"
+      "title": "Prizes",
+      "path": "/prizes"
     },
     {
-      "title": "Resources",
-      "path": "https://www.solidjs.com/resources"
+      "title": "Submit Your Project",
+      "path": "/submit"
     },
     {
-      "title": "Tutorial",
-      "path": "https://www.solidjs.com/tutorial"
-    },
-    {
-      "title": "Examples",
-      "path": "https://www.solidjs.com/examples"
-    },
-    {
-      "title": "Playground",
-      "path": "https://playground.solidjs.com",
-      "external": true
-    },
-    {
-      "title": "About",
-      "path": "/contributors",
-      "links": [
-        {
-          "title": "SolidHack",
-          "description": "Learn about our 2022 public hackathon.",
-          "path": "https://www.solidjs.com/hack",
-          "external": true
-        },
-        {
-          "title": "Blog",
-          "description": "News and updates from our community",
-          "path": "https://www.solidjs.com/blog"
-        },
-        {
-          "title": "Team & Contributions",
-          "description": "Solid team members and supporters",
-          "path": "https://www.solidjs.com/contributors"
-        },
-        {
-          "title": "Media",
-          "description": "Brand elements for media use",
-          "path": "https://www.solidjs.com/media"
-        },
-        {
-          "title": "OpenCollective",
-          "description": "Support us with a donation and help us continue our activities",
-          "path": "https://opencollective.com/solid"
-        }
-      ]
+      "title": "Rules",
+      "path": "/rules"
     }
   ],
   "404": {

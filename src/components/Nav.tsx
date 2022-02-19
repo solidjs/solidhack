@@ -6,20 +6,14 @@ import {
   Show,
   onMount,
   on,
-  createComputed,
   batch,
 } from "solid-js";
-import { useData } from "solid-app-router";
 import { Link, NavLink } from "solid-app-router";
-import { ResourceMetadata } from "@solid.js/docs";
 import { useI18n } from "@solid-primitives/i18n";
-import { createIntersectionObserver } from "@solid-primitives/intersection-observer";
 import { createEventListener } from "@solid-primitives/event-listener";
 import createDebounce from "@solid-primitives/debounce";
-import Dismiss from "solid-dismiss";
-import logo from "../assets/logo.svg";
 import ScrollShadow from "./ScrollShadow/ScrollShadow";
-import Social from "./Social";
+import { useAppContext } from "../AppContext";
 import { reflow } from "../utils";
 import {
   routeReadyState,
@@ -27,22 +21,6 @@ import {
   setRouteReadyState,
 } from "../utils/routeReadyState";
 import PageLoadingBar from "./LoadingBar/PageLoadingBar";
-
-const langs = {
-  en: "English",
-  "zh-cn": "简体中文",
-  ja: "日本語",
-  it: "Italiano",
-  fr: "Français",
-  de: "Deutsch",
-  pt: "Português",
-  ru: "Русский",
-  id: "Bahasa Indonesia",
-  he: "עִברִית",
-  fa: "فارسی",
-  tr: "Türkçe",
-  tl: "Filipino",
-};
 
 type MenuLinkProps = {
   title: string;
@@ -54,6 +32,7 @@ type MenuLinkProps = {
   closeSubnav: () => void;
   clearSubnavClose: () => void;
   links: MenuLinkProps[];
+  direction: "ltr" | "rtl";
 };
 
 const MenuLink: Component<MenuLinkProps> = (props) => {
@@ -72,29 +51,6 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
       createEventListener(linkEl, "mouseleave", () => props.closeSubnav());
     });
   }
-  onMount(() => {
-    createEventListener(linkEl, "mousedown", () => {
-      setRouteReadyState((prev) => ({ ...prev, loadingBar: true }));
-      page.scrollY = window.scrollY;
-      reflow();
-      const clearLeave = createEventListener(linkEl, "mouseleave", () => {
-        setRouteReadyState((prev) => ({ ...prev, loadingBar: false }));
-        removeEvents();
-      });
-      const clearClick = createEventListener(linkEl, "click", () => {
-        setRouteReadyState((prev) => ({ ...prev, loadingBar: false }));
-        removeEvents();
-      });
-      const removeEvents = () => {
-        clearLeave();
-        clearClick();
-      };
-    });
-    if (!window.location.pathname.startsWith(props.path)) return;
-
-    // @ts-ignore
-    linkEl.scrollIntoView({ inline: "center", behavior: "instant" });
-  });
 
   const onClick = () => {
     if (window.location.pathname.startsWith(props.path)) {
@@ -116,8 +72,12 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
     <li>
       <NavLink
         href={props.path}
-        class="inline-flex items-center transition text-[15px] sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-white pointer-fine:hover:bg-solid-medium whitespace-nowrap"
-        activeClass="bg-solid-medium text-white pointer-fine:group-hover:bg-solid-default"
+        target={props.external ? "_blank" : "_self"}
+        class="inline-flex items-center transition text-[15px] dark:text-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
+        activeClass="text-solid-medium dark:text-white"
+        onClick={onClick}
+        noScroll
+        ref={linkEl}
       >
         <span>{props.title}</span>
         <Show when={props.external}>
@@ -140,23 +100,24 @@ const MenuLink: Component<MenuLinkProps> = (props) => {
   );
 };
 
-const LanguageSelector: Component<{ ref: HTMLButtonElement; class?: string }> =
-  (props) => (
-    <li class={props.class || ""}>
-      <button
-        aria-label="Select Language"
-        ref={props.ref}
-        class="dark:bg-solid-gray focus:color-red-500 bg-no-repeat bg-center hover:border-gray-500 cursor-pointer dark:border-dark px-6 pl-4 ml-5 rounded-md h-10 border border-solid-100 pt-4 text-sm my-3 w-full"
-        style={{
-          "background-image": "url(/img/icons/translate2.svg)",
-          "background-size": "24px",
-        }}
-      />
-    </li>
-  );
+const LanguageSelector: Component<{
+  ref: HTMLButtonElement;
+  class?: string;
+}> = (props) => (
+  <li class={props.class || ""}>
+    <button
+      aria-label="Select Language"
+      ref={props.ref}
+      class="dark:brightness-150 focus:color-red-500 bg-no-repeat bg-center hover:border-gray-500 cursor-pointer dark:border-gray-600 dark:hover:border-gray-500 px-6 pl-4 ml-2 rounded-md  border border-solid-100 pt-4 text-sm my-3 w-full"
+      style={{
+        "background-image": "url(/img/icons/translate2.svg)",
+        "background-size": "24px",
+      }}
+    />
+  </li>
+);
 
 const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
-  const [showLangs, toggleLangs] = createSignal(false);
   const [subnav, setSubnav] = createSignal<MenuLinkProps[]>([]);
   const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
   const [locked, setLocked] = createSignal<boolean>(props.showLogo || true);
@@ -165,9 +126,8 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
     150
   );
   const [t, { locale }] = useI18n();
-  const data = useData<{ guides: ResourceMetadata[] | undefined }>();
+  const context = useAppContext();
 
-  let firstLoad = true;
   let langBtnTablet!: HTMLButtonElement;
   let langBtnDesktop!: HTMLButtonElement;
   let logoEl!: HTMLDivElement;
@@ -181,55 +141,39 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const navListPosition = () => {
     const isRTL = t("global.dir", {}, "ltr") === "rtl";
     if (isRTL) {
-      return showLogo() && "mr-[56px]";
+      return showLogo() && "mr-[200px] md:mr-[275px]";
     }
-    return showLogo() && "ml-[56px]";
+    return showLogo() && "ml-[200px] md:ml-[275px]";
   };
-
-  const [observer] = createIntersectionObserver([], ([entry]) => {
-    if (firstLoad) {
-      firstLoad = false;
-      return;
-    }
-    setLocked(entry.isIntersecting);
-  });
-  observer;
 
   const showLogo = createMemo(() => props.showLogo || !locked());
   const navList = createMemo<MenuLinkProps[]>(
     on(
-      () => [locale, t("global.nav"), data.guides],
+      () => [locale, t("global.nav"), context.guides],
       () => {
         return (t("global.nav") || []).reduce((memo: any, item: any) => {
           let itm = { ...item };
           // Inject guides if available
           if (item.path == "/guides") {
-            if (data.guides?.length) {
-              itm.links = data.guides.map(
+            if (context.guides?.length) {
+              const direction = context.guidesSupported
+                ? t("global.dir", {}, "ltr")
+                : "ltr";
+              itm.links = context.guides.map(
                 ({ title, description, resource }) => ({
                   title,
                   description,
+                  direction,
                   path: `/${resource}`,
                 })
               );
+              itm.direction = direction;
             }
           }
           memo.push(itm);
           return memo;
         }, []);
       }
-    )
-  );
-
-  createComputed(
-    on(
-      showLogo,
-      (showLogo) => {
-        const isRTL = t("global.dir", {}, "ltr") === "rtl";
-        showLogo && onEnterLogo(logoEl, isRTL);
-        !showLogo && onExitLogo(logoEl, isRTL);
-      },
-      { defer: true }
     )
   );
 
@@ -246,13 +190,12 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
       showPageLoadingBar: true,
     }));
   };
-
   return (
     <>
-      <div use:observer class="h-0" />
+      <div class="h-0" />
       <div
-        class="sticky top-0 z-50 dark:bg-solid-gray bg-white"
-        classList={{ "shadow-md": showLogo() }}
+        class="sticky top-0 z-50 bg-white dark:bg-solid-darkbg"
+        classList={{ "shadow-md dark:bg-solid-medium": showLogo() }}
       >
         <div class="flex justify-center w-full overflow-hidden">
           <PageLoadingBar
@@ -261,7 +204,7 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
           />
           <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
             <div
-              class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg dark:bg-solid-gray ${
+              class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg ${
                 showLogo() ? "scale-100" : "scale-0"
               }`}
               ref={logoEl}
@@ -270,10 +213,19 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
                 href="/"
                 onClick={onClickLogo}
                 noScroll
-                class={`py-3 flex w-9 `}
+                class={`py-3 flex w-50 space-x-4`}
               >
                 <span class="sr-only">Navigate to the home page</span>
-                <img class="w-full h-auto" src={logo} alt="Solid logo" />
+                <img
+                  class="w-full h-auto"
+                  src="/img/hack/icon.png"
+                  alt="Solid logo"
+                />
+                <img
+                  class="w-full h-auto"
+                  src="/img/hack/title.png"
+                  alt="Solid logo"
+                />
               </Link>
             </div>
             <ScrollShadow
@@ -282,8 +234,9 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
               rtl={t("global.dir", {}, "ltr") === "rtl"}
               shadowSize="25%"
               initShadowSize={true}
+              locked={showLogo()}
             >
-              <ul class="relative flex items-center overflow-auto no-scrollbar">
+              <ul class="flex items-center">
                 <For each={navList()}>
                   {(item) => (
                     <MenuLink
@@ -296,57 +249,35 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
                     />
                   )}
                 </For>
-                {/* <LanguageSelector ref={langBtnTablet} class="flex lg:hidden" /> */}
+                <LanguageSelector ref={langBtnTablet} class="hidden" />
               </ul>
             </ScrollShadow>
             <ul class="hidden lg:flex items-center">
-              <Social />
-              {/* <LanguageSelector ref={langBtnDesktop} /> */}
+              <LanguageSelector ref={langBtnDesktop} class="hidden" />
             </ul>
           </nav>
         </div>
-        {/* <Dismiss
-          menuButton={[langBtnTablet, langBtnDesktop]}
-          open={showLangs}
-          setOpen={toggleLangs}
-          class="container mx-auto left-0 right-0 bottom-0 absolute flex -mt-4 justify-end"
-          animation={{
-            appendToElement: 'menuPopup',
-            enterClass: 'opacity-0 -translate-y-4',
-            enterToClass: 'opacity-1 translate-y-0',
-            exitClass: 'opacity-1 translate-y-0',
-            exitToClass: 'opacity-0 -translate-y-4',
-          }}
-        >
-          <div class="absolute mt-2 ltr:mr-5 rtl:ml-12 border rounded-md w-40 transition-composite bg-white shadow-md">
-            <For each={Object.entries(langs)}>
-              {([lang, label]) => (
-                <button
-                  class="first:rounded-t hover:bg-solid-lightgray last:rounded-b text-left p-3 text-sm border-b w-full"
-                  classList={{
-                    'bg-solid-medium text-white': lang == locale(),
-                    'hover:bg-solid-light': lang == locale(),
-                  }}
-                  onClick={() => locale(lang) && toggleLangs(false)}
-                >
-                  {label}
-                </button>
-              )}
-            </For>
-          </div>
-        </Dismiss> */}
-        {/* <Show when={subnav().length !== 0}>
+        <Show when={subnav().length !== 0}>
           <div
+            ref={subnavEl}
             onmouseenter={clearSubnavClose}
             onmouseleave={closeSubnav}
-            ref={subnavEl}
-            class="absolute left-50 bg-gray-200 shadow-xl max-w-sm transition duration-750"
+            class="absolute left-50 bg-gray-200 dark:bg-solid-darkLighterBg shadow-2xl max-w-sm transition duration-750"
             style={{ left: `${subnavPosition()}px` }}
           >
-            <ul class="divide-x flex flex-col">
+            <ul class="divide-x divide-transparent flex flex-col">
               <For each={subnav()}>
                 {(link) => (
-                  <li class="px-5 hover:bg-solid-default hover:text-white transition duration-300">
+                  <li
+                    class="px-5 hover:bg-solid-default hover:text-white transition duration-300"
+                    style={
+                      link.direction && {
+                        direction: link.direction,
+                        "text-align":
+                          link.direction === "ltr" ? "left" : "right",
+                      }
+                    }
+                  >
                     <NavLink
                       onClick={() => setSubnav([])}
                       class="px-6 py-5 w-full block"
@@ -354,7 +285,9 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
                     >
                       {link.title}
                       <Show when={link.description}>
-                        <span class="block text-sm text-gray-400">{link.description}</span>
+                        <span class="block text-sm text-gray-400">
+                          {link.description}
+                        </span>
                       </Show>
                     </NavLink>
                   </li>
@@ -362,7 +295,7 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
               </For>
             </ul>
           </div>
-        </Show> */}
+        </Show>
       </div>
     </>
   );
