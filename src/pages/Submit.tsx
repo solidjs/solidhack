@@ -129,6 +129,22 @@ const Submit: Component = () => {
                 supplied in the name field.
               </td>
             </tr>
+            <tr class="border-b">
+              <th class="text-solid-medium font-normal text-left p-5">
+                license
+              </th>
+              <td class="p-5">
+                Please include a valid{" "}
+                <a
+                  class="text-solid-medium"
+                  target="_blank"
+                  href="https://opensource.org/licenses"
+                >
+                  open-source license
+                </a>
+                .
+              </td>
+            </tr>
             <tr>
               <th class="text-solid-medium font-normal text-left p-3">
                 keywords
@@ -136,7 +152,7 @@ const Submit: Component = () => {
               <td class="p-5">
                 The value "solidhack" must be present as well an identifier for
                 the prize category which should be one of:
-                <ul>
+                <ul class="mt-3 list-disc pl-5">
                   <li>
                     <span class="font-semibold">best_app</span>: Best App Award
                   </li>
@@ -167,8 +183,9 @@ const Submit: Component = () => {
         >
           https://github.com/solidjs/solidhack-submissions
         </a>{" "}
-        and submit a PR request with your package listed in the correct
-        category. Once your PR
+        and submit a Pull Request with your package listed in the correct
+        category. Once your PR is reviewed it will be accepted and merged,
+        indcating your submission was accepted.
         <p class="mt-5">
           Remember that you can continue working on your submission even after
           submitting it. You'll be able to do so until April 7th, when
