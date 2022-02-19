@@ -104,15 +104,15 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
             }`}
             ref={logoEl}
           >
-            <Link href="/" noScroll class={`py-3 flex w-50 space-x-4`}>
+            <Link href="/" noScroll class={`py-3 inline-flex w-50 space-x-4`}>
               <span class="sr-only">Navigate to the home page</span>
               <img
-                class="w-full h-auto"
+                class="w-auto h-full"
                 src="/img/hack/icon.png"
                 alt="Solid logo"
               />
               <img
-                class="w-full h-auto"
+                class="w-auto h-full"
                 src="/img/hack/title.png"
                 alt="Solid logo"
               />
