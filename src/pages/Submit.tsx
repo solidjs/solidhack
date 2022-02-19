@@ -15,7 +15,7 @@ const Submit: Component = () => {
       "url": "https://www.seldon.com"
     }
   ],
-  "keywords": ["solidhack", "bestapp"],
+  "keywords": ["solidhack", "best_app"],
   "license": "MIT"
 }`;
   return (

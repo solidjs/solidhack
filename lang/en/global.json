@@ -5,7 +5,8 @@
   "nav": [
     {
       "title": "Info",
-      "path": "/"
+      "path": "/",
+      "end": true
     },
     {
       "title": "Prizes",

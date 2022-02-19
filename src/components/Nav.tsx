@@ -1,103 +1,21 @@
-import {
-  Component,
-  For,
-  createMemo,
-  createSignal,
-  Show,
-  onMount,
-  on,
-  batch,
-} from "solid-js";
+import { Component, For, createMemo, createSignal, Show, on } from "solid-js";
 import { Link, NavLink } from "solid-app-router";
 import { useI18n } from "@solid-primitives/i18n";
-import { createEventListener } from "@solid-primitives/event-listener";
-import createDebounce from "@solid-primitives/debounce";
 import ScrollShadow from "./ScrollShadow/ScrollShadow";
 import { useAppContext } from "../AppContext";
-import { reflow } from "../utils";
-import {
-  routeReadyState,
-  page,
-  setRouteReadyState,
-} from "../utils/routeReadyState";
-import PageLoadingBar from "./LoadingBar/PageLoadingBar";
 
 type MenuLinkProps = {
   title: string;
   description: string;
   path: string;
   external?: boolean;
+  end?: boolean;
   setSubnav: (children: MenuLinkProps[]) => void;
   setSubnavPosition: (position: number) => void;
   closeSubnav: () => void;
   clearSubnavClose: () => void;
   links: MenuLinkProps[];
   direction: "ltr" | "rtl";
-};
-
-const MenuLink: Component<MenuLinkProps> = (props) => {
-  let linkEl!: HTMLAnchorElement;
-
-  // Only rerender event listener when children change
-  if (props.links) {
-    onMount(() => {
-      createEventListener(linkEl, "mouseenter", () => {
-        props.clearSubnavClose();
-        batch(() => {
-          props.setSubnav(props.links as MenuLinkProps[]);
-          props.setSubnavPosition(linkEl.getBoundingClientRect().left);
-        });
-      });
-      createEventListener(linkEl, "mouseleave", () => props.closeSubnav());
-    });
-  }
-
-  const onClick = () => {
-    if (window.location.pathname.startsWith(props.path)) {
-      window.scrollTo({ top: 0 });
-      return;
-    }
-    const pageEl = document.body;
-    pageEl.style.minHeight = document.body.scrollHeight + "px";
-    reflow();
-    setRouteReadyState((prev) => ({
-      ...prev,
-      loadingBar: true,
-      loading: true,
-      routeChanged: true,
-    }));
-  };
-
-  return (
-    <li>
-      <NavLink
-        href={props.path}
-        target={props.external ? "_blank" : "_self"}
-        class="inline-flex items-center transition text-[15px] dark:text-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
-        activeClass="text-solid-medium dark:text-white"
-        onClick={onClick}
-        noScroll
-        ref={linkEl}
-      >
-        <span>{props.title}</span>
-        <Show when={props.external}>
-          <svg
-            class="h-5 z-50 -mt-1 ltr:ml-1 rtl:mr-1 opacity-30"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        </Show>
-      </NavLink>
-    </li>
-  );
 };
 
 const LanguageSelector: Component<{
@@ -121,10 +39,6 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const [subnav, setSubnav] = createSignal<MenuLinkProps[]>([]);
   const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
   const [locked, setLocked] = createSignal<boolean>(props.showLogo || true);
-  const [closeSubnav, clearSubnavClose] = createDebounce(
-    () => setSubnav([]),
-    150
-  );
   const [t, { locale }] = useI18n();
   const context = useAppContext();
 
@@ -177,201 +91,100 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
     )
   );
 
-  const onClickLogo = () => {
-    if (window.location.pathname === "/") {
-      window.scrollTo({ top: 0 });
-      return;
-    }
-    page.scrollY = window.scrollY;
-    setRouteReadyState((prev) => ({
-      ...prev,
-      loading: true,
-      routeChanged: true,
-      showPageLoadingBar: true,
-    }));
-  };
   return (
-    <>
-      <div class="h-0" />
-      <div
-        class="sticky top-0 z-50 bg-white dark:bg-solid-darkbg"
-        classList={{ "shadow-md dark:bg-solid-medium": showLogo() }}
-      >
-        <div class="flex justify-center w-full overflow-hidden">
-          <PageLoadingBar
-            postion="top"
-            active={showLogo() && routeReadyState().loadingBar}
-          />
-          <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
-            <div
-              class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg ${
-                showLogo() ? "scale-100" : "scale-0"
-              }`}
-              ref={logoEl}
-            >
-              <Link
-                href="/"
-                onClick={onClickLogo}
-                noScroll
-                class={`py-3 flex w-50 space-x-4`}
-              >
-                <span class="sr-only">Navigate to the home page</span>
-                <img
-                  class="w-full h-auto"
-                  src="/img/hack/icon.png"
-                  alt="Solid logo"
-                />
-                <img
-                  class="w-full h-auto"
-                  src="/img/hack/title.png"
-                  alt="Solid logo"
-                />
-              </Link>
-            </div>
-            <ScrollShadow
-              class={`group relative nav-items-container ${navListPosition()}`}
-              direction="horizontal"
-              rtl={t("global.dir", {}, "ltr") === "rtl"}
-              shadowSize="25%"
-              initShadowSize={true}
-              locked={showLogo()}
-            >
-              <ul class="flex items-center">
-                <For each={navList()}>
-                  {(item) => (
-                    <MenuLink
-                      {...item}
-                      setSubnav={setSubnav}
-                      closeSubnav={closeSubnav}
-                      clearSubnavClose={clearSubnavClose}
-                      setSubnavPosition={setSubnavPosition}
-                      links={item.links}
-                    />
-                  )}
-                </For>
-                <LanguageSelector ref={langBtnTablet} class="hidden" />
-              </ul>
-            </ScrollShadow>
-            <ul class="hidden lg:flex items-center">
-              <LanguageSelector ref={langBtnDesktop} class="hidden" />
-            </ul>
-          </nav>
-        </div>
-        <Show when={subnav().length !== 0}>
+    <div
+      class="sticky top-0 z-50 bg-white"
+      classList={{ "shadow-md": showLogo() }}
+    >
+      <div class="flex justify-center w-full overflow-hidden">
+        <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
           <div
-            ref={subnavEl}
-            onmouseenter={clearSubnavClose}
-            onmouseleave={closeSubnav}
-            class="absolute left-50 bg-gray-200 dark:bg-solid-darkLighterBg shadow-2xl max-w-sm transition duration-750"
-            style={{ left: `${subnavPosition()}px` }}
+            class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg ${
+              showLogo() ? "scale-100" : "scale-0"
+            }`}
+            ref={logoEl}
           >
-            <ul class="divide-x divide-transparent flex flex-col">
-              <For each={subnav()}>
-                {(link) => (
-                  <li
-                    class="px-5 hover:bg-solid-default hover:text-white transition duration-300"
-                    style={
-                      link.direction && {
-                        direction: link.direction,
-                        "text-align":
-                          link.direction === "ltr" ? "left" : "right",
-                      }
-                    }
+            <Link href="/" noScroll class={`py-3 flex w-50 space-x-4`}>
+              <span class="sr-only">Navigate to the home page</span>
+              <img
+                class="w-full h-auto"
+                src="/img/hack/icon.png"
+                alt="Solid logo"
+              />
+              <img
+                class="w-full h-auto"
+                src="/img/hack/title.png"
+                alt="Solid logo"
+              />
+            </Link>
+          </div>
+          <ScrollShadow
+            class={`group relative nav-items-container ${navListPosition()}`}
+            direction="horizontal"
+            rtl={t("global.dir", {}, "ltr") === "rtl"}
+            shadowSize="25%"
+            initShadowSize={true}
+            locked={showLogo()}
+          >
+            <ul class="flex items-center">
+              <For each={navList()}>
+                {(item) => (
+                  <NavLink
+                    href={item.path}
+                    end={item.end}
+                    target={item.external ? "_blank" : "_self"}
+                    class="inline-flex items-center transition text-[15px] dark:text-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
+                    activeClass="text-solid-medium dark:text-white"
                   >
-                    <NavLink
-                      onClick={() => setSubnav([])}
-                      class="px-6 py-5 w-full block"
-                      href={link.path}
-                    >
-                      {link.title}
-                      <Show when={link.description}>
-                        <span class="block text-sm text-gray-400">
-                          {link.description}
-                        </span>
-                      </Show>
-                    </NavLink>
-                  </li>
+                    {item.title}
+                  </NavLink>
                 )}
               </For>
+              <LanguageSelector ref={langBtnTablet} class="hidden" />
             </ul>
-          </div>
-        </Show>
+          </ScrollShadow>
+          <ul class="hidden lg:flex items-center">
+            <LanguageSelector ref={langBtnDesktop} class="hidden" />
+          </ul>
+        </nav>
       </div>
-    </>
-  );
-};
-
-const logoTransition = 500;
-const onEnterLogo = (el: Element, isRTL: boolean) => {
-  const logoEl = el as HTMLElement;
-  const navList = el.nextElementSibling as HTMLElement;
-  const logoWidth = "56px";
-  const elements = [logoEl, navList];
-
-  logoEl.style.transform = `scale(0)`;
-  logoEl.style.transformOrigin = `${isRTL ? "right" : "left"} center`;
-  navList.style.transform = `translateX(${isRTL ? "" : "-"}${logoWidth})`;
-
-  reflow();
-  logoEl.style.transform = `scale(1)`;
-  navList.style.transform = `translateX(0)`;
-  elements.forEach((el) => {
-    el.style.transition = `transform ${logoTransition}ms`;
-  });
-  createEventListener(
-    logoEl,
-    "transitioned",
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-      elements.forEach((el) => {
-        el.style.transition = "";
-        el.style.transform = "";
-        el.style.transformOrigin = "";
-      });
-    },
-    { once: true }
-  );
-};
-
-const onExitLogo = (el: Element, isRTL: boolean) => {
-  const logoEl = el as HTMLElement;
-  const navList = el.nextElementSibling as HTMLElement;
-  const logoWidth = "56px";
-  const elements = [logoEl, navList];
-
-  logoEl.style.transform = `scale(1)`;
-  navList.style.transform = `translateX(${isRTL ? "-" : ""}${logoWidth})`;
-  if (isRTL) {
-    navList.style.marginRight = "0";
-  } else {
-    navList.style.marginLeft = "0";
-  }
-
-  reflow();
-  logoEl.style.transform = `scale(0)`;
-  logoEl.style.transformOrigin = `${isRTL ? "right" : "left"} center`;
-  navList.style.transform = `translateX(0)`;
-
-  elements.forEach((el) => {
-    el.style.transition = `transform ${logoTransition}ms`;
-    el.style.backfaceVisibility = "hidden";
-  });
-
-  createEventListener(
-    logoEl,
-    "transitionend",
-    (e) => {
-      if (e.target !== e.currentTarget) return;
-      navList.style.marginLeft = "";
-      navList.style.marginRight = "";
-      elements.forEach((el) => {
-        el.style.transition = "";
-        el.style.transform = "";
-        el.style.backfaceVisibility = "";
-        el.style.transformOrigin = "";
-      });
-    },
-    { once: true }
+      <Show when={subnav().length !== 0}>
+        <div
+          ref={subnavEl}
+          class="absolute left-50 bg-gray-200 dark:bg-solid-darkLighterBg shadow-2xl max-w-sm transition duration-750"
+          style={{ left: `${subnavPosition()}px` }}
+        >
+          <ul class="divide-x divide-transparent flex flex-col">
+            <For each={subnav()}>
+              {(link) => (
+                <li
+                  class="px-5 hover:bg-solid-default hover:text-white transition duration-300"
+                  style={
+                    link.direction && {
+                      direction: link.direction,
+                      "text-align": link.direction === "ltr" ? "left" : "right",
+                    }
+                  }
+                >
+                  <NavLink
+                    onClick={() => setSubnav([])}
+                    class="px-6 py-5 w-full block"
+                    href={link.path}
+                  >
+                    {link.title}
+                    <Show when={link.description}>
+                      <span class="block text-sm text-gray-400">
+                        {link.description}
+                      </span>
+                    </Show>
+                  </NavLink>
+                </li>
+              )}
+            </For>
+          </ul>
+        </div>
+      </Show>
+    </div>
   );
 };
 

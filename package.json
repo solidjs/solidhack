@@ -37,7 +37,7 @@
     "rehype-highlight": "^5.0.2",
     "remark-gfm": "^3.0.1",
     "scroll-behavior-polyfill": "^2.0.13",
-    "solid-app-router": "^0.3.0",
+    "solid-app-router": "^0.2.1",
     "solid-dismiss": "^1.0.26",
     "solid-heroicons": "^1.1.1",
     "solid-js": "^1.3.7",

@@ -1,7 +1,7 @@
-import type { Component } from 'solid-js';
-import { useI18n } from '@solid-primitives/i18n';
-import { createSignal, createMemo, For, Show } from 'solid-js';
-import { createVisibilityObserver } from '@solid-primitives/intersection-observer';
+import type { Component } from "solid-js";
+import { useI18n } from "@solid-primitives/i18n";
+import { createSignal, createMemo, For, Show } from "solid-js";
+import { createVisibilityObserver } from "@solid-primitives/intersection-observer";
 
 export interface GraphData {
   id: string;
@@ -17,15 +17,21 @@ interface RowData {
   score: number;
 }
 
-const Chart: Component<{ rows: Array<RowData>; scale: string; direction: string }> = (props) => {
-  const maxValue = createMemo(() => Math.max(...props.rows.map((row) => row.score)));
+const Chart: Component<{
+  rows: Array<RowData>;
+  scale: string;
+  direction: string;
+}> = (props) => {
+  const maxValue = createMemo(() =>
+    Math.max(...props.rows.map((row) => row.score))
+  );
   const options = createMemo(() =>
     props.rows
       .sort((a, b) => a.score - b.score)
       .map((row) => ({
         ...row,
         width: `${(row.score / maxValue()) * 100}%`,
-      })),
+      }))
   );
   return (
     <table class="w-full table-fixed">
@@ -45,13 +51,17 @@ const Chart: Component<{ rows: Array<RowData>; scale: string; direction: string 
                     <div
                       class="transition-transform -translate-x-full duration-700 w-full h-full rounded-3xl ltr:text-right rtl:text-left text-xxs py-1"
                       classList={{
-                        'bg-solid-light text-white font-semibold': row.active,
-                        'bg-gray-100 dark:bg-solid-darkLighterBg': !row.active,
+                        "bg-solid-light text-white font-semibold": row.active,
+                        "bg-gray-100 dark:bg-solid-darkLighterBg": !row.active,
                       }}
                       style={{
                         width: row.width,
                         transform: `translateX(${
-                          isVisible() ? '0%' : props.direction === 'right' ? '-100%' : '100%'
+                          isVisible()
+                            ? "0%"
+                            : props.direction === "right"
+                            ? "-100%"
+                            : "100%"
                         })`,
                       }}
                     >
@@ -62,7 +72,7 @@ const Chart: Component<{ rows: Array<RowData>; scale: string; direction: string 
                           </span>
                         </figure>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                   </div>
@@ -90,7 +100,9 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
   const [t] = useI18n();
   const [current, setCurrent] = createSignal(0);
   const [expanded, setExpanded] = createSignal(false);
-  const direction = createMemo(() => (t('global.dir', {}, 'ltr') == 'rtl' ? 'left' : 'right'));
+  const direction = createMemo(() =>
+    t("global.dir", {}, "ltr") == "rtl" ? "left" : "right"
+  );
   return (
     <>
       <Chart
@@ -105,7 +117,11 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
             class={`py-3 text-sm chevron button text-solid-default dark:text-solid-darkdefault font-semibold hover:text-gray-500 dark:hover:text-gray-300 chevron-${direction()}`}
             onClick={() => setExpanded(true)}
           >
-            {t('home.benchmarks.show_more', {}, 'Show more client + server benchmarks')}
+            {t(
+              "home.benchmarks.show_more",
+              {},
+              "Show more client + server benchmarks"
+            )}
           </button>
         }
       >
@@ -116,8 +132,8 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
                 onClick={() => setCurrent(index)}
                 class="text-xs lg:mr-1 p-3 rounded hover:bg-gray-400 transition duration-150 hover:text-white"
                 classList={{
-                  'active text-white bg-solid-light': current() === index,
-                  'bg-gray-100': current() !== index,
+                  "active text-white bg-solid-light": current() === index,
+                  "bg-gray-100": current() !== index,
                 }}
               >
                 {item.name}
@@ -126,7 +142,9 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
           })}
         </div>
         <div>
-          <div class="pt-5 text-xs block">{props.list[current()].description}</div>
+          <div class="pt-5 text-xs block">
+            {props.list[current()].description}
+          </div>
           <Show when={props.list[current()].link}>
             <a
               target="_blank"
@@ -134,7 +152,7 @@ const Benchmarks: Component<{ list: Array<GraphData> }> = (props) => {
               rel="noopener noreferrer"
               href={props.list[current()].link}
             >
-              {t('home.benchmarks.view')}
+              {t("home.benchmarks.view")}
             </a>
           </Show>
         </div>

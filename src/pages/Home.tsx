@@ -100,7 +100,7 @@ const Home: Component = () => {
           </a>{" "}
         </div>
       </div>
-      <div class="flex flex-col space-y-5 md:flex-row md:space-x-5">
+      <div class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-5">
         <iframe
           class="rounded-xl shadow-2xl"
           width="340"
@@ -127,7 +127,7 @@ const Home: Component = () => {
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+        />
       </div>
       <div class="max-w-4xl p-5 leading-7">
         <Box title="What">

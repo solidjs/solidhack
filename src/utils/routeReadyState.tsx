@@ -1,4 +1,4 @@
-import { useRouteData } from "solid-app-router";
+import { useData } from "solid-app-router";
 import { createComputed, createSignal } from "solid-js";
 export const page = {
   scrollY: 0,
@@ -22,7 +22,7 @@ export const useRouteReadyState = () => {
   };
 
   try {
-    const data = useRouteData<{ loading: boolean }>();
+    const data = useData<{ loading: boolean }>();
 
     createComputed(() => {
       if (!data.loading) {
