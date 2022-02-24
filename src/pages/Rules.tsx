@@ -51,7 +51,9 @@ const Rules: Component = () => {
           <li>
             Submissions must not change after the submission closing date (April 7th).
             This includes but is not limited to bug fixes, demo updates,
-            documentation changes etc.
+            documentation changes etc. You may continue making changes locally
+            or on a separate branch, however main/master must remain untouched 
+            until the voting period is over.
           </li>
           <li>
             Submissions will be vetted by SolidHack Planning Committee members.

@@ -49,6 +49,7 @@ const Submit: Component = () => {
             projects started after that date are eligible.
           </li>
           <li>Your package.json is configured properly as described below.</li>
+          <li>Ensure your submission resides on the main/master branch.</li>
         </ol>
         <p>
          Please feel free to ask directly on the #solidhack
