@@ -48,7 +48,11 @@ const Rules: Component = () => {
             projects and projects that include previously posted code are not
             allowed. Projects ported from other ecosystems are allowed.
           </li>
-          <li>Submissions must not change after the submission date.</li>
+          <li>
+            Submissions must not change after the submission closing date (April 7th).
+            This includes but is not limited to bug fixes, demo updates,
+            documentation changes etc.
+          </li>
           <li>
             Submissions will be vetted by SolidHack Planning Committee members.
             3 members or more may vote to disqualify a submission due to the
