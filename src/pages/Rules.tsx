@@ -49,10 +49,10 @@ const Rules: Component = () => {
             allowed. Projects ported from other ecosystems are allowed.
           </li>
           <li>
-            Submissions must not change after the submission closing date (April 7th).
-            This includes but is not limited to bug fixes, demo updates,
+            Submissions must not change after the submission closing date (April
+            7th). This includes but is not limited to bug fixes, demo updates,
             documentation changes etc. You may continue making changes locally
-            or on a separate branch, however main/master must remain untouched 
+            or on a separate branch, however main/master must remain untouched
             until the voting period is over.
           </li>
           <li>

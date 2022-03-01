@@ -103,8 +103,8 @@ const Home: Component = () => {
       <div class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-5">
         <iframe
           class="rounded-xl shadow-2xl"
-          width="340"
-          height="190"
+          width="500"
+          height="280"
           src="https://www.youtube.com/embed/Y67QW9HKrWA"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -112,18 +112,29 @@ const Home: Component = () => {
         />
         <iframe
           class="rounded-xl shadow-2xl"
-          width="340"
-          height="190"
+          width="500"
+          height="280"
           src="https://www.youtube.com/embed/QGNZGZAfvcY"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+      <div class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-5">
+        <iframe
+          class="rounded-xl shadow-2xl"
+          width="500"
+          height="280"
+          src="https://www.youtube.com/embed/8VyEHaqstJ4"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
         <iframe
           class="rounded-xl shadow-2xl"
-          width="340"
-          height="190"
-          src="https://www.youtube.com/embed/8VyEHaqstJ4"
+          width="500"
+          height="280"
+          src="https://www.youtube.com/embed/YWHj8Yw2HoI"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
@@ -242,7 +253,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated February 24 @ 10:00am EST
+          Last updated March 1 @ 10:00am EST
         </div>
       </div>
     </div>
