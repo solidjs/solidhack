@@ -49,15 +49,15 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
 
   const logoPosition = () =>
     t("global.dir", {}, "ltr") === "rtl"
-      ? "right-3 lg:right-12 pl-5"
-      : "left-3 lg:left-12 pr-5";
+      ? "right-3 lg:right-12 pl-[10px] lg:pl-5"
+      : "left-3 lg:left-12 pr-[10px] lg:pr-5";
 
   const navListPosition = () => {
     const isRTL = t("global.dir", {}, "ltr") === "rtl";
     if (isRTL) {
-      return showLogo() && "mr-[200px] md:mr-[275px]";
+      return showLogo() && "";
     }
-    return showLogo() && "ml-[200px] md:ml-[275px]";
+    return showLogo() && "";
   };
 
   const showLogo = createMemo(() => props.showLogo || !locked());
@@ -97,9 +97,9 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
       classList={{ "shadow-md": showLogo() }}
     >
       <div class="flex justify-center w-full overflow-hidden">
-        <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
+        <nav class="relative px-3 lg:px-12 container flex h-[46px] lg:h-[56px] justify-between items-center max-h-18 z-20">
           <div
-            class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg ${
+            class={`flex ${logoPosition()} h-full nav-logo-bg ${
               showLogo() ? "scale-100" : "scale-0"
             }`}
             ref={logoEl}
