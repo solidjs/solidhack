@@ -4,17 +4,17 @@
   "locale": "en-US",
   "nav": [
     {
-      "title": "Info",
+      "title": "Home",
       "path": "/",
       "end": true
     },
     {
-      "title": "Prizes",
-      "path": "/prizes"
+      "title": "Submission Entries",
+      "path": "/submissions"
     },
     {
-      "title": "Submit Your Project",
-      "path": "/submit"
+      "title": "Prizes",
+      "path": "/prizes"
     },
     {
       "title": "Rules",

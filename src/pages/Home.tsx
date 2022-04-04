@@ -178,17 +178,21 @@ const Home: Component = () => {
               <div class="col-span-3">February 18th</div>
               <div class="col-span-8">Submissions Portal Opens</div>
             </div>
-            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-700">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
               <div class="col-span-1 text-center">
-                <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
-                  ~
+                <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                  ✓
                 </figure>
               </div>
               <div class="col-span-3">April 7th</div>
               <div class="col-span-8">Submissions Close and Voting Begins</div>
             </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
-              <div class="col-span-1 text-center">&nbsp;</div>
+              <div class="col-span-1 text-center">
+                <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                  ~
+                </figure>
+              </div>
               <div class="col-span-3">April 28th</div>
               <div class="col-span-8">Voting Ends</div>
             </div>

@@ -1,5 +1,6 @@
 import { lazy } from "solid-js";
 import { RouteDefinition } from "solid-app-router";
+import SubmissionsData from "./pages/Submissions.data";
 
 export const routes: RouteDefinition[] = [
   {
@@ -17,5 +18,16 @@ export const routes: RouteDefinition[] = [
   {
     path: "/submit",
     component: lazy(() => import("./pages/Submit")),
+  },
+  {
+    path: "/submissions",
+    component: lazy(() => import("./pages/Submissions")),
+    data: SubmissionsData,
+    children: [
+      {
+        path: "/:category",
+        component: lazy(() => import("./pages/Submissions")),
+      },
+    ]
   },
 ];

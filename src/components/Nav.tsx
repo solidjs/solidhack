@@ -37,8 +37,8 @@ const LanguageSelector: Component<{
 
 const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const [subnav, setSubnav] = createSignal<MenuLinkProps[]>([]);
-  const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
-  const [locked, setLocked] = createSignal<boolean>(props.showLogo || true);
+  const [subnavPosition] = createSignal<number>(0);
+  const [locked] = createSignal<boolean>(props.showLogo || true);
   const [t, { locale }] = useI18n();
   const context = useAppContext();
 
@@ -132,9 +132,9 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
                   <NavLink
                     href={item.path}
                     end={item.end}
-                    target={item.external ? "_blank" : "_self"}
-                    class="inline-flex items-center transition text-[15px] dark:text-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
-                    activeClass="text-solid-medium dark:text-white"
+                    target={item.external ? "_blank" : ""}
+                    class="inline-flex items-center transition text-[15px] sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
+                    activeClass="text-solid-medium font-semibold"
                   >
                     {item.title}
                   </NavLink>
