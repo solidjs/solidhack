@@ -99,9 +99,8 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
       <div class="flex justify-center w-full overflow-hidden">
         <nav class="relative px-3 lg:px-12 container flex h-[46px] sm:h-[56px] justify-between items-center max-h-18 z-20">
           <div
-            class={`flex ${logoPosition()} h-full nav-logo-bg ${
-              showLogo() ? "scale-100" : "scale-0"
-            }`}
+            // In Chrome this flex intrinsic sizing works but in Firefox/Safari it doesn't. This is why width is declared
+            class={`flex w-[193px] sm:w-[272px] ${logoPosition()} h-full nav-logo-bg`}
             ref={logoEl}
           >
             <Link href="/" noScroll class={`py-3 inline-flex w-50 space-x-4`}>
