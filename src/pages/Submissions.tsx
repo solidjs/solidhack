@@ -167,11 +167,15 @@ const Submissions: Component = () => {
   return (
     <div class="w-full lg:py-6 bg-hack bg-no-repeat bg-top bg-contain bg-fixed">
       <div class="container pt-[18px] px-7 grid lg:pt-0 lg:grid-cols-10 relative gap-4 lg:gap-0">
+        <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_60%,transparent_75%)]"></div>
         <div
-          class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden"
-          style="background-size: cover;background-position: top;background-repeat: no-repeat;z-index: 1;background-image: url(/img/hack/banner.png), linear-gradient(180deg, white 60%, transparent 75%);"
-        ></div>
-        <div class="sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 pb-[35px] backdrop-blur-[5px] lg:backdrop-blur-none firefox:bg-gradient-transparent-40%-white-40% bg-gradient-white-40%-to-white/0.5-50% mask-image-[linear-gradient(to_bottom,black_calc(100%-30px),transparent)] lg:mask-image-none">
+          class={`
+        sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 pb-[35px] 
+        backdrop-blur-[5px] lg:backdrop-blur-none 
+        bg-gradient-transparent-40%-white-40% has-backdrop-filter:bg-gradient-white-40_percent-to-white-50_percent 
+        mask-image-[linear-gradient(to_bottom,black_calc(100%-30px),transparent)] lg:mask-image-none
+        `}
+        >
           <div class="grid gap-2 grid-cols-[1fr,120px] md:grid-cols-[1fr,1fr,1fr,120px] lg:grid-cols-full lg:px-4">
             <CategoryButton
               id="best_app"

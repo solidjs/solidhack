@@ -97,7 +97,8 @@ module.exports = {
           "linear-gradient(to bottom,rgba(255,255,255,0) 40%, rgba(255, 255, 255, 1) 40%)",
         "gradient-white/0.95-15%-to-transparent":
           "linear-gradient(180deg,rgba(255,255,255,0.95) 15%,rgba(255,255,255,0))",
-        "gradient-white-40%-to-white/0.5-50%":
+        // when passing class to addVariant plugin, "%" or "." characters will break it
+        "gradient-white-40_percent-to-white-50_percent":
           "linear-gradient(to bottom,rgba(255,255,255,0) 40%,rgba(255,255,255, 0.5) 50%)",
         hero: "url('/src/assets/shapes/header.svg')",
         "blocks-one": "url('/src/assets/shapes/blocks1.svg')",
@@ -147,9 +148,27 @@ module.exports = {
         },
       }
     ),
+    plugin(
+      function ({ matchUtilities, theme }) {
+        matchUtilities(
+          {
+            "bg-image": (value) => ({
+              backgroundImage: value,
+            }),
+          },
+          { values: theme("bgImage") }
+        );
+      },
+      {
+        theme: {
+          bgImage: {
+            none: "none",
+          },
+        },
+      }
+    ),
     plugin(function ({ addVariant, e, postcss }) {
-      addVariant("supports-backdrop-filter", ({ container, separator }) => {
-        // @supports not ((text-align-last: justify)
+      addVariant("has-backdrop-filter", ({ container, separator }) => {
         const isRule = postcss.atRule({
           name: "supports",
           params:
@@ -159,22 +178,7 @@ module.exports = {
         container.append(isRule);
         isRule.walkRules((rule) => {
           rule.selector = `.${e(
-            `supports-backdrop-filter${separator}${rule.selector.slice(1)}`
-          )}`;
-        });
-      });
-    }),
-    plugin(function ({ addVariant, e, postcss }) {
-      addVariant("firefox", ({ container, separator }) => {
-        const isFirefoxRule = postcss.atRule({
-          name: "-moz-document",
-          params: "url-prefix()",
-        });
-        isFirefoxRule.append(container.nodes);
-        container.append(isFirefoxRule);
-        isFirefoxRule.walkRules((rule) => {
-          rule.selector = `.${e(
-            `firefox${separator}${rule.selector.slice(1)}`
+            `has-backdrop-filter${separator}${rule.selector.slice(1)}`
           )}`;
         });
       });
