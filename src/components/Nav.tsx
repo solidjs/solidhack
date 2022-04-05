@@ -97,7 +97,7 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
       classList={{ "shadow-md": showLogo() }}
     >
       <div class="flex justify-center w-full overflow-hidden">
-        <nav class="relative px-3 lg:px-12 container flex h-[46px] lg:h-[56px] justify-between items-center max-h-18 z-20">
+        <nav class="relative px-3 lg:px-12 container flex h-[46px] sm:h-[56px] justify-between items-center max-h-18 z-20">
           <div
             class={`flex ${logoPosition()} h-full nav-logo-bg ${
               showLogo() ? "scale-100" : "scale-0"
