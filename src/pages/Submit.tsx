@@ -188,7 +188,7 @@ const Submit: Component = () => {
         submission was accepted.
         <p class="mt-5">
           Remember that you can continue working on your submission even after
-          submitting it. You'll be able to do so until April 7th, when
+          submitting it. You'll be able to do so until April 11th, when
           submissions close and voting begins. Feel free to improve, iterate,
           and share your project with the world!
         </p>
