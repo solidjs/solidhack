@@ -1,3 +1,4 @@
+const { rule } = require("postcss");
 const theme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
 
@@ -179,7 +180,7 @@ module.exports = {
         isRule.walkRules((rule) => {
           rule.selector = `.${e(
             `has-backdrop-filter${separator}${rule.selector.slice(1)}`
-          )}`;
+          ).replace(/\\\\/g, "")}`;
         });
       });
     }),

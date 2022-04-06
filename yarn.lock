@@ -6174,10 +6174,15 @@ solid-app-router@^0.3.2:
   resolved "https://registry.yarnpkg.com/solid-app-router/-/solid-app-router-0.3.2.tgz#87c687262d2cc6267fd5f5025a6c5b12ae564bc7"
   integrity sha512-zh6Ui87xy23JUxrH0z1xAROJPpiuxa3JRx9jP2qqjr07q2EKQOjn9BrmTFvQd/azQWzLjSMU+hN2fy6kLh5Bdw==
 
-solid-dismiss@^1.0.26, solid-dismiss@^1.0.27:
+solid-dismiss@^1.0.27:
   version "1.0.27"
   resolved "https://registry.yarnpkg.com/solid-dismiss/-/solid-dismiss-1.0.27.tgz#4e9720a81f7758edf0605a1ed2adc0c5ce33e068"
   integrity sha512-y9g7SeoiXADA2UwFtqpTr3m8BsQNEoQESHO/jpjHDZMSCN1T2cq0XmbsMEsih0YUbkdW3pwhyrfq55DUtKaSFg==
+
+solid-dismiss@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/solid-dismiss/-/solid-dismiss-1.1.0.tgz#36885b07373c4a3e8b1be7c4784140017ceb12ab"
+  integrity sha512-UnlNbtOqoRTsEhb/YOfiGkqKoz09ULFwFNE9TU9kqFqdZESxyVfjjut6+jNuJ4war9RkGz2ASbq8ersxk7WmDA==
 
 solid-heroicons@^1.1.1:
   version "1.1.1"

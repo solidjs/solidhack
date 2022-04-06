@@ -1,7 +1,9 @@
-import { Component, For, Show } from "solid-js";
+import { Component, createEffect, createSignal, For, Show } from "solid-js";
 import { NavLink, useRouteData } from "solid-app-router";
 import { globe, code, star } from "solid-heroicons/outline";
 import { Icon } from "solid-heroicons";
+import { chevronLeft } from "solid-heroicons/outline";
+import Dismiss from "solid-dismiss";
 
 type Submission = {
   title: string;
@@ -16,7 +18,6 @@ type Submission = {
     url?: string;
   }>;
 };
-
 const submissions: { [key: string]: Submission[] } = {
   best_app: [],
   best_ecosystem: [
@@ -151,53 +152,174 @@ const CategoryButton: Component<{
     <NavLink
       href={`/submissions/${props.id}`}
       activeClass="bg-solid-medium border-solid-medium"
-      class="flex flex-col text-center text-[14px] lg:text-[16px] md:pb-1 md:p-2 items-center justify-center border-2 p-3 lg:p-5 border-white bg-white/80 rounded-lg shadow-lg "
+      class="flex flex-col gap-2 p-1 md:p-3 md:pb-1 items-center justify-center border-2 lg:p-5 border-white bg-white/80 has-backdrop-filter:bg-white/10 lg:bg-white/80 rounded-lg shadow-lg "
     >
-      <figure class="rounded-full w-[60px] h-[60px] lg:w-20 lg:h-20 bg-solid-medium flex p-1 lg:p-2 mb-2">
+      <figure class="rounded-full shrink-0 w-[40px] h-[40px] md:w-[60px] md:h-[60px] lg:w-20 lg:h-20 bg-solid-medium flex p-1 lg:p-2">
         <img alt="Award" src={props.image} />
       </figure>
-      {props.title}
+      <span class="leading-[1.5em] md:text-center text-[14px] lg:text-[16px]">
+        {props.title}
+      </span>
     </NavLink>
+  );
+};
+
+const CategoryItem: Component<{
+  id: string;
+  title: string;
+  image: string;
+  onClick: () => void;
+}> = (props) => {
+  return (
+    <NavLink
+      href={`/submissions/${props.id}`}
+      onClick={props.onClick}
+      class="flex w-full gap-2 py-4 items-center"
+    >
+      <figure class="rounded-full shrink-0 w-[40px] h-[40px] bg-solid-medium flex p-1">
+        <img alt="Award" src={props.image} />
+      </figure>
+      <span class="leading-[1.5em] text-left">{props.title}</span>
+    </NavLink>
+  );
+};
+
+const DropdownButton: Component<{
+  image: string;
+  title: string;
+  active: boolean;
+  ref: any;
+}> = (props) => {
+  return (
+    <button
+      class="flex w-full gap-2 p-1 items-center border-2 lg:p-5 border-white bg-white/80 has-backdrop-filter:bg-white/10 rounded-lg shadow-lg"
+      ref={props.ref}
+    >
+      <figure class="rounded-full shrink-0 w-[40px] h-[40px] bg-solid-medium flex p-1">
+        <img alt="Award" src={props.image} />
+      </figure>
+      <span class="leading-[1.5em] text-left text-xs sm:text-base">
+        {props.title}
+      </span>
+      <div class="flex justify-center items-center ml-auto">
+        <Icon
+          class="w-5 transition-composite"
+          classList={{ "-rotate-90": props.active }}
+          path={chevronLeft}
+        />
+      </div>
+    </button>
   );
 };
 
 const Submissions: Component = () => {
   const data = useRouteData<{ submissions: Submission[]; category: string }>();
+  const [toggle, setToggle] = createSignal(false);
+  const [activeCategory, setActiveCategory] = createSignal({
+    id: "best_app",
+    title: "Best App",
+    image: "/img/award-best-app.svg",
+  });
+  const categories = [
+    {
+      id: "best_app",
+      title: "Best App",
+      image: "/img/award-best-app.svg",
+    },
+    {
+      id: "best_ecosystem",
+      title: "Best Ecosystem Utility",
+      image: "/img/award-ecosystem.svg",
+    },
+    {
+      id: "best_student_project",
+      title: "Best Student Project",
+      image: "/img/award-student-project.svg",
+    },
+  ];
+  let buttonEl!: HTMLButtonElement;
+  let stickyContainerEl!: HTMLDivElement;
 
   return (
     <div class="w-full lg:py-6 bg-hack bg-no-repeat bg-top bg-contain bg-fixed">
-      <div class="container pt-[18px] px-7 grid lg:pt-0 lg:grid-cols-10 relative gap-4 lg:gap-0">
-        <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_60%,transparent_75%)]"></div>
+      <div class="container pt-[18px] px-7 grid lg:pt-0 lg:grid-cols-10 relative">
+        <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_45%,transparent_60%)] md:bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_70%,transparent_85%)]"></div>
         <div
           class={`
-        sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 pb-[35px] 
-        backdrop-blur-[5px] lg:backdrop-blur-none 
-        bg-gradient-transparent-40%-white-40% has-backdrop-filter:bg-gradient-white-40_percent-to-white-50_percent 
-        mask-image-[linear-gradient(to_bottom,black_calc(100%-30px),transparent)] lg:mask-image-none
-        `}
+          sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 rounded-lg
+          `}
+          ref={stickyContainerEl}
         >
-          <div class="grid gap-2 grid-cols-[1fr,120px] md:grid-cols-[1fr,1fr,1fr,120px] lg:grid-cols-full lg:px-4">
-            <CategoryButton
-              id="best_app"
-              title="Best App"
-              image="/img/award-best-app.svg"
-            />
-            <CategoryButton
-              id="best_ecosystem"
-              title="Best Ecosystem Utility"
-              image="/img/award-ecosystem.svg"
-            />
-            <CategoryButton
-              id="best_student_project"
-              title="Best Student Project"
-              image="/img/award-student-project.svg"
-            />
-            <div class="pt-3 text-center text-[10px] lg:text-xs rounded-lg bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
-              Star votes remaining:
-              <div class="mt-3 flex px-3 justify-between">
-                <Icon class="w-12 text-gray-400" path={star} />
-                <Icon class="w-12 text-gray-400" path={star} />
-                <Icon class="w-12 text-gray-400" path={star} />
+          <div
+            class={`
+            pb-[35px]
+            bg-gradient-transparent-40%-white-40% has-backdrop-filter:bg-gradient-white-40_percent-to-white-50_percent 
+            mask-image-[linear-gradient(to_bottom,black_calc(100%-30px),transparent)]
+            backdrop-blur-[8px] md:backdrop-blur-[5px] lg:backdrop-blur-none 
+            lg:mask-image-none
+          `}
+          >
+            <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,120px] lg:grid-cols-full lg:px-4">
+              <div class="md:hidden relative w-full">
+                <DropdownButton
+                  title={activeCategory().title}
+                  image={activeCategory().image}
+                  active={toggle()}
+                  ref={buttonEl}
+                />
+                <Dismiss
+                  menuButton={buttonEl}
+                  open={toggle}
+                  setOpen={setToggle}
+                  mount={stickyContainerEl}
+                  animation={{
+                    enterClass: "opacity-0 translate-x-[-20%]",
+                    enterToClass:
+                      "opacity-1 translate-x-0 transition-composite duration-200",
+                    exitClass: "opacity-1 translate-x-0",
+                    exitToClass:
+                      "opacity-0 translate-x-[-20%] transition-composite duration",
+                    appendToElement: "menuPopup",
+                  }}
+                >
+                  <div class="absolute top-16 left-0 w-full bg-white rounded-lg pl-5 shadow-lg">
+                    <For each={categories}>
+                      {({ id, image, title }) => {
+                        return (
+                          <CategoryItem
+                            id={id}
+                            title={title}
+                            image={image}
+                            onClick={() => {
+                              setActiveCategory(
+                                categories.find((item) => item.id === id)!
+                              );
+                              setToggle(false);
+                            }}
+                          />
+                        );
+                      }}
+                    </For>
+                  </div>
+                </Dismiss>
+              </div>
+              <div class="hidden md:grid gap-2 md:grid-cols-[1fr,1fr,1fr] lg:grid-cols-full">
+                <For each={categories}>
+                  {({ id, image, title }) => {
+                    return (
+                      <CategoryButton id={id} title={title} image={image} />
+                    );
+                  }}
+                </For>
+              </div>
+
+              <div class="md:pt-3 text-center text-[10px] lg:text-xs rounded-lg md:bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
+                Star votes remaining:
+                <div class="md:mt-3 flex px-3 justify-between">
+                  <Icon class="w-12 text-gray-400" path={star} />
+                  <Icon class="w-12 text-gray-400" path={star} />
+                  <Icon class="w-12 text-gray-400" path={star} />
+                </div>
               </div>
             </div>
           </div>
