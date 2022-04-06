@@ -40,7 +40,7 @@ const Rules: Component = () => {
             The URL must be provided with your submission.
           </li>
           <li>
-            Submissions posted after the submission closing date (April 7th
+            Submissions posted after the submission closing date (April 11th
             23:59 GMT-5) will not be accepted.
           </li>
           <li>
@@ -50,7 +50,7 @@ const Rules: Component = () => {
           </li>
           <li>
             Submissions must not change after the submission closing date (April
-            7th). This includes but is not limited to bug fixes, demo updates,
+            11th). This includes but is not limited to bug fixes, demo updates,
             documentation changes etc. You may continue making changes locally
             or on a separate branch, however main/master must remain untouched
             until the voting period is over.
