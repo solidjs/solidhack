@@ -37,8 +37,8 @@ const LanguageSelector: Component<{
 
 const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const [subnav, setSubnav] = createSignal<MenuLinkProps[]>([]);
-  const [subnavPosition, setSubnavPosition] = createSignal<number>(0);
-  const [locked, setLocked] = createSignal<boolean>(props.showLogo || true);
+  const [subnavPosition] = createSignal<number>(0);
+  const [locked] = createSignal<boolean>(props.showLogo || true);
   const [t, { locale }] = useI18n();
   const context = useAppContext();
 

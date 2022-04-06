@@ -58,7 +58,7 @@ const Home: Component = () => {
       >
         <img class="mx-auto mt-20 w-36" src="/img/hack/icon.png" />
         <img
-          class="w-6/6 md:w-5/6 mt-4 mb-0 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto"
+          class="w-6/6 md:w-5/6 mt-4 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto mb-10"
           src="/img/hack/title.png"
         />
         <Countdown></Countdown>
@@ -275,7 +275,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated March 1 @ 10:00am EST
+          Last updated March 5 @ 11:30pm EST
         </div>
       </div>
     </div>
