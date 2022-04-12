@@ -31,14 +31,19 @@ const SubmissionLanding: Component = () => {
           <div>
             On behalf of the SolidJS Core, Ecosystem and broader community,
             thank you for participating and making this competition a reality.
-            After just over 3 months it's time to vote for the winners.
+            After just over 3 months it's time to prepare for voting.
           </div>
           <div class="text-solid-medium">
+            We're currently collecting submissions. Once we're done we'll launch
+            our voting portal and let everyone know via Discord, Twitter and
+            this website. <b>So check back shortly!</b>
+          </div>
+          {/* <div class="text-solid-medium">
             <b>To participate in the voting process</b> you must sign into
             GitHub. Voting will end on April 28th @ 23:49 GMT-5. You will have 3
             Voting Stars per category.
-          </div>
-          <Show when={!context.user}>
+          </div> */}
+          {/* <Show when={!context.user}>
             <div class="my-5 py-10 px-5 border rounded-3xl bg-gray-50 space-y-5">
               <a
                 class="flex bg-white mx-auto items-center max-w-lg justify-center space-x-10 rounded-xl border border-black p-5"
@@ -54,14 +59,14 @@ const SubmissionLanding: Component = () => {
                 <img class="h-5" src={stytch} />
               </div>
             </div>
-          </Show>
-          <a
+          </Show> */}
+          {/* <a
             href="/submissions/best_app"
             class="text-solid-medium pt-4 text-2xl flex justify-center items-center text-center"
           >
             Continue to submissions
             <Icon class="w-10" path={arrowSmRight} />
-          </a>
+          </a> */}
         </div>
       </div>
     </div>

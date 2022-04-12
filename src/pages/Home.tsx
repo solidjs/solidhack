@@ -18,7 +18,7 @@ const Box: Component<BoxProps> = (props) => (
 );
 
 const Countdown: Component = () => {
-  const startDate = new Date(1649735999000);
+  const startDate = new Date(1651550340000);
   const endDate = new Date(1649390340000);
   const countdownValues = createCountdown(
     new Date().getTime() < startDate.getTime() ? startDate : endDate
@@ -61,23 +61,25 @@ const Home: Component = () => {
           class="w-6/6 md:w-5/6 mt-4 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto mb-10"
           src="/img/hack/title.png"
         />
+        <div class="mb-2">Countdown to the end of voting</div>
         <Countdown></Countdown>
         <div class="p-5 max-w-[450px] md:max-w-[550px] text-white rounded-b-lg bg-solid-light text-md mb-5">
-          <b>
-            The submission date has been <i>extended to April 11th!</i>
-          </b>
+          <div class="font-semibold text-center text-lg">
+            Submissions are in. Voting opens soon!
+          </div>
           <div class="mt-3">
-            The SolidHack Planning Committee has decided to extend the
-            competition deadline 4 extra days. Use this extra time wisely. If
-            you have any questions, feel free to{" "}
+            We're pleased to announce that the hackathon has received a number
+            of high-quality entries. Official voting will open shortly! The
+            Planning Committee is reviewing all submissions for fairness and
+            rules.{" "}
             <a
               class="underline"
               href="https://discord.com/invite/solidjs"
               target="_blank"
             >
-              join our Discord #solidhack channel
-            </a>
-            .
+              Join our Discord #solidhack channel
+            </a>{" "}
+            for more updates.
           </div>
         </div>
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
@@ -174,10 +176,6 @@ const Home: Component = () => {
           to ask questions and chat with our community.
         </Box>
         <Box title="When">
-          <div class="mb-5 text-xs text-solid-medium">
-            <b>NOTE:</b> The Submissions Closing, Voting and Winner Announcement
-            dates have been updated as of April 5th @ 10:00pm.
-          </div>
           <div class="space-y-5 text-center md:text-left">
             <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
               <div class="col-span-1 text-center">
@@ -199,17 +197,25 @@ const Home: Component = () => {
               <div class="col-span-3">February 18th</div>
               <div class="col-span-8">Submissions Portal Opens</div>
             </div>
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
+              <div class="col-span-1 text-center">
+                <div class="col-span-1 text-center">
+                  <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                    ✓
+                  </figure>
+                </div>
+              </div>
+              <div class="col-span-3">April 11th</div>
+              <div class="col-span-8">
+                Submissions Close and Voting Begins in 24h
+              </div>
+            </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">
                 <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
                   ~
                 </figure>
               </div>
-              <div class="col-span-3">April 11th</div>
-              <div class="col-span-8">Submissions Close and Voting Begins</div>
-            </div>
-            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
-              <div class="col-span-1 text-center">&nbsp;</div>
               <div class="col-span-3">May 2nd</div>
               <div class="col-span-8">Voting Ends</div>
             </div>
@@ -274,7 +280,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated April 6 @ 12:30pm EST
+          Last updated April 11 @ 11:59pm EST
         </div>
       </div>
     </div>
