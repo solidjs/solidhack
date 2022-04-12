@@ -18,7 +18,7 @@ const Box: Component<BoxProps> = (props) => (
 );
 
 const Countdown: Component = () => {
-  const startDate = new Date(1649390340000);
+  const startDate = new Date(1651550340000);
   const endDate = new Date(1649390340000);
   const countdownValues = createCountdown(
     new Date().getTime() < startDate.getTime() ? startDate : endDate
@@ -58,10 +58,30 @@ const Home: Component = () => {
       >
         <img class="mx-auto mt-20 w-36" src="/img/hack/icon.png" />
         <img
-          class="w-6/6 md:w-5/6 mt-4 mb-0 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto"
+          class="w-6/6 md:w-5/6 mt-4 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto mb-10"
           src="/img/hack/title.png"
         />
-        <small class="my-10 mb-3">Countdown to competition closing date:</small>
+        <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
+          <div class="font-semibold text-center text-lg">
+            Submissions are in. Voting opens soon!
+          </div>
+          <div class="mt-3">
+            We're super pleased with your submissions—official voting will open
+            shortly! The Planning Committee is reviewing all submissions for
+            fairness and rules. Check our #solidhack channel in{" "}
+            <a
+              class="underline"
+              href="https://discord.com/invite/solidjs"
+              target="_blank"
+            >
+              Discord
+            </a>{" "}
+            for more updates.
+          </div>
+          <div class="font-semibold text-center text-lg mt-3">
+            Voting will close in...
+          </div>
+        </div>
         <Countdown></Countdown>
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
           <a
@@ -180,12 +200,16 @@ const Home: Component = () => {
             </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
               <div class="col-span-1 text-center">
-                <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
-                  ✓
-                </figure>
+                <div class="col-span-1 text-center">
+                  <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                    ✓
+                  </figure>
+                </div>
               </div>
-              <div class="col-span-3">April 7th</div>
-              <div class="col-span-8">Submissions Close and Voting Begins</div>
+              <div class="col-span-3">April 11th</div>
+              <div class="col-span-8">
+                Submissions Close and Voting Begins in 24h
+              </div>
             </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">
@@ -193,12 +217,12 @@ const Home: Component = () => {
                   ~
                 </figure>
               </div>
-              <div class="col-span-3">April 28th</div>
+              <div class="col-span-3">May 2nd</div>
               <div class="col-span-8">Voting Ends</div>
             </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">&nbsp;</div>
-              <div class="col-span-3">May 4th</div>
+              <div class="col-span-3">May 6th</div>
               <div class="col-span-8">Winners Announced</div>
             </div>
             <small class="text-center mt-4 block">
@@ -257,7 +281,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated March 1 @ 10:00am EST
+          Last updated April 11 @ 11:59pm EST
         </div>
       </div>
     </div>
