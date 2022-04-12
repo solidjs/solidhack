@@ -43,7 +43,6 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const context = useAppContext();
 
   let langBtnTablet!: HTMLButtonElement;
-  let langBtnDesktop!: HTMLButtonElement;
   let logoEl!: HTMLDivElement;
   let subnavEl!: HTMLDivElement;
 
@@ -142,9 +141,15 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
               <LanguageSelector ref={langBtnTablet} class="hidden" />
             </ul>
           </ScrollShadow>
-          <ul class="hidden lg:flex items-center">
-            <LanguageSelector ref={langBtnDesktop} class="hidden" />
-          </ul>
+          <Show when={context.user !== false}>
+            <ul class="hidden lg:flex items-center space-x-3 text-xs">
+              <span>{context.user ? context.user.display : ""}</span>
+              <img
+                class="w-10 rounded-full shadow-xl border-2"
+                src={context.user ? context.user.avatar : ""}
+              />
+            </ul>
+          </Show>
         </nav>
       </div>
       <Show when={subnav().length !== 0}>

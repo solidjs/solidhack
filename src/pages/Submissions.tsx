@@ -1,9 +1,12 @@
-import { Component, createEffect, createSignal, For, Show } from "solid-js";
-import { NavLink, useRouteData } from "solid-app-router";
+import { Component, createResource, createSignal, For, Show } from "solid-js";
+import { NavLink, useParams, useRouteData } from "solid-app-router";
 import { globe, code, star } from "solid-heroicons/outline";
+import { star as solidStar } from "solid-heroicons/solid";
 import { Icon } from "solid-heroicons";
 import { chevronLeft } from "solid-heroicons/outline";
 import Dismiss from "solid-dismiss";
+import { Repeat } from "@solid-primitives/range";
+import { useAppContext } from "../AppContext";
 
 type Submission = {
   title: string;
@@ -18,76 +21,12 @@ type Submission = {
     url?: string;
   }>;
 };
-const submissions: { [key: string]: Submission[] } = {
-  best_app: [],
-  best_ecosystem: [
-    {
-      title: "solid-command-palette",
-      url: "https://github.com/itaditya/solid-command-palette",
-      github: "https://github.com/itaditya/solid-command-palette",
-      description: "Add a command palette to your Solid.js App",
-      info: "Boost your users productivity 10x by integrating our command palette.",
-      license: "MIT",
-      contributors: [
-        {
-          name: "Kai Huebner",
-          email: "kai.huebner@gmail.com",
-        },
-      ],
-    },
-    {
-      title: "solid-services",
-      url: "https://github.com/Exelord/solid-services",
-      github: "https://github.com/Exelord/solid-services",
-      description:
-        "Solid.js library adding a services layer for global shared state.",
-      license: "MIT",
-      contributors: [
-        {
-          name: "Maciej Kwaśniak",
-          email: "contact@exelord.com",
-          url: "https://exelord.com",
-        },
-      ],
-    },
-    {
-      title: "solid-proxies",
-      url: "https://github.com/Exelord/solid-proxies",
-      github: "https://github.com/Exelord/solid-proxies",
-      description:
-        "Solid.js library adding signaling to built-in non-primitives",
-      license: "MIT",
-      contributors: [
-        {
-          name: "Maciej Kwaśniak",
-          email: "contact@exelord.com",
-          url: "https://exelord.com",
-        },
-      ],
-    },
-    {
-      title: "studyur",
-      github: "https://github.com/jherr/studyur",
-      description: "SolidJS web application for learning resources.",
-      url: "https://www.youtube.com/watch?v=P_5Yxktq9Rs",
-      info: "A SolidJS based web application and chrome extension where users can keep curated lists of YouTube and Medium references in topics.",
-      license: "MIT",
-      contributors: [
-        {
-          name: "Jack Herrington",
-          email: "jherr@pobox.com",
-          url: "https://www.jackherrington.com",
-        },
-      ],
-    },
-  ],
-  best_student_project: [],
-};
-
 const CategoryList: Component<{
   title: string;
   submissions: Submission[];
 }> = (props) => {
+  const context = useAppContext();
+  const params = useParams<{ category: "best_app" }>();
   return (
     <ul class="divide-y divide-gray-200">
       <For each={props.submissions}>
@@ -132,9 +71,28 @@ const CategoryList: Component<{
                   <Icon class="w-12 text-solid-medium" path={code} />
                 </NavLink>
               </div>
-              <div class="col-span-1 flex justify-center items-center">
-                <Icon class="w-12 text-solid-medium" path={star} />
-              </div>
+              <Show when={context.user}>
+                <button
+                  onClick={() => {
+                    fetch(`${context.apiurl}/hack/votes`, {
+                      method: "POST",
+                      headers: {
+                        Authorization: `Bearer ${
+                          context.user ? context.user.token : ""
+                        }`,
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        category: params.category,
+                        selection: submission.title,
+                      }),
+                    });
+                  }}
+                  class="col-span-1 flex justify-center items-center"
+                >
+                  <Icon class="w-12 text-solid-medium" path={star} />
+                </button>
+              </Show>
             </li>
           );
         }}
@@ -213,30 +171,35 @@ const DropdownButton: Component<{
 };
 
 const Submissions: Component = () => {
+  const context = useAppContext();
+  const params = useParams<{ category: "best_app" }>();
   const data = useRouteData<{ submissions: Submission[]; category: string }>();
   const [toggle, setToggle] = createSignal(false);
-  const [activeCategory, setActiveCategory] = createSignal({
-    id: "best_app",
-    title: "Best App",
-    image: "/img/award-best-app.svg",
-  });
-  const categories = [
-    {
-      id: "best_app",
+  const [votes] = createResource(
+    () => context.user,
+    async () =>
+      (
+        await fetch(`${context.apiurl}/hack/votes`, {
+          headers: {
+            Authorization: `Bearer ${context.user ? context.user.token : ""}`,
+          },
+        })
+      ).json()
+  );
+  const categories = {
+    best_app: {
       title: "Best App",
       image: "/img/award-best-app.svg",
     },
-    {
-      id: "best_ecosystem",
+    best_ecosystem: {
       title: "Best Ecosystem Utility",
       image: "/img/award-ecosystem.svg",
     },
-    {
-      id: "best_student_project",
+    best_student_project: {
       title: "Best Student Project",
       image: "/img/award-student-project.svg",
     },
-  ];
+  };
   let buttonEl!: HTMLButtonElement;
   let stickyContainerEl!: HTMLDivElement;
 
@@ -262,8 +225,8 @@ const Submissions: Component = () => {
             <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,120px] lg:grid-cols-full lg:px-4">
               <div class="md:hidden relative w-full">
                 <DropdownButton
-                  title={activeCategory().title}
-                  image={activeCategory().image}
+                  title={categories[params.category].title}
+                  image={categories[params.category].image}
                   active={toggle()}
                   ref={buttonEl}
                 />
@@ -283,17 +246,14 @@ const Submissions: Component = () => {
                   }}
                 >
                   <div class="absolute top-16 left-0 w-full bg-white rounded-lg pl-5 shadow-lg">
-                    <For each={categories}>
-                      {({ id, image, title }) => {
+                    <For each={Object.entries(categories)}>
+                      {([id, { title, image }]) => {
                         return (
                           <CategoryItem
                             id={id}
                             title={title}
                             image={image}
                             onClick={() => {
-                              setActiveCategory(
-                                categories.find((item) => item.id === id)!
-                              );
                               setToggle(false);
                             }}
                           />
@@ -304,23 +264,48 @@ const Submissions: Component = () => {
                 </Dismiss>
               </div>
               <div class="hidden md:grid gap-2 md:grid-cols-[1fr,1fr,1fr] lg:grid-cols-full">
-                <For each={categories}>
-                  {({ id, image, title }) => {
+                <For each={Object.entries(categories)}>
+                  {([id, { image, title }]) => {
                     return (
                       <CategoryButton id={id} title={title} image={image} />
                     );
                   }}
                 </For>
               </div>
-
-              <div class="md:pt-3 text-center text-[10px] lg:text-xs rounded-lg md:bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
-                Star votes remaining:
-                <div class="md:mt-3 flex px-3 justify-between">
-                  <Icon class="w-12 text-gray-400" path={star} />
-                  <Icon class="w-12 text-gray-400" path={star} />
-                  <Icon class="w-12 text-gray-400" path={star} />
-                </div>
-              </div>
+              <Show when={context.user}>
+                <Show
+                  fallback={
+                    <div class="flex py-8 justify-center">Loading votes...</div>
+                  }
+                  when={!votes.loading}
+                >
+                  <div class="md:pt-5 text-center text-[10px] lg:text-xs rounded-lg md:bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
+                    Remaining category votes:
+                    <div class="md:mt-3 flex px-3 justify-between">
+                      <For each={votes()[params.category].selections}>
+                        {() => (
+                          <button class="pointer">
+                            <Icon
+                              class="w-12 text-yellow-500"
+                              path={solidStar}
+                            />
+                          </button>
+                        )}
+                      </For>
+                      <Repeat
+                        times={
+                          votes()[params.category].total -
+                          votes()[params.category].selections.length
+                        }
+                      >
+                        <button class="pointer">
+                          <Icon class="w-12 text-gray-400" path={star} />
+                        </button>
+                      </Repeat>
+                    </div>
+                  </div>
+                </Show>
+              </Show>
             </div>
           </div>
         </div>

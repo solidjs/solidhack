@@ -20,14 +20,12 @@ export const routes: RouteDefinition[] = [
     component: lazy(() => import("./pages/Submit")),
   },
   {
-    path: "/submissions",
+    path: "/submissions/",
+    component: lazy(() => import("./pages/SubmissionLanding")),
+  },
+  {
+    path: "/submissions/:category",
     component: lazy(() => import("./pages/Submissions")),
     data: SubmissionsData,
-    children: [
-      {
-        path: "/:category",
-        component: lazy(() => import("./pages/Submissions")),
-      },
-    ]
   },
 ];
