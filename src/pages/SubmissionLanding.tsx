@@ -35,7 +35,7 @@ const SubmissionLanding: Component = () => {
           </div>
           <div class="text-solid-medium">
             <b>To participate in the voting process</b> you must sign into
-            GitHub. Voting will end on April 28th @ 23:49 GMT-5. You will have 3
+            GitHub. Voting will end on May 2nd @ 23:49 GMT-5. You will have 3
             Voting Stars per category.
           </div>
           <Show when={!context.user}>
