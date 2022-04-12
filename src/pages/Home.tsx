@@ -63,23 +63,18 @@ const Home: Component = () => {
         />
         <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
           <div class="font-semibold text-center text-lg">
-            Submissions are in. Voting opens soon!
+            Voting is open, cast your votes!
           </div>
           <div class="mt-3">
-            We're super pleased with your submissions—official voting will open
-            shortly! The Planning Committee is reviewing all submissions for
-            fairness and rules. Check our #solidhack channel in{" "}
-            <a
-              class="underline"
-              href="https://discord.com/invite/solidjs"
-              target="_blank"
-            >
-              Discord
+            SolidHack is a community driven competition. We ask all participates
+            to head to the{" "}
+            <a class="underline" href="/submissions">
+              submissions page
             </a>{" "}
-            for more updates.
+            to decide who wins our cash prizes!
           </div>
-          <div class="font-semibold text-center text-lg mt-3">
-            Voting will close in...
+          <div class="font-semibold text-center text-md mt-3">
+            You have until...
           </div>
         </div>
         <Countdown></Countdown>
@@ -281,7 +276,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated April 11 @ 11:59pm EST
+          Last updated April 12 @ 7:00pm EST
         </div>
       </div>
     </div>

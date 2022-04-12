@@ -61,6 +61,12 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
     const list = votes();
     return list[params.category].selections.includes(props.title);
   });
+  const maxVotes = createMemo(() => {
+    const list = votes();
+    return (
+      list[params.category].selections.length >= list[params.category].total
+    );
+  });
   return (
     <li class="grid grid-cols-12 p-12 pl-2">
       <div class="col-span-1 text-solid-medium font-semibold flex text-lg justify-center">
@@ -95,26 +101,31 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
       </div>
       <Show when={context.user}>
         <button
+          disabled={maxVotes() && !selected()}
           onClick={async () => {
             setVoting(true);
-            const result = await fetch(`${context.apiurl}/hack/votes`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${
-                  context.user ? context.user.token : ""
-                }`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                category: params.category,
-                selection: props.title,
-              }),
-            });
-            if (selected() == false) {
-              playConfetti();
+            try {
+              const result = await fetch(`${context.apiurl}/hack/votes`, {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${
+                    context.user ? context.user.token : ""
+                  }`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  category: params.category,
+                  selection: props.title,
+                }),
+              });
+              if (selected() == false) {
+                playConfetti();
+              }
+              updateVotes(await result.json());
+              setVoting(false);
+            } catch (err) {
+              setVoting(false);
             }
-            updateVotes(await result.json());
-            setVoting(false);
           }}
           class="col-span-1 flex justify-center items-center"
         >
