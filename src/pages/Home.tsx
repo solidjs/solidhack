@@ -33,7 +33,7 @@ const Countdown: Component = () => {
         </div>
         {props.label}
       </div>
-    );
+    ); 
   };
   return (
     <div
@@ -61,27 +61,28 @@ const Home: Component = () => {
           class="w-6/6 md:w-5/6 mt-4 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto mb-10"
           src="/img/hack/title.png"
         />
-        <div class="mb-2">Countdown to the end of voting</div>
-        <Countdown></Countdown>
-        <div class="p-5 max-w-[450px] md:max-w-[550px] text-white rounded-b-lg bg-solid-light text-md mb-5">
+        <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
           <div class="font-semibold text-center text-lg">
             Submissions are in. Voting opens soon!
           </div>
           <div class="mt-3">
-            We're pleased to announce that the hackathon has received a number
-            of high-quality entries. Official voting will open shortly! The
+            We're super pleased with your submissions—official voting will open shortly! The
             Planning Committee is reviewing all submissions for fairness and
-            rules.{" "}
+            rules. Check our #solidhack channel in {" "}
             <a
               class="underline"
               href="https://discord.com/invite/solidjs"
               target="_blank"
             >
-              Join our Discord #solidhack channel
-            </a>{" "}
-            for more updates.
+              Discord
+            </a> for more updates.
+
+          </div>
+          <div class="font-semibold text-center text-lg mt-3">
+            Voting will close in...
           </div>
         </div>
+        <Countdown></Countdown>
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
           <a
             target="_blank"
