@@ -1,12 +1,6 @@
-import { Component, Show } from "solid-js";
-import github from "../assets/github.svg";
-import { arrowSmRight } from "solid-heroicons/solid";
-import { Icon } from "solid-heroicons";
-import stytch from "../assets/supporters/stytch.png";
-import { useAppContext } from "../AppContext";
+import { Component } from "solid-js";
 
 const SubmissionLanding: Component = () => {
-  const context = useAppContext();
   return (
     <div class="w-full lg:py-6 bg-hack bg-no-repeat bg-top bg-contain bg-fixed">
       <div class="container pt-[18px] px-10 relative">
