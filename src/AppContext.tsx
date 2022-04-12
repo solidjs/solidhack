@@ -6,21 +6,34 @@ import {
   useContext,
 } from "solid-js";
 import { Meta, Title } from "solid-meta";
-import { useLocation } from "solid-app-router";
+import { useLocation, useNavigate } from "solid-app-router";
 import createCookieStore from "@solid-primitives/cookies-store";
 import { createI18nContext, I18nContext } from "@solid-primitives/i18n";
 import { getGuides, getSupported, ResourceMetadata } from "@solid.js/docs";
 
+const API = "http://localhost:8787";
+// const API = "https://api.solidjs.com";
+
 interface AppContextInterface {
+  apiurl: string;
   isDark: boolean;
   loading: boolean;
+  user:
+    | {
+        display: string;
+        avatar: string;
+        token: string;
+      }
+    | false;
   guidesSupported: boolean;
   guides: ResourceMetadata[] | undefined;
 }
 
 const AppContext = createContext<AppContextInterface>({
+  apiurl: "",
   isDark: false,
   loading: true,
+  user: false,
   guidesSupported: false,
   guides: undefined,
 });
@@ -43,14 +56,39 @@ type DataParams = {
 
 export const AppContextProvider: Component<{}> = (props) => {
   const now = new Date();
-  const [settings, set] = createCookieStore<{ dark: string; locale: string }>(
-    undefined,
-    {
-      expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
-    }
-  );
+  const navigate = useNavigate();
+  const [settings, set] = createCookieStore<{
+    dark: string;
+    locale: string;
+    avatar: string;
+    token: string;
+    display: string;
+  }>(undefined, {
+    expires: new Date(now.getFullYear() + 1, now.getMonth(), now.getDate()),
+  });
   const browserLang = navigator.language.slice(0, 2);
   const location = useLocation();
+
+  // Validate the user token and exchange for JWT
+  if (location.query.token) {
+    fetch(`${API}/profile`, {
+      headers: {
+        authorization: `Bearer ${location.query.token}`,
+      },
+    }).then(async (result) => {
+      const body = await result.json();
+      if (result.status !== 200) {
+        set("avatar", "");
+        set("token", "");
+        set("dispaly", "");
+        return;
+      }
+      set("token", location.query.token);
+      set("avatar", body.avatar);
+      set("display", body.display);
+      navigate("/submissions/best_app", { replace: true });
+    });
+  }
   if (location.query.locale) {
     set("locale", location.query.locale);
   } else if (!settings.locale && langs.hasOwnProperty(browserLang)) {
@@ -91,10 +129,21 @@ export const AppContextProvider: Component<{}> = (props) => {
   });
 
   const store = {
+    apiurl: API,
     set isDark(value) {
       set("dark", value === true ? "true" : "false");
     },
     get isDark() {
+      return false;
+    },
+    get user() {
+      if (settings.display && settings.display !== "") {
+        return {
+          display: settings.display,
+          avatar: settings.avatar,
+          token: settings.token,
+        };
+      }
       return false;
     },
     get loading() {

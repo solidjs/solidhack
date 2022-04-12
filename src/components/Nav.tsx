@@ -43,21 +43,20 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
   const context = useAppContext();
 
   let langBtnTablet!: HTMLButtonElement;
-  let langBtnDesktop!: HTMLButtonElement;
   let logoEl!: HTMLDivElement;
   let subnavEl!: HTMLDivElement;
 
   const logoPosition = () =>
     t("global.dir", {}, "ltr") === "rtl"
-      ? "right-3 lg:right-12 pl-5"
-      : "left-3 lg:left-12 pr-5";
+      ? "right-3 lg:right-12 pl-[10px] lg:pl-5"
+      : "left-3 lg:left-12 pr-[10px] lg:pr-5";
 
   const navListPosition = () => {
     const isRTL = t("global.dir", {}, "ltr") === "rtl";
     if (isRTL) {
-      return showLogo() && "mr-[200px] md:mr-[275px]";
+      return showLogo() && "";
     }
-    return showLogo() && "ml-[200px] md:ml-[275px]";
+    return showLogo() && "";
   };
 
   const showLogo = createMemo(() => props.showLogo || !locked());
@@ -97,11 +96,10 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
       classList={{ "shadow-md": showLogo() }}
     >
       <div class="flex justify-center w-full overflow-hidden">
-        <nav class="relative px-3 lg:px-12 container lg:flex justify-between items-center max-h-18 z-20">
+        <nav class="relative px-3 lg:px-12 container flex h-[46px] sm:h-[56px] justify-between items-center max-h-18 z-20">
           <div
-            class={`absolute flex top-0 bottom-0 ${logoPosition()} nav-logo-bg ${
-              showLogo() ? "scale-100" : "scale-0"
-            }`}
+            // In Chrome this flex intrinsic sizing works but in Firefox/Safari it doesn't. This is why width is declared
+            class={`flex w-[193px] sm:w-[272px] ${logoPosition()} h-full nav-logo-bg`}
             ref={logoEl}
           >
             <Link href="/" noScroll class={`py-3 inline-flex w-50 space-x-4`}>
@@ -132,9 +130,9 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
                   <NavLink
                     href={item.path}
                     end={item.end}
-                    target={item.external ? "_blank" : "_self"}
-                    class="inline-flex items-center transition text-[15px] dark:text-solid-darkLighterBg sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
-                    activeClass="text-solid-medium dark:text-white"
+                    target={item.external ? "_blank" : ""}
+                    class="inline-flex items-center transition text-[15px] sm:text-base m-0 sm:m-1 px-3 sm:px-4 py-3 rounded pointer-fine:hover:text-solid-medium whitespace-nowrap"
+                    activeClass="text-solid-medium font-semibold"
                   >
                     {item.title}
                   </NavLink>
@@ -143,9 +141,15 @@ const Nav: Component<{ showLogo?: boolean; filled?: boolean }> = (props) => {
               <LanguageSelector ref={langBtnTablet} class="hidden" />
             </ul>
           </ScrollShadow>
-          <ul class="hidden lg:flex items-center">
-            <LanguageSelector ref={langBtnDesktop} class="hidden" />
-          </ul>
+          <Show when={context.user !== false}>
+            <ul class="hidden lg:flex items-center space-x-3 text-xs">
+              <span>{context.user ? context.user.display : ""}</span>
+              <img
+                class="w-10 rounded-full shadow-xl border-2"
+                src={context.user ? context.user.avatar : ""}
+              />
+            </ul>
+          </Show>
         </nav>
       </div>
       <Show when={subnav().length !== 0}>

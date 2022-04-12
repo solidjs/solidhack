@@ -7,9 +7,7 @@ import { preventSmoothScrollOnTabbing } from "./utils";
 
 export const App = () => {
   const Routes = useRoutes(routes);
-
   preventSmoothScrollOnTabbing();
-
   return (
     <main class="min-h-screen">
       <Router>
