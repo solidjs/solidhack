@@ -33,7 +33,7 @@ const Countdown: Component = () => {
         </div>
         {props.label}
       </div>
-    ); 
+    );
   };
   return (
     <div
@@ -66,17 +66,17 @@ const Home: Component = () => {
             Submissions are in. Voting opens soon!
           </div>
           <div class="mt-3">
-            We're super pleased with your submissions—official voting will open shortly! The
-            Planning Committee is reviewing all submissions for fairness and
-            rules. Check our #solidhack channel in {" "}
+            We're super pleased with your submissions—official voting will open
+            shortly! The Planning Committee is reviewing all submissions for
+            fairness and rules. Check our #solidhack channel in{" "}
             <a
               class="underline"
               href="https://discord.com/invite/solidjs"
               target="_blank"
             >
               Discord
-            </a> for more updates.
-
+            </a>{" "}
+            for more updates.
           </div>
           <div class="font-semibold text-center text-lg mt-3">
             Voting will close in...
