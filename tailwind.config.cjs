@@ -38,6 +38,7 @@ module.exports = {
       },
       colors: {
         primary: "#4483c1",
+        star: "#f3ae07",
         solid: {
           default: "#2c4f7c",
           darkbg: "#222222",

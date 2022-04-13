@@ -68,11 +68,20 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
     );
   });
   return (
-    <li class="grid grid-cols-12 p-12 pl-2">
-      <div class="col-span-9 pl-10">
-        <h3 class="text-2xl font-semibold text-solid-medium">{props.title}</h3>
+    <li class="p-4 py-6 md:p-12 relative">
+      <div class="col-span-9">
+        {/* used for wrapping text around top right triangle banner */}
+        <div
+          class="float-right w-[45px] h-[45px] md:w-[25px] md:h-[25px]"
+          style="shape-outside: polygon(0 0, 100% 0, 100% 100%, 90% 100%, 0 10%);"
+        ></div>
+        <h3 class="text-xl sm:text-2xl font-semibold text-solid-medium">
+          <NavLink href={props.github} target="_blank">
+            {props.title}
+          </NavLink>
+        </h3>
         {props.description}
-        <div class="text-xs my-3">{props.info}</div>
+        <div class="text-[13px] leading-[1.2rem]  my-3">{props.info}</div>
         <div class="text-sm mt-3">
           Submitted by&nbsp;
           <For each={props.contributors}>
@@ -90,58 +99,74 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
         </div>
         <div class="text-sm text-gray-400">{props.license} License</div>
       </div>
-      <div class="col-span-1 flex justify-center items-center">
+
+      <div class="flex space-x-2 mt-3 -ml-3 mb-[-20px]">
         <Show when={props.url !== "" && props.url !== props.github}>
           <NavLink target="_blank" href={props.url}>
-            <Icon class="w-12 text-solid-medium" path={link} />
+            <div class="p-3">
+              <Icon
+                class="w-6 text-solid-medium"
+                stroke-width={2}
+                path={link}
+              />
+            </div>
           </NavLink>
         </Show>
-      </div>
-      <div class="col-span-1 flex justify-center items-center">
         <NavLink target="_blank" href={props.github}>
-          <Icon class="w-12 text-solid-medium" path={code} />
+          <div class="p-3">
+            <Icon class="w-6 text-solid-medium" stroke-width={2} path={code} />
+          </div>
         </NavLink>
       </div>
-      <Show when={context.user}>
-        <button
-          disabled={maxVotes() && !selected()}
-          onClick={async () => {
-            setVoting(true);
-            try {
-              const result = await fetch(`${context.apiurl}/hack/votes`, {
-                method: "POST",
-                headers: {
-                  Authorization: `Bearer ${
-                    context.user ? context.user.token : ""
-                  }`,
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  category: params.category,
-                  selection: props.title,
-                }),
-              });
-              if (selected() == false) {
-                playConfetti();
-              }
-              updateVotes(await result.json());
-              setVoting(false);
-            } catch (err) {
-              setVoting(false);
+
+      <button
+        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[85px] h-[85px] md:w-[125px] md:h-[125px] flex justify-end"
+        style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
+        onClick={async () => {
+          setVoting(true);
+          try {
+            const result = await fetch(`${context.apiurl}/hack/votes`, {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${
+                  context.user ? context.user.token : ""
+                }`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                category: params.category,
+                selection: props.title,
+              }),
+            });
+            if (selected() == false) {
+              playConfetti();
             }
-          }}
-          class="col-span-1 flex justify-center items-center"
-        >
+            updateVotes(await result.json());
+            setVoting(false);
+          } catch (err) {
+            setVoting(false);
+          }
+        }}
+      >
+        <div class="flex w-[40px] h-[40px] m-1 md:w-[50px] md:h-[50px] md:m-2 justify-center items-center">
           <Show fallback={<Loader />} when={!voting()}>
             <Show
-              fallback={<Icon class="w-12 text-solid-medium" path={star} />}
+              fallback={
+                <Icon
+                  class="w-full h-full text-solid-medium"
+                  stroke-width={1.2}
+                  path={star}
+                />
+              }
               when={selected()}
             >
-              <Icon class="w-12 text-yellow-500" path={solidStar} />
+              <div class="relative">
+                <Icon class="w-full h-full text-star" path={solidStar} />
+              </div>
             </Show>
           </Show>
-        </button>
-      </Show>
+        </div>
+      </button>
     </li>
   );
 };
@@ -380,7 +405,7 @@ const Submissions: Component = () => {
                           {() => (
                             <button class="pointer">
                               <Icon
-                                class="w-full h-full lg:w-12 text-yellow-500"
+                                class="w-full h-full lg:w-12 text-star"
                                 path={solidStar}
                               />
                             </button>
