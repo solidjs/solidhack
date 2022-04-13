@@ -151,7 +151,7 @@ const list = {
     },
     {
       title: "solsido",
-      github: "https://github.com/eguneys/solsido/master/package.json",
+      github: "https://github.com/eguneys/solsido",
       description: "Learn and make sound and music, interactively.",
       url: "eguneys.github.io/solsido",
       info: "A platform to learn about sound and music, with an interactive guide, assignments and practices, and tools to put it into production.",
@@ -166,7 +166,7 @@ const list = {
     },
     {
       title: "kvissleik",
-      github: "https://github.com/siverv/kvissleik/master/package.json",
+      github: "https://github.com/siverv/kvissleik",
       description:
         "Quiz web-app with a single host and multiple clients, using WebRTC",
       url: "https://kvissleik.no",
@@ -306,7 +306,7 @@ const list = {
     },
     {
       title: "solidgraph",
-      github: "https://github.com/verdavaine/solidgraph/master/package.json",
+      github: "https://github.com/verdavaine/solidgraph",
       description:
         "SolidGraph lets you build SolidJs applications with WunderGraph.",
       url: "https://solidgraph.ovh/",
@@ -338,7 +338,7 @@ const list = {
       title: "@dimensionhq/blitz",
       github: "https://github.com/dimensionhq/blitz",
       description: "Fast, Simple and efficient state management for SolidJS",
-      url: "github.com/dimensionhq/blitz#readme",
+      url: "https://blitz.dimension.dev/",
       info: "Blitz is the modern state management library for solid, it combines the concept of svelte writables and the ease of use of recoiljs",
       license: "MIT",
       contributors: [
@@ -423,7 +423,7 @@ const list = {
     },
     {
       title: "solid-reactor",
-      github: "https://github.com/yellowsink/solid-reactor/master/package.json",
+      github: "https://github.com/yellowsink/solid-reactor",
       description: "A compiler from react to solid",
       url: "https://github.com/yellowsink/solid-reactor",
       info: "This compiler can convert most common parts of react components faithfully to solidjs components, and should just work with little tweaking",
@@ -557,7 +557,7 @@ const list = {
     },
     {
       title: "melon-solid",
-      github: "https://github.com/L1lith/Melon-Solid/master/package.json",
+      github: "https://github.com/L1lith/Melon-Solid",
       description: "Melon.js game engine bindings for Solid",
       url: "https://github.com/L1lith/Melon-Solid#readme",
       info: "This library combines the powers of Melon and Solid for easy development and deployment of games that make the best of reactive HTML and WebGL. Melon.js has a number of cool features, especially the Tiled editor for quick map development. Solid.js improves upon the Melon.js syntax, and makes it easy to deploy to Astro, Vite, or wherever you like as well as create responsive GUIs with HTML on top of your WebGL accelerated game renderer. This library also includes end to end testing.",
@@ -652,7 +652,7 @@ const list = {
     },
     {
       title: "solar-forms",
-      github: "https://github.com/kajetansw/solar-forms/master/package.json",
+      github: "https://github.com/kajetansw/solar-forms",
       description:
         "Form library for SolidJS inspired by Angular's reactive forms",
       url: "https://github.com/kajetansw/solar-forms#readme",
@@ -715,7 +715,7 @@ const list = {
     },
     {
       title: "solidusjs",
-      github: "https://github.com/Perivel/solidus-js/master/package.json",
+      github: "https://github.com/Perivel/solidus-js",
       description:
         "The SolidusJS library - a plug-and-play Server-Side Rendering solution for SolidJS",
       url: "https://github.com/Perivel/solidus.js",
@@ -793,8 +793,7 @@ const list = {
     },
     {
       title: "hydrogen",
-      github:
-        "https://github.com/harshmangalam/hydrogen-solidjs-client/master/package.json",
+      github: "https://github.com/harshmangalam/hydrogen-solidjs-client",
       description: "A social media web app powered by solidjs",
       url: "https://hydrogen-solid.vercel.app/",
       info: "I named this project Hydrogen because Hydrogen is the most lightweight element in our perodic table and Solidjs is the most lightweight and fastest framework in the JavaScript community",
@@ -809,7 +808,7 @@ const list = {
     },
     {
       title: "bloki.app",
-      github: "https://github.com/MrFoxPro/bloki/master/package.json",
+      github: "https://github.com/MrFoxPro/bloki",
       description: "Blocks-based collaborative editor.",
       url: "https://bloki.app",
       info: "Simple editor that is not restricted to one axis, but helps to place content evenly. You can create text blocks, they will be automatically adjusted to your text size. However, initially you can create blocks only in main grid that is placed in middle of screen. You can move it by snapping with middle mouse or by dragging icon with six dots. You can draw with pen over it. You can place images. It is planned to implement automatic layout, so when you will try to move block, all blocks below and grouped blocks will free space for desired place. Inline text editing, commands, nested documents, attaching drawing to text and blocks and more. Collaboration demo: https://www.youtube.com/watch?v=PsEwt068DGk. Try it on https://bloki.app",
