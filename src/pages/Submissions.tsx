@@ -142,10 +142,14 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
       </div>
 
       <button
-        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end cursor-pointer"
+        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end disabled:hover:bg-[#f8f9fcff] disabled:opacity-50"
         style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
         disabled={maxVotes() && !selected()}
-        title="Toggle your vote"
+        title={
+          maxVotes() && !selected()
+            ? "Already voted 3 times for this category"
+            : "Toggle your vote"
+        }
         onClick={async () => {
           setVoting(true);
           try {
