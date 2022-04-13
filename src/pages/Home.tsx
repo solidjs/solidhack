@@ -27,7 +27,7 @@ const Countdown: Component = () => {
     const fixed =
       props.value >= 10 ? props.value.toString() : "0" + props.value.toString();
     return (
-      <div class="flex flex-col items-center text-white text-[length:clamp(5px,4vw,18px)] px-[clamp(5px,4vw,16px)] py-4 md:py-5 md:px-7">
+      <div class="flex flex-col items-center text-white text-[length:clamp(5px,4vw,18px)] px-[clamp(5px,4vw,16px)] py-4 md:py-6 md:px-7">
         <div class="font-mono text-[length:clamp(5px,6vw,48px)] leading-[1]">
           {fixed}
         </div>
@@ -71,11 +71,12 @@ const Home: Component = () => {
             <a class="underline" href="/submissions">
               submissions page
             </a>{" "}
-            to decide who wins our cash prizes!
-          </div>
-          <div class="font-semibold text-center text-md mt-3">
-            You have until...
-          </div>
+            to decide who wins our cash prizes! You have until{" "}
+            <b>
+              May 2<sup>nd</sup>
+            </b>{" "}
+            to vote. That's...
+          </div>{" "}
         </div>
         <Countdown></Countdown>
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
