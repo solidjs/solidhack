@@ -142,7 +142,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
       </div>
 
       <button
-        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end"
+        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end cursor-pointer"
         style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
         disabled={maxVotes() && !selected()}
         title="Toggle your vote"
@@ -353,7 +353,7 @@ const QuestionModal: Component = () => {
               </button>
             </div>
             <button
-              class="absolute top-0 right-0 p-2"
+              class="absolute top-0 right-0 p-2 text-gray-400 hover:text-black transition"
               onClick={() => setToggle(false)}
             >
               <Icon class="w-8 h-8" path={x} />
