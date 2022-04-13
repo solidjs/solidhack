@@ -336,9 +336,12 @@ const QuestionModal: Component = () => {
             <br />
             <p>
               So in total you have 9 votes. You can only cast 3 votes per
-              category. <br /> Your casted vote show as a filled start{" "}
-              <span class="inline-block relative top-[3px]">
-                <Icon class="w-5 h-5 text-star" path={solidStar} />
+              category. <br /> Your casted vote show as a filled{" "}
+              <span class="whitespace-nowrap">
+                star{" "}
+                <span class="inline-block relative top-[3px]">
+                  <Icon class="w-5 h-5 text-star" path={solidStar} />
+                </span>
               </span>
             </p>
             <div class=" flex justify-center mt-6 -mb-6">
