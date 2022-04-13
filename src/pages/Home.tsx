@@ -28,7 +28,7 @@ const Countdown: Component = () => {
       props.value >= 10 ? props.value.toString() : "0" + props.value.toString();
     return (
       <div class="flex flex-col items-center text-white text-[length:clamp(5px,4vw,18px)] px-[clamp(5px,4vw,16px)] py-4 md:py-5 md:px-7">
-        <div class="font-mono text-[length:clamp(5px,6vw,48px)] leading-[1]">
+        <div class="font-mono text-[length:clamp(5px,4vw,18px)] sm:text-[length:clamp(5px,6vw,48px)] leading-[1]">
           {fixed}
         </div>
         {props.label}
@@ -37,7 +37,7 @@ const Countdown: Component = () => {
   };
   return (
     <div
-      class="flex flex-row w-min gap-5 px-10 rounded-md"
+      class="flex flex-row w-min gap-5 xs:px-10 rounded-md"
       style="background-color: #335d92;"
     >
       <For each={Object.entries(countdownValues).slice(0, -1)}>
@@ -117,7 +117,7 @@ const Home: Component = () => {
       </div>
       <div class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-5">
         <iframe
-          class="rounded-xl shadow-2xl"
+          class="rounded-xl shadow-2xl max-w-[500px] w-full"
           width="500"
           height="280"
           src="https://www.youtube.com/embed/Y67QW9HKrWA"
@@ -126,7 +126,7 @@ const Home: Component = () => {
           allowfullscreen
         />
         <iframe
-          class="rounded-xl shadow-2xl"
+          class="rounded-xl shadow-2xl max-w-[500px] w-full"
           width="500"
           height="280"
           src="https://www.youtube.com/embed/QGNZGZAfvcY"
@@ -137,7 +137,7 @@ const Home: Component = () => {
       </div>
       <div class="flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-5">
         <iframe
-          class="rounded-xl shadow-2xl"
+          class="rounded-xl shadow-2xl max-w-[500px] w-full"
           width="500"
           height="280"
           src="https://www.youtube.com/embed/8VyEHaqstJ4"
@@ -146,7 +146,7 @@ const Home: Component = () => {
           allowfullscreen
         />
         <iframe
-          class="rounded-xl shadow-2xl"
+          class="rounded-xl shadow-2xl max-w-[500px] w-full"
           width="500"
           height="280"
           src="https://www.youtube.com/embed/YWHj8Yw2HoI"

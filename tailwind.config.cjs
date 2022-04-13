@@ -35,6 +35,7 @@ module.exports = {
         "pointer-fine": {
           raw: "(pointer: fine)",
         },
+        xs: "520px",
       },
       colors: {
         primary: "#4483c1",
