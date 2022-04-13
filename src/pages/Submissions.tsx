@@ -284,7 +284,7 @@ const QuestionModal: Component = () => {
   return (
     <>
       <button
-        class="fixed bottom-0 left-0 text-solid-medium p-2 w-11 h-11 z-50"
+        class="fixed bottom-0 left-0 text-solid-medium p-1 m-2 w-11 h-11 z-50 bg-white rounded-full shadow-lg"
         aria-label="open questions about submissions dialog"
         ref={btnEl}
       >
