@@ -320,10 +320,10 @@ const Submissions: Component = () => {
       />
       <div class="w-full lg:py-6 bg-hack bg-no-repeat bg-top bg-contain bg-fixed">
         <div class="container pt-[18px] px-7 grid lg:pt-0 lg:grid-cols-10 relative">
-          <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_45%,transparent_60%)] md:bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_70%,transparent_85%)]"></div>
+          <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_45%,transparent_60%)] md:bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_70%,transparent_85%)] pointer-events-none"></div>
           <div
             class={`
-          sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 rounded-lg
+          sticky top-16 lg:top-20 lg:col-span-2 leading-7 h-max z-1 rounded-lg pointer-events-none
           `}
             ref={stickyContainerEl}
           >
@@ -336,7 +336,7 @@ const Submissions: Component = () => {
             lg:mask-image-none
           `}
             >
-              <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,160px] lg:grid-cols-full lg:px-4">
+              <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,160px] lg:grid-cols-full lg:px-4 pointer-events-auto">
                 <div class="md:hidden relative w-full">
                   <DropdownButton
                     title={categories[params.category].title}
