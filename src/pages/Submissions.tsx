@@ -279,7 +279,9 @@ const QuestionModal: Component = () => {
   const [toggle, setToggle] = createSignal(getLS());
   let btnEl!: HTMLButtonElement;
 
-  onMount(() => localStorage.setItem(lsKey, JSON.stringify({ open: true })));
+  onMount(() => {
+    localStorage.setItem(lsKey, JSON.stringify({ open: true }));
+  });
 
   return (
     <>
@@ -290,7 +292,14 @@ const QuestionModal: Component = () => {
       >
         <Icon stroke-width={1.5} path={questionMarkCircle} />
       </button>
-      <Dismiss menuButton={btnEl} open={toggle} setOpen={setToggle} modal>
+      <Dismiss
+        menuButton={btnEl}
+        open={toggle}
+        setOpen={setToggle}
+        modal
+        // this should be done by default with modal prop but fails to focus on modal container, without it the focus is on body not modal container
+        focusElementOnOpen="menuPopup"
+      >
         <div class="fixed top-0 left-0 bg-slate-900/20 h-screen w-screen flex justify-center items-center">
           <div
             class="relative bg-white rounded-lg shadow-lg p-6 py-12 mx-3"
