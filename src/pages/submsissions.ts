@@ -215,7 +215,7 @@ const list = {
       title: "solidjs-hackathon-studyur-mr",
       github: "https://github.com/jherr/studyur",
       description: "SolidJS web application for learning resources.",
-      url: "https://github.com/jherr/studyur",
+      url: "https://www.youtube.com/watch?v=P_5Yxktq9Rs",
       info: "A SolidJS based web application and chrome extension where users can keep curated lists of YouTube and Medium references in topics.",
       license: "MIT",
       contributors: [
