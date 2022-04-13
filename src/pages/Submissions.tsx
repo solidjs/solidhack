@@ -362,7 +362,7 @@ const Submissions: Component = () => {
                       appendToElement: "menuPopup",
                     }}
                   >
-                    <div class="absolute top-16 left-0 w-full bg-white rounded-lg pl-5 shadow-lg">
+                    <div class="absolute top-16 left-0 w-full bg-white rounded-lg pl-5 shadow-lg pointer-events-auto">
                       <For each={Object.entries(categories)}>
                         {([id, { title, image }]) => {
                           return (
