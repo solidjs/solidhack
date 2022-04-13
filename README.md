@@ -3,7 +3,7 @@
 </p>
 
 
-# Solidhack
+# SolidHack
 
 This is the source code for the SolidHack website: [https://hack.solidjs.com/](https://hack.solidjs.com/)
 
