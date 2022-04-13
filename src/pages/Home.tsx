@@ -71,11 +71,12 @@ const Home: Component = () => {
             <a class="underline" href="/submissions">
               submissions page
             </a>{" "}
-            to decide who wins our cash prizes!
-          </div>
-          <div class="font-semibold text-center text-md mt-3">
-            You have until...
-          </div>
+            to decide who wins our cash prizes! You have until{" "}
+            <b>
+              May 2<sup>nd</sup>
+            </b>{" "}
+            to vote. That's...
+          </div>{" "}
         </div>
         <Countdown></Countdown>
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
