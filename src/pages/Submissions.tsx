@@ -161,7 +161,7 @@ const CategoryButton: Component<{
       <figure class="rounded-full shrink-0 w-[40px] h-[40px] md:w-[60px] md:h-[60px] lg:w-20 lg:h-20 bg-solid-medium flex p-1 lg:p-2">
         <img alt="Award" src={props.image} />
       </figure>
-      <span class="leading-[1.5em] md:text-center text-[14px] lg:text-[16px]">
+      <span class="leading-[1.5em] md:text-center text-[13px] lg:text-[16px] md:whitespace-nowrap lg:whitespace-normal">
         {props.title}
       </span>
     </NavLink>
@@ -196,7 +196,7 @@ const DropdownButton: Component<{
 }> = (props) => {
   return (
     <button
-      class="flex w-full gap-2 p-1 items-center border-2 lg:p-5 border-white bg-white/80 has-backdrop-filter:bg-white/10 rounded-lg shadow-lg"
+      class="flex w-full h-full gap-2 p-1 items-center border-2 lg:p-5 border-white bg-white/80 has-backdrop-filter:bg-white/10 rounded-lg shadow-lg"
       ref={props.ref}
     >
       <figure class="rounded-full shrink-0 w-[40px] h-[40px] bg-solid-medium flex p-1">
@@ -312,7 +312,7 @@ const Submissions: Component = () => {
             lg:mask-image-none
           `}
             >
-              <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,120px] lg:grid-cols-full lg:px-4">
+              <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,160px] lg:grid-cols-full lg:px-4">
                 <div class="md:hidden relative w-full">
                   <DropdownButton
                     title={categories[params.category].title}
@@ -371,14 +371,17 @@ const Submissions: Component = () => {
                     }
                     when={!votes.loading}
                   >
-                    <div class="md:pt-5 text-center text-[10px] lg:text-xs rounded-lg md:bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
-                      Remaining category votes:
+                    <div class="md:pt-5 text-center text-[11px] lg:text-xs rounded-lg md:bg-gradient-white/0.95-15%-to-transparent lg:bg-none">
+                      <span class="hidden md:block">
+                        Remaining category votes
+                      </span>
+                      <span class="md:hidden">Remaining votes</span>
                       <div class="md:mt-3 flex px-3 justify-between">
                         <For each={votes()[params.category].selections}>
                           {() => (
                             <button class="pointer">
                               <Icon
-                                class="w-12 text-yellow-500"
+                                class="w-full h-full lg:w-12 text-yellow-500"
                                 path={solidStar}
                               />
                             </button>
@@ -391,7 +394,10 @@ const Submissions: Component = () => {
                           }
                         >
                           <button class="pointer">
-                            <Icon class="w-12 text-gray-400" path={star} />
+                            <Icon
+                              class="w-full h-full lg:w-12 text-gray-400"
+                              path={star}
+                            />
                           </button>
                         </Repeat>
                       </div>
