@@ -14,7 +14,7 @@ import {
 import Loader from "../components/Loader";
 import JSConfetti from "js-confetti";
 import { NavLink, useParams, useRouteData } from "solid-app-router";
-import { globe, code, star } from "solid-heroicons/outline";
+import { link, code, star } from "solid-heroicons/outline";
 import { star as solidStar } from "solid-heroicons/solid";
 import { Icon } from "solid-heroicons";
 import { chevronLeft } from "solid-heroicons/outline";
@@ -69,10 +69,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
   });
   return (
     <li class="grid grid-cols-12 p-12 pl-2">
-      <div class="col-span-1 text-solid-medium font-semibold flex text-lg justify-center">
-        {props.index + 1}
-      </div>
-      <div class="col-span-8">
+      <div class="col-span-9 pl-10">
         <h3 class="text-2xl font-semibold text-solid-medium">{props.title}</h3>
         {props.description}
         <div class="text-xs my-3">{props.info}</div>
@@ -94,9 +91,11 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
         <div class="text-sm text-gray-400">{props.license} License</div>
       </div>
       <div class="col-span-1 flex justify-center items-center">
-        <NavLink target="_blank" href={props.url}>
-          <Icon class="w-12 text-solid-medium" path={globe} />
-        </NavLink>
+        <Show when={props.url !== "" && props.url !== props.github}>
+          <NavLink target="_blank" href={props.url}>
+            <Icon class="w-12 text-solid-medium" path={link} />
+          </NavLink>
+        </Show>
       </div>
       <div class="col-span-1 flex justify-center items-center">
         <NavLink target="_blank" href={props.github}>
