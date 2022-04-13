@@ -1,14 +1,11 @@
 <p>
-  <img width="100%" src="https://raw.githubusercontent.com/solidjs/solid-site/master/banner.png" alt="Solid Docs">
+  <img width="100%" src="https://assets.solidjs.com/banner?project=SolidHack&type=core" alt="SolidHack">
 </p>
 
-# Solid Website
 
-This is the source code for the solid website: [https://solidjs.com/](https://solidjs.com/)
+# Solidhack
 
-## Getting started
-
-The website is built with [Solid](https://github.com/solidjs/solid). In order to get going, you should be familiar with the core API of Solid and how it works on the surface.
+This is the source code for the SolidHack website: [https://hack.solidjs.com/](https://hack.solidjs.com/)
 
 ### Prerequisites
 
