@@ -81,8 +81,12 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
           <For each={props.contributors}>
             {(contributor, index) => (
               <>
-                <a href={contributor.email}>{contributor.name}</a>
-                <Show when={index() != props.contributors.length - 1}>,</Show>
+                <Show fallback={contributor.name} when={contributor.url !== ""}>
+                  <a class="hover:text-solid-medium" href={contributor.url}>
+                    {contributor.name}
+                  </a>
+                </Show>
+                <Show when={index() != props.contributors.length - 1}>, </Show>
               </>
             )}
           </For>
@@ -286,7 +290,10 @@ const Submissions: Component = () => {
         updateVotes: mutate,
       }}
     >
-      <canvas ref={(ref) => (canvasRef = ref)} class="h-full w-full absolute" />
+      <canvas
+        ref={(ref) => (canvasRef = ref)}
+        class="h-full w-full fixed top-0 left-0"
+      />
       <div class="w-full lg:py-6 bg-hack bg-no-repeat bg-top bg-contain bg-fixed">
         <div class="container pt-[18px] px-7 grid lg:pt-0 lg:grid-cols-10 relative">
           <div class="fixed top-0 left-0 w-full h-[220px] z-1 lg:hidden bg-cover bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_45%,transparent_60%)] md:bg-image-[url(/img/hack/banner.png),linear-gradient(180deg,white_70%,transparent_85%)]"></div>
