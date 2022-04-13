@@ -140,57 +140,58 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
           </div>
         </NavLink>
       </div>
-
-      <button
-        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end cursor-pointer"
-        style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
-        disabled={maxVotes() && !selected()}
-        title="Toggle your vote"
-        onClick={async () => {
-          setVoting(true);
-          try {
-            const result = await fetch(`${context.apiurl}/hack/votes`, {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${
-                  context.user ? context.user.token : ""
-                }`,
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                category: params.category,
-                selection: props.title,
-              }),
-            });
-            if (selected() == false) {
-              playConfetti();
-            }
-            updateVotes(await result.json());
-            setVoting(false);
-          } catch (err) {
-            setVoting(false);
-          }
-        }}
-      >
-        <div class="flex w-[40px] h-[40px] m-1 md:w-[50px] md:h-[50px] md:m-2 xl:w-[70px] xl:h-[70px] xl:m-3 justify-center items-center">
-          <Show fallback={<Loader />} when={!voting()}>
-            <Show
-              fallback={
-                <Icon
-                  class="w-full h-full text-solid-medium"
-                  stroke-width={1.2}
-                  path={star}
-                />
+      <Show when={context.user}>
+        <button
+          class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end cursor-pointer"
+          style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
+          disabled={maxVotes() && !selected()}
+          title="Toggle your vote"
+          onClick={async () => {
+            setVoting(true);
+            try {
+              const result = await fetch(`${context.apiurl}/hack/votes`, {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${
+                    context.user ? context.user.token : ""
+                  }`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  category: params.category,
+                  selection: props.title,
+                }),
+              });
+              if (selected() == false) {
+                playConfetti();
               }
-              when={selected()}
-            >
-              <div class="relative">
-                <Icon class="w-full h-full text-star" path={solidStar} />
-              </div>
+              updateVotes(await result.json());
+              setVoting(false);
+            } catch (err) {
+              setVoting(false);
+            }
+          }}
+        >
+          <div class="flex w-[40px] h-[40px] m-1 md:w-[50px] md:h-[50px] md:m-2 xl:w-[70px] xl:h-[70px] xl:m-3 justify-center items-center">
+            <Show fallback={<Loader />} when={!voting()}>
+              <Show
+                fallback={
+                  <Icon
+                    class="w-full h-full text-solid-medium"
+                    stroke-width={1.2}
+                    path={star}
+                  />
+                }
+                when={selected()}
+              >
+                <div class="relative">
+                  <Icon class="w-full h-full text-star" path={solidStar} />
+                </div>
+              </Show>
             </Show>
-          </Show>
-        </div>
-      </button>
+          </div>
+        </button>
+      </Show>
     </li>
   );
 };
@@ -265,6 +266,7 @@ const DropdownButton: Component<{
 };
 
 const QuestionModal: Component = () => {
+  const context = useAppContext();
   const lsKey = "submission-dialog-rules";
   const getLS = () => {
     try {
@@ -305,8 +307,14 @@ const QuestionModal: Component = () => {
             class="relative bg-white rounded-lg shadow-lg p-6 py-12 mx-3"
             role="dialog"
           >
-            <p class="text-lg">
-              You have <strong class="font-semibold">three votes</strong>{" "}
+            <p class="text-lg max-w-lg">
+              <Show
+                fallback={"Voting is now open! All eligible voters have"}
+                when={context.user}
+              >
+                You have
+              </Show>{" "}
+              <strong class="font-semibold">three votes</strong>{" "}
               <span class="inline-flex space-x-1 text-solid-medium relative top-[3px]">
                 <For each={[0, 0, 0]}>
                   {() => <Icon class="w-5 h-5" path={star} />}
@@ -353,13 +361,35 @@ const QuestionModal: Component = () => {
                 </span>
               </span>
             </p>
-            <div class=" flex justify-center mt-6 -mb-6">
-              <button
-                class="bg-solid-default hover:opacity-90 transition rounded-md text-white px-5 py-2"
-                onClick={() => setToggle(false)}
-              >
-                Let's vote!
-              </button>
+            <Show when={!context.user}>
+              <p class="mt-5 max-w-lg">
+                In order to cast your vote you must sign into GitHub to ensure
+                voting is limited and fair for contestants.
+              </p>
+            </Show>
+            <div class="flex justify-center mt-6 -mb-6 space-x-2">
+              <Show when={!context.user}>
+                <a
+                  class="bg-solid-default hover:opacity-90 transition rounded-md text-white px-5 py-2"
+                  href={`${context.apiurl}/auth/login?redirect=${window.location.href}?auth=success`}
+                >
+                  Sign into GitHub
+                </a>
+                <button
+                  class="bg-solid-default hover:opacity-90 transition rounded-md text-white px-5 py-2"
+                  onClick={() => setToggle(false)}
+                >
+                  Just browsing
+                </button>
+              </Show>
+              <Show when={context.user}>
+                <button
+                  class="bg-solid-default hover:opacity-90 transition rounded-md text-white px-5 py-2"
+                  onClick={() => setToggle(false)}
+                >
+                  Let's vote!
+                </button>
+              </Show>
             </div>
             <button
               class="absolute top-0 right-0 p-2 text-gray-400 hover:text-black transition"
