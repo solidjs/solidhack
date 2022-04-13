@@ -84,13 +84,17 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
         <div class="text-xs sm:text-[13px] sm:leading-[1.2rem]  my-3">
           {props.info}
         </div>
-        <div class="text-sm mt-3">
+        <div class="text-xs mt-3">
           Submitted by&nbsp;
           <For each={props.contributors}>
             {(contributor, index) => (
               <>
                 <Show fallback={contributor.name} when={contributor.url !== ""}>
-                  <a class="hover:text-solid-medium" href={contributor.url}>
+                  <a
+                    target="_blank"
+                    class="hover:text-solid-medium"
+                    href={contributor.url}
+                  >
                     {contributor.name}
                   </a>
                 </Show>
@@ -99,31 +103,43 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
             )}
           </For>
         </div>
-        <div class="text-sm text-gray-400">{props.license} License</div>
+        <div class="text-xs text-gray-400">{props.license} License</div>
       </div>
 
       <div class="flex space-x-2 mt-3 -ml-3 mb-[-20px]">
         <Show when={props.url !== "" && props.url !== props.github}>
-          <NavLink target="_blank" href={props.url}>
+          <NavLink
+            target="_blank"
+            href={props.url}
+            title="Link to demo/homepage"
+            class="hover:opacity-50 transition"
+          >
             <div class="p-3">
               <Icon
-                class="w-6 text-solid-medium"
+                class="w-8 text-solid-medium"
                 stroke-width={2}
                 path={link}
               />
             </div>
           </NavLink>
         </Show>
-        <NavLink target="_blank" href={props.github}>
+        <NavLink
+          target="_blank"
+          href={props.github}
+          title="Link to source code"
+          class="hover:opacity-50 transition"
+        >
           <div class="p-3">
-            <Icon class="w-6 text-solid-medium" stroke-width={2} path={code} />
+            <Icon class="w-8 text-solid-medium" stroke-width={2} path={code} />
           </div>
         </NavLink>
       </div>
 
       <button
-        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[85px] h-[85px] md:w-[125px] md:h-[125px] xl:w-[180px] xl:h-[180px] flex justify-end"
+        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end"
         style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
+        disabled={maxVotes() && !selected()}
+        title="Toggle your vote"
         onClick={async () => {
           setVoting(true);
           try {

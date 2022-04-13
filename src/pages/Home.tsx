@@ -276,7 +276,7 @@ const Home: Component = () => {
           </small>
         </div>
         <div class="text-center text-sm">
-          Last updated April 12 @ 8:00pm EST
+          Last updated April 13 @ 11:30am EST
         </div>
       </div>
     </div>

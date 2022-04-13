@@ -25,17 +25,7 @@ export default function SubmissionData() {
         submissions[params.category]
           ? submissions[params.category]
           : submissions["best_ecosystem"]
-      ).sort((a, b) => {
-        const nameA = a.title.toUpperCase();
-        const nameB = b.title.toUpperCase();
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      });
+      ).sort(() => Math.random() - 0.5);
     },
     get category() {
       return params.category;

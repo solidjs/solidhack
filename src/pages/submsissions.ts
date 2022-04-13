@@ -20,7 +20,7 @@ const list = {
       title: "solidjs-jobs",
       github: "https://github.com/rrjanbiah/solidjs-jobs",
       description: "Website to find SolidJS jobs and SolidJS developers",
-      url: "https://github.com/rrjanbiah/solidjs-jobs",
+      url: "https://rrjanbiah.github.io/solidjs-jobs/",
       info: "Community focussed website to find SolidJS jobs and SolidJS developers. Find all SolidJS jobs in one place and also find SolidJS talents/developers/freelancers",
       license: "MIT",
       contributors: [
@@ -48,7 +48,7 @@ const list = {
       ],
     },
     {
-      title: "vite-template-solid",
+      title: "get-productive",
       github: "https://github.com/dylanclaywell/get-productive",
       description:
         "getPRODUCTIVE is a todo application with some extra functionality like tags.",
@@ -67,7 +67,7 @@ const list = {
       github: "https://github.com/AlidotSal/MDB",
       description:
         "A source for movie, TV and celebrities content built with SolidJS ",
-      url: "https://www.my-solidhack-submission.com",
+      url: "https://mdb-beryl.vercel.app/",
       info: "You can get lots of information about movies, TV shows and actors from this source. This is a very early version of the source and it will get new features added in the future.",
       license: "MIT",
       contributors: [
@@ -99,7 +99,7 @@ const list = {
       github: "https://github.com/LUMECraft/first-person-shooter",
       description:
         "A first-person shooter game made with LUME, Solid.js (and libs), and Meteor.",
-      url: "http://github.com/LUMECraft/first-person-shooter#readme",
+      url: "",
       info: "LUMECraft's `first-person-shooter` aims to be an open-source starting point for FPS games written declaratively using LUME's 3D HTML elements with Solid.js templating and reactivity, and realtime multiplayer connectivity powered by Meteor.js. Eventually it will be skinnable, moddable, and more.",
       license: "MIT",
       contributors: [
@@ -153,7 +153,7 @@ const list = {
       title: "solsido",
       github: "https://github.com/eguneys/solsido",
       description: "Learn and make sound and music, interactively.",
-      url: "eguneys.github.io/solsido",
+      url: "http://www.lasolsido.org",
       info: "A platform to learn about sound and music, with an interactive guide, assignments and practices, and tools to put it into production.",
       license: "MIT",
       contributors: [
@@ -184,7 +184,7 @@ const list = {
       title: "magic-pixels",
       github: "https://github.com/maxdavidwow/magic-pixels",
       description: "Get lost in a nether full of magic pixels",
-      url: "https://www.magic-pixels.xyz",
+      url: "https://magic-pixels.surge.sh/",
       info: "Web3 app where you can gamble to get pixels which can be used to create NFT's",
       license: "MIT",
       contributors: [
@@ -277,7 +277,7 @@ const list = {
       title: "react2solid",
       github: "https://github.com/rrjanbiah/react2solid",
       description: "A set of utilities for the React to Solid conversion",
-      url: "https://github.com/rrjanbiah/react2solid",
+      url: "https://rrjanbiah.github.io/react2solid/#/",
       info: "react2solid has sub projects/modules: 1. Converter web UI, 2. Builder web UI, 3. CLI for batch conversion, 4. Migration guide, 5. Language agnostic transformation rules with test cases.",
       license: "MIT",
       contributors: [
@@ -294,7 +294,7 @@ const list = {
       description:
         "solidjs port of material-ui library with css variables based theming.",
       url: "https://skclusive.github.io/solid-material-ui/docs/",
-      info: "solidjs port of blazor based material-ui library with css variables based theming.",
+      info: "",
       license: "MIT",
       contributors: [
         {
@@ -559,7 +559,7 @@ const list = {
       title: "melon-solid",
       github: "https://github.com/L1lith/Melon-Solid",
       description: "Melon.js game engine bindings for Solid",
-      url: "https://github.com/L1lith/Melon-Solid#readme",
+      url: "",
       info: "This library combines the powers of Melon and Solid for easy development and deployment of games that make the best of reactive HTML and WebGL. Melon.js has a number of cool features, especially the Tiled editor for quick map development. Solid.js improves upon the Melon.js syntax, and makes it easy to deploy to Astro, Vite, or wherever you like as well as create responsive GUIs with HTML on top of your WebGL accelerated game renderer. This library also includes end to end testing.",
       license: "MIT",
       contributors: [
@@ -624,7 +624,7 @@ const list = {
       github: "https://github.com/lume/classy-solid",
       description:
         "Solid.js reactivity patterns for classes, and class components.",
-      url: "http://github.com/lume/classy-solid#readme",
+      url: "",
       info: "The `classy-solid` package gives you a `@signal` decorator to make reactive class properties, an `@component` decorator to use classes as Solid components, and some other APIs to simplify usage of reactive patterns in classes. It is still early, more features and changes to come!",
       license: "MIT",
       contributors: [
@@ -655,7 +655,7 @@ const list = {
       github: "https://github.com/kajetansw/solar-forms",
       description:
         "Form library for SolidJS inspired by Angular's reactive forms",
-      url: "https://github.com/kajetansw/solar-forms#readme",
+      url: "https://stackblitz.com/edit/solid-vite-km8l2n?file=src/index.tsx",
       info: "Solar Forms allows you to create reactive and type-safe state for your form controls. It lets you take over form controls and access key information like control's current value, whether it's disabled, valid, etc. as SolidJS signals. Form controls can also be pre-configured with validator functions, ensuring your form won't be marked as valid unless all data is correct.",
       license: "MIT",
       contributors: [
@@ -718,7 +718,7 @@ const list = {
       github: "https://github.com/Perivel/solidus-js",
       description:
         "The SolidusJS library - a plug-and-play Server-Side Rendering solution for SolidJS",
-      url: "https://github.com/Perivel/solidus.js",
+      url: "",
       info: "An easy plug and play solution for incorporating Server-Side Rendering to any existing SolidJS application with minimal refactoring of your codebase. This package cntains the main library",
       license: "BSD-2",
       contributors: [
@@ -780,7 +780,7 @@ const list = {
       title: "@dimensionhq/blitz",
       github: "https://github.com/dimensionhq/blitz",
       description: "Fast, Simple and efficient state management for SolidJS",
-      url: "github.com/dimensionhq/blitz#readme",
+      url: "https://blitz.dimension.dev/",
       info: "Blitz is the modern state management library for solid, it combines the concept of svelte writables and the ease of use of recoiljs",
       license: "MIT",
       contributors: [
