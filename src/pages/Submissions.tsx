@@ -72,8 +72,8 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
       <div class="col-span-9">
         {/* used for wrapping text around top right triangle banner */}
         <div
-          class="float-right w-[45px] h-[45px] md:w-[25px] md:h-[25px]"
-          style="shape-outside: polygon(0 0, 100% 0, 100% 100%, 90% 100%, 0 10%);"
+          class="float-right w-[45px] h-[45px] md:w-[25px] md:h-[25px] xl:w-[85px] xl:h-[85px]"
+          style="shape-outside: polygon(0 0, 100% 0, 100% 100%, 90% 100%, 0 10%); clip-path: polygon(100% 0, 0 0, 100% 100%);"
         ></div>
         <h3 class="text-xl sm:text-2xl font-semibold text-solid-medium">
           <NavLink href={props.github} target="_blank">
@@ -81,7 +81,9 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
           </NavLink>
         </h3>
         {props.description}
-        <div class="text-[13px] leading-[1.2rem]  my-3">{props.info}</div>
+        <div class="text-xs sm:text-[13px] sm:leading-[1.2rem]  my-3">
+          {props.info}
+        </div>
         <div class="text-sm mt-3">
           Submitted by&nbsp;
           <For each={props.contributors}>
@@ -120,7 +122,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
       </div>
 
       <button
-        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[85px] h-[85px] md:w-[125px] md:h-[125px] flex justify-end"
+        class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[85px] h-[85px] md:w-[125px] md:h-[125px] xl:w-[180px] xl:h-[180px] flex justify-end"
         style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
         onClick={async () => {
           setVoting(true);
@@ -148,7 +150,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
           }
         }}
       >
-        <div class="flex w-[40px] h-[40px] m-1 md:w-[50px] md:h-[50px] md:m-2 justify-center items-center">
+        <div class="flex w-[40px] h-[40px] m-1 md:w-[50px] md:h-[50px] md:m-2 xl:w-[70px] xl:h-[70px] xl:m-3 justify-center items-center">
           <Show fallback={<Loader />} when={!voting()}>
             <Show
               fallback={
@@ -334,6 +336,7 @@ const Submissions: Component = () => {
             mask-image-[linear-gradient(to_bottom,black_calc(100%-30px),transparent)]
             backdrop-blur-[8px] md:backdrop-blur-[5px] lg:backdrop-blur-none 
             lg:mask-image-none
+            lg:bg-none
           `}
             >
               <div class="grid gap-2 grid-cols-[1fr,110px] md:grid-cols-[1fr,160px] lg:grid-cols-full lg:px-4 pointer-events-auto">
