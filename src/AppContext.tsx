@@ -11,8 +11,8 @@ import createCookieStore from "@solid-primitives/cookies-store";
 import { createI18nContext, I18nContext } from "@solid-primitives/i18n";
 import { getGuides, getSupported, ResourceMetadata } from "@solid.js/docs";
 
-// const API = "http://localhost:8787";
-const API = "https://api.solidjs.com";
+const API = "http://localhost:8787";
+// const API = "https://api.solidjs.com";
 
 interface AppContextInterface {
   apiurl: string;

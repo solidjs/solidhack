@@ -69,10 +69,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
   });
   return (
     <li class="grid grid-cols-12 p-12 pl-2">
-      <div class="col-span-1 text-solid-medium font-semibold flex text-lg justify-center">
-        {props.index + 1}
-      </div>
-      <div class="col-span-8">
+      <div class="col-span-9 pl-10">
         <h3 class="text-2xl font-semibold text-solid-medium">{props.title}</h3>
         {props.description}
         <div class="text-xs my-3">{props.info}</div>
