@@ -279,9 +279,7 @@ const QuestionModal: Component = () => {
   const [toggle, setToggle] = createSignal(getLS());
   let btnEl!: HTMLButtonElement;
 
-  onMount(() => {
-    localStorage.setItem(lsKey, JSON.stringify({ open: true }));
-  });
+  onMount(() => localStorage.setItem(lsKey, JSON.stringify({ open: true })));
 
   return (
     <>
@@ -299,10 +297,10 @@ const QuestionModal: Component = () => {
             role="dialog"
           >
             <p class="text-lg">
-              You have <strong>three votes</strong>{" "}
+              You have <strong class="font-semibold">three votes</strong>{" "}
               <span class="inline-flex space-x-1 text-solid-medium relative top-[3px]">
                 <For each={[0, 0, 0]}>
-                  {() => <Icon class="w-4 h-4" path={star} />}
+                  {() => <Icon class="w-5 h-5" path={star} />}
                 </For>
               </span>{" "}
               per category.
@@ -311,44 +309,44 @@ const QuestionModal: Component = () => {
             <p>There are three categories in total:</p>
             <ul class="ml-3 my-3 flex flex-col space-y-3">
               <li class="flex space-x-3 items-center">
-                <span>Best App</span>
                 <img
-                  class="inline-block rounded-full w-8 h-8 bg-solid-medium p-1"
+                  class="inline-block rounded-full w-12 h-12 bg-solid-medium p-1"
                   src="/img/award-best-app.svg"
                   alt="award"
                 />
+                <span>Best App</span>
               </li>
               <li class="flex space-x-3 items-center">
-                <span>Best Ecosystem Utility</span>
                 <img
-                  class="inline-block rounded-full w-8 h-8 bg-solid-medium p-1"
+                  class="inline-block rounded-full w-12 h-12 bg-solid-medium p-1"
                   src="/img/award-ecosystem.svg"
                   alt="award"
                 />
+                <span>Best Ecosystem Utility</span>
               </li>
               <li class="flex space-x-3 items-center">
-                <span>Best Student Project</span>
                 <img
-                  class="inline-block rounded-full w-8 h-8 bg-solid-medium p-1"
+                  class="inline-block rounded-full w-12 h-12 bg-solid-medium p-1"
                   src="/img/award-student-project.svg"
                   alt="award"
                 />
+                <span>Best Student Project</span>
               </li>
             </ul>
             <br />
             <p>
-              So in total you have 9 votes, but you can only caste 3 votes per
-              category. <br /> Casted vote is a filled in yellow star{" "}
+              So in total you have 9 votes. You can only cast 3 votes per
+              category. <br /> Your casted vote show as a filled start{" "}
               <span class="inline-block relative top-[3px]">
-                <Icon class="w-4 h-4 text-star" path={solidStar} />
+                <Icon class="w-5 h-5 text-star" path={solidStar} />
               </span>
             </p>
-            <div class="mt-8 -mb-6">
+            <div class=" flex justify-center mt-6 -mb-6">
               <button
-                class="bg-solid-default rounded-md text-white px-5 py-2"
+                class="bg-solid-default hover:opacity-90 transition rounded-md text-white px-5 py-2"
                 onClick={() => setToggle(false)}
               >
-                Let's Vote!
+                Let's vote!
               </button>
             </div>
             <button
