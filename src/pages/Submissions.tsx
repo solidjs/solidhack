@@ -270,6 +270,9 @@ const QuestionModal: Component = () => {
   const lsKey = "submission-dialog-rules";
   const getLS = () => {
     try {
+      if (!context.user) {
+        return true;
+      }
       const resultStr = localStorage.getItem(lsKey)!;
       if (!resultStr) return true;
       const result = JSON.parse(resultStr);
