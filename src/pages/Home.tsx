@@ -64,11 +64,11 @@ const Home: Component = () => {
         <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
           <div class="font-semibold text-center text-lg">Voting is closed!</div>
           <div class="mt-3">
-            Winners for SolidHack 2022 will be announced this Friday
+            Winners for SolidHack 2022 will be announced this{" "}
             <b>
-              May 6<sup>at</sup>
+              Friday May 6<sup>th</sup>
             </b>{" "}
-            at 3:30PM EST. Join us live at our Community Event in:
+            at 2:30PM EST. Join us live at our Community Event in:
           </div>{" "}
         </div>
         <Countdown></Countdown>

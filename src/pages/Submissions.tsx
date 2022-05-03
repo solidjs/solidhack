@@ -11,7 +11,7 @@ import {
   Setter,
   onMount,
 } from "solid-js";
-import Loader from "../components/Loader";
+// import Loader from "../components/Loader";
 import JSConfetti from "js-confetti";
 import { NavLink, useParams, useRouteData } from "solid-app-router";
 import {
@@ -25,7 +25,7 @@ import { star as solidStar } from "solid-heroicons/solid";
 import { Icon } from "solid-heroicons";
 import { chevronLeft } from "solid-heroicons/outline";
 import Dismiss from "solid-dismiss";
-import { Repeat } from "@solid-primitives/range";
+// import { Repeat } from "@solid-primitives/range";
 import { useAppContext } from "../AppContext";
 
 type Votes = {
@@ -59,20 +59,23 @@ const SubmissionContext = createContext<SubmissionContextType>({
 } as SubmissionContextType);
 
 const SubmissionRow: Component<Submission & { index: number }> = (props) => {
-  const context = useAppContext();
-  const params = useParams<{ category: "best_app" }>();
-  const [voting, setVoting] = createSignal(false);
-  const { updateVotes, votes, playConfetti } = useContext(SubmissionContext);
-  const selected = createMemo(() => {
-    const list = votes();
-    return list[params.category].selections.includes(props.title);
-  });
-  const maxVotes = createMemo(() => {
-    const list = votes();
-    return (
-      list[params.category].selections.length >= list[params.category].total
-    );
-  });
+  // const context = useAppContext();
+  // const params = useParams<{ category: "best_app" }>();
+  // const [voting, setVoting] = createSignal(false);
+  // const { updateVotes, votes, playConfetti } = useContext(SubmissionContext);
+  // const selected = createMemo(() => {
+  //   const list = votes();
+  //   if (list[params.category]) {
+  //     return list[params.category].selections.includes(props.title);
+  //   }
+  //   return [];
+  // });
+  // const maxVotes = createMemo(() => {
+  //   const list = votes();
+  //   return (
+  //     list[params.category].selections.length >= list[params.category].total
+  //   );
+  // });
   return (
     <li class="p-4 py-6 md:p-12 relative">
       <div class="col-span-9">
@@ -140,7 +143,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
           </div>
         </NavLink>
       </div>
-      <Show when={context.user}>
+      {/* <Show when={context.user}>
         <button
           class="absolute top-0 right-0 bg-[#f8f9fcff] pointer-fine:hover:bg-[#eef0f6] w-[75px] h-[75px] md:w-[115px] md:h-[115px] xl:w-[180px] xl:h-[180px] flex justify-end cursor-pointer"
           style="clip-path: polygon(100% 0, 0 0, 100% 100%);"
@@ -191,7 +194,7 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
             </Show>
           </div>
         </button>
-      </Show>
+      </Show> */}
     </li>
   );
 };
@@ -414,14 +417,27 @@ const Submissions: Component = () => {
   const [toggle, setToggle] = createSignal(false);
   const [votes, { mutate }] = createResource(
     () => context.user,
-    async () =>
-      (
-        await fetch(`${context.apiurl}/hack/votes`, {
-          headers: {
-            Authorization: `Bearer ${context.user ? context.user.token : ""}`,
-          },
-        })
-      ).json(),
+    async () => ({
+      best_student_project: {
+        total: 3,
+        selections: [],
+      },
+      best_app: {
+        total: 3,
+        selections: [],
+      },
+      best_ecosystem: {
+        total: 3,
+        selections: [],
+      },
+    }),
+    // (
+    //   await fetch(`${context.apiurl}/hack/votes`, {
+    //     headers: {
+    //       Authorization: `Bearer ${context.user ? context.user.token : ""}`,
+    //     },
+    //   })
+    // ).json(),
     {
       initialValue: {
         best_student_project: {
@@ -475,7 +491,7 @@ const Submissions: Component = () => {
 
   return (
     <>
-      <QuestionModal />
+      {/* <QuestionModal /> */}
       <SubmissionContext.Provider
         value={{
           votes,
@@ -556,7 +572,7 @@ const Submissions: Component = () => {
                       }}
                     </For>
                   </div>
-                  <Show when={context.user}>
+                  {/* <Show when={context.user}>
                     <Show
                       fallback={
                         <div class="flex py-8 justify-center">
@@ -597,7 +613,7 @@ const Submissions: Component = () => {
                         </div>
                       </div>
                     </Show>
-                  </Show>
+                  </Show> */}
                 </div>
               </div>
             </div>
