@@ -18,8 +18,8 @@ const Box: Component<BoxProps> = (props) => (
 );
 
 const Countdown: Component = () => {
-  const startDate = new Date(1651550340000);
-  const endDate = new Date(1649390340000);
+  const startDate = new Date(1651822200000);
+  const endDate = new Date(1651822200000);
   const countdownValues = createCountdown(
     new Date().getTime() < startDate.getTime() ? startDate : endDate
   );
@@ -62,20 +62,13 @@ const Home: Component = () => {
           src="/img/hack/title.png"
         />
         <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
-          <div class="font-semibold text-center text-lg">
-            Voting is open, cast your votes!
-          </div>
+          <div class="font-semibold text-center text-lg">Voting is closed!</div>
           <div class="mt-3">
-            SolidHack is a community driven competition. We ask all participates
-            to head to the{" "}
-            <a class="underline" href="/submissions">
-              submissions page
-            </a>{" "}
-            to decide who wins our cash prizes! You have until{" "}
+            Winners for SolidHack 2022 will be announced this Friday
             <b>
-              May 2<sup>nd</sup>
+              May 6<sup>at</sup>
             </b>{" "}
-            to vote. That's...
+            at 3:30PM EST. Join us live at our Community Event in:
           </div>{" "}
         </div>
         <Countdown></Countdown>
@@ -207,17 +200,23 @@ const Home: Component = () => {
                 Submissions Close and Voting Begins in 24h
               </div>
             </div>
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
+              <div class="col-span-1 text-center">
+                <div class="col-span-1 text-center">
+                  <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                    ✓
+                  </figure>
+                </div>
+              </div>
+              <div class="col-span-3">May 2nd</div>
+              <div class="col-span-8">Voting Ends</div>
+            </div>
             <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
               <div class="col-span-1 text-center">
                 <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
                   ~
                 </figure>
               </div>
-              <div class="col-span-3">May 2nd</div>
-              <div class="col-span-8">Voting Ends</div>
-            </div>
-            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
-              <div class="col-span-1 text-center">&nbsp;</div>
               <div class="col-span-3">May 6th</div>
               <div class="col-span-8">Winners Announced</div>
             </div>
