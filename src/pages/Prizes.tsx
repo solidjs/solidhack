@@ -17,12 +17,25 @@ const Prizes: Component = () => {
               </figure>
             </div>
             <div class="col-span-9 text-md">
-              <h2 class="text-xl mb-2 font-semibold">Best App Award</h2>
+              <h2 class="text-xl mb-2 font-semibold">Best Application Award</h2>
               Build a consumer-grade application that solves a problem,
               entertains or informs. Your project will be judged on technical
               complexity, use of SolidJS and general use or entertainment to the
               users.
-              <div class="mt-5">Prize: $5000</div>
+              <div class="mt-5">
+                <b>Prize</b>: $5000
+              </div>
+              <div class="mt-2">
+                <b>Winner</b>:{" "}
+                <a
+                  target="_blank"
+                  class="text-solid-medium"
+                  href="https://codeimage.dev"
+                >
+                  codeimage.dev
+                </a>{" "}
+                by Riccardo Perra
+              </div>
             </div>
           </div>
           <div class="md:grid md:gap-8 md:grid-cols-12 p-10">
@@ -38,7 +51,20 @@ const Prizes: Component = () => {
               Create a utility or package, or port an existing library. The
               SolidJS community is hungry for ecosystem solutions. This is your
               opportunity to show off your front-end and tooling abilities.
-              <div class="mt-5">Prize: $5000</div>
+              <div class="mt-5">
+                <b>Prize</b>: $5000
+              </div>{" "}
+              <div class="mt-2">
+                <b>Winner</b>:{" "}
+                <a
+                  target="_blank"
+                  class="text-solid-medium"
+                  href="https://hope-ui.com/"
+                >
+                  hope-ui
+                </a>{" "}
+                by Fabien Marie-Louise
+              </div>
             </div>
           </div>
           <div class="md:grid md:gap-8 md:grid-cols-12 p-10">
@@ -55,10 +81,21 @@ const Prizes: Component = () => {
               ecosystem utility. This award is for currently enrolled students
               itching to break into OSS and the corporate world.
               <div class="mt-5">
-                Prize: $2000 + Internship Opportunity with{" "}
+                <b>Prize</b>: $2000 + Internship Opportunity with{" "}
                 <a class="underline" href="http://402.so">
                   402
-                </a>
+                </a>{" "}
+                <div class="mt-2">
+                  <b>Winner</b>:{" "}
+                  <a
+                    target="_blank"
+                    class="text-solid-medium"
+                    href="https://github.com/mokshit06/solid-table"
+                  >
+                    solid-table
+                  </a>{" "}
+                  by Mokshit Jain
+                </div>
               </div>
             </div>
           </div>

@@ -2,8 +2,6 @@ import {
   Component,
   createResource,
   createContext,
-  useContext,
-  createMemo,
   createSignal,
   For,
   Show,
@@ -89,6 +87,13 @@ const SubmissionRow: Component<Submission & { index: number }> = (props) => {
             {props.title}
           </NavLink>
         </h3>
+        <Show when={props.winner}>
+          <img
+            class="w-14 absolute right-5 top-5"
+            src="/img/winner.png"
+            alt="2022 Category Winner"
+          />
+        </Show>
         {props.description}
         <div class="text-xs sm:text-[13px] sm:leading-[1.2rem]  my-3">
           {props.info}

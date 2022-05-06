@@ -117,6 +117,7 @@ const list = {
       url: "https://codeimage.dev/",
       info: "Codeimage is the newest open source tool to help developers to create beautiful screenshots of their code, providing several features to speed up the process to post in social media. It's built on the top of solid-js and has a rich choice of customizations, 15+ custom themes, supports for mobile devices and much more!",
       license: "MIT",
+      winner: true,
       contributors: [
         {
           name: "Riccardo Perra",
@@ -473,6 +474,7 @@ const list = {
       url: "https://hope-ui.com",
       info: "Hope UI is a composable and accessible component library for SolidJS with a style props API, theming, dark mode and following WAI ARIA 1.2 design patterns",
       license: "MIT",
+      winner: true,
       contributors: [
         {
           name: "Fabien MARIE-LOUISE",
@@ -768,6 +770,7 @@ const list = {
       url: "https://solidjs-table.vercel.app",
       info: "Solid Table is a collection of hooks for building powerful tables and datagrid experiences. These hooks are lightweight, composable, and ultra-extensible, but do not render any markup or styles for you. This effectively means that Solid Table is a 'headless' UI library.By acting as an ultra-smart table utility, Solid Table opens up the possibility for your tables to integrate into any existing theme, UI library or existing table markup.",
       license: "MIT",
+      winner: true,
       contributors: [
         {
           name: "Mokshit Jain",

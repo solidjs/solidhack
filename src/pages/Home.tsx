@@ -61,17 +61,23 @@ const Home: Component = () => {
           class="w-6/6 md:w-5/6 mt-4 g:w-4/6 xl:w-5/12 2xl:w-3/12 mx-auto mb-10"
           src="/img/hack/title.png"
         />
-        <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-t-lg bg-solid-light text-md">
-          <div class="font-semibold text-center text-lg">Voting is closed!</div>
+        <div class="p-5 pb-3 max-w-[450px] md:max-w-[550px] text-white rounded-lg bg-solid-light text-md">
+          <div class="font-semibold text-center text-lg">That's a wrap!</div>
           <div class="mt-3">
-            Winners for SolidHack 2022 will be announced this{" "}
-            <b>
-              Friday May 6<sup>th</sup>
-            </b>{" "}
-            at 2:30PM EST. Join us live at our Community Event in:
+            Thank you to all our 2022 SolidHack{" "}
+            <a class="opacity-60" href="/prizes">
+              winners
+            </a>
+            ,{" "}
+            <a class="opacity-60" href="/submissions/best_app">
+              competitors
+            </a>
+            , voters and Planning Committee members. It was truly amazing seeing
+            our community come together for this awesome project.
+            <br />
           </div>{" "}
         </div>
-        <Countdown></Countdown>
+        {/* <Countdown></Countdown> */}
         <div class="mt-20 flex items-center flex-col md:space-y-0 md:flex-row md:space-x-20 bg-white/20 p-4 px-7 rounded-xl">
           <a
             target="_blank"
@@ -211,11 +217,13 @@ const Home: Component = () => {
               <div class="col-span-3">May 2nd</div>
               <div class="col-span-8">Voting Ends</div>
             </div>
-            <div class="md:grid md:grid-cols-12 border-b py-2 text-gray-400">
+            <div class="md:grid md:grid-cols-12 border-b py-2 text-green-700">
               <div class="col-span-1 text-center">
-                <figure class="bg-gray-300 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
-                  ~
-                </figure>
+                <div class="col-span-1 text-center">
+                  <figure class="bg-green-700 rounded-full w-6 h-6 inline-flex justify-center pt-1 items-center text-white">
+                    ✓
+                  </figure>
+                </div>
               </div>
               <div class="col-span-3">May 6th</div>
               <div class="col-span-8">Winners Announced</div>
@@ -275,9 +283,7 @@ const Home: Component = () => {
             the competition in the spirit of fairness.
           </small>
         </div>
-        <div class="text-center text-sm">
-          Last updated May 2nd @ 11:59pm EST
-        </div>
+        <div class="text-center text-sm">Last updated May 6th @ 3:00pm EST</div>
       </div>
     </div>
   );
