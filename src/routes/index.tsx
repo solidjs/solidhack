@@ -99,8 +99,8 @@ export default function Home() {
           open-source ecosystem.
           <small class="mt-3 block">
             To participate as a sponsor, contact{" "}
-            <a href="mailto:community@solidjs.com" class="text-hackblue">
-              community@solidjs.com
+            <a href="hack:community@solidjs.com" class="text-hackblue">
+              hack@solidjs.com
             </a>
             .
           </small>
