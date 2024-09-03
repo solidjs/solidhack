@@ -42,7 +42,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <div class="max-w-4xl leading-6 mx-auto text-gray-500">
+      <div class="max-w-4xl text-lg leading-7 mx-auto text-gray-500">
         <Box title="What">
           <strong class="text-hackblue">SolidHack</strong> is a public hackathon
           presented by the Solid Team and our amazing corporate sponsors. This
@@ -64,27 +64,27 @@ export default function Home() {
             <TimelineItem
               status="next"
               date="October 1"
-              description="Categories and Rules Are Announced (contest begins)"
+              description="Categories and rules are announced (contest begins)"
             />
             <TimelineItem
               status="pending"
               date="October 31st"
-              description="Submissions Portal Opens"
+              description="Submissions portal opens"
             />
             <TimelineItem
               status="pending"
               date="November 14"
-              description="Submissions Close and Voting Begins in 24h"
+              description="Submissions close and voting begins in 24h"
             />
             <TimelineItem
               status="pending"
               date="December 1"
-              description="Voting Ends"
+              description="Voting ends"
             />
             <TimelineItem
               status="pending"
               date="December 3"
-              description="Winners Announced"
+              description="Winners announced"
             />
             <small class="text-center mt-4 block">
               Exact closing time for above listed dates is 23:59 (GMT-5).

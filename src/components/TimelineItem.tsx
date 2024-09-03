@@ -1,5 +1,6 @@
 import { Icon } from "solid-heroicons";
-import { check, clock, ellipsisHorizontal } from "solid-heroicons/solid";
+import { check, ellipsisHorizontal } from "solid-heroicons/solid";
+import { clock } from "solid-heroicons/outline";
 import { Component, Match, Switch } from "solid-js";
 
 interface TimelineItemProps {
