@@ -46,7 +46,7 @@ export default function Home() {
         <Box title="What">
           <strong class="text-hackblue">SolidHack</strong> is a public hackathon
           presented by the Solid Team and our amazing corporate sponsors. This
-          years prize pool is US$15,000 thanks to two of our generous sponsors!
+          year's prize pool is US$15,000 thanks to two of our generous sponsors!
           The competition is free to enter. You have 6 weeks to build your
           project and stage it for our community to review. Winners will be
           selected by public vote. Join the{" "}
