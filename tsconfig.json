@@ -1,24 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
+    "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "declaration": true,
-    "moduleResolution": "node",
     "jsx": "preserve",
-    "resolveJsonModule": true,
-    "newLine": "lf",
-    "sourceMap": true,
     "jsxImportSource": "solid-js",
-    "types": ["vite/client", "vite-plugin-pwa/client"],
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipLibCheck": true,
-    "strict": true,
+    "allowJs": true,
     "noEmit": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"]
-  },
-  "include": ["./src/**/*", "vite.config.js", "./scripts", "src/types.d.ts"],
-  "exclude": ["node_modules/", "Markdown.tsx"]
+    "strict": true,
+    "types": ["vinxi/types/client"],
+    "isolatedModules": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
 }
