@@ -43,15 +43,18 @@ export default createHandler(() => (
           <meta name="og:type" content="article" />
           <meta name="og:image:width" content="1200" />
           <meta name="og:image:height" content="627" />
-          <meta name="og:image:url" content="https://hack.solidjs.com/og.jpg" />
+          <meta
+            name="og:image:url"
+            content="https://hack.solidjs.com/ograph.jpg"
+          />
           <meta
             name="og:image:secure_url"
-            content="https://hack.solidjs.com/og.jpg"
+            content="https://hack.solidjs.com/ograph.jpg"
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:image"
-            content="https://hack.solidjs.com/og.jpg"
+            content="https://hack.solidjs.com/ograph.jpg"
           />
           <meta name="twitter:site" content="@solid_js" />
           <meta
