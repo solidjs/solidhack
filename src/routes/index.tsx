@@ -5,16 +5,16 @@ import { Countdown } from "~/components/Countdown";
 export default function Home() {
   return (
     <>
-      <div class="flex flex-col md:flex-row md:mx-auto max-w-6xl w-full items-center my-10 md:my-0 md:h-[50vh] justify-between p-4">
-        <div class="text-5xl md:text-[5rem] leading-0 text-hackblue border-l-8 md:py-7 pl-7 border-hackblue">
-          <div class="font-bold">
+      <div class="flex flex-col min-[895px]:flex-row min-[895px]:mx-auto max-w-6xl w-full font-bold items-center my-10 min-[895px]:my-0 min-[895px]:h-[50vh] justify-between p-4">
+        <h1 class="text-[min(11vw,48px)] md:text-[5rem] leading-[1.2em] md:leading-[0.7em] text-hackblue border-l-8 md:py-7 pl-7 border-hackblue">
+          <div>
             Solid<span class="text-gray-500">Hack</span>
             <span class="text-gray-400 font-medium">2024</span>
           </div>
-        </div>
+        </h1>
         <img
           class="w-20 md:w-40"
-          src="/img/logo-mark.png"
+          src="/img/logo-mark.svg"
           alt="SolidHack logo"
         />
       </div>
