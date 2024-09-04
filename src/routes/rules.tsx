@@ -193,9 +193,14 @@ const Rules: Component = () => {
             in any manner. Participating in SolidHack is at your discretion.
           </li>
           <li>
-            This competition is not owned or operated by it's corporate sponsors
-            (Netlify and Sentry). Contests hold harmless all corporates sponsors
-            and organizers.
+            SolidHack competition is not owned or operated by it's corporate
+            sponsors (Netlify and Sentry). Contests hold harmless all corporates
+            sponsors and organizers.
+          </li>
+          <li>
+            The Planning Commitee reserves the right to adapt or change the
+            rules as they see fit. Rules will be clearly displayed at
+            hack.solidjs.com/rules.
           </li>
           <li>
             Rules &amp; Regulations of this competition may change at the
