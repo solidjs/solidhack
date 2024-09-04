@@ -1,13 +1,32 @@
+import { Icon } from "solid-heroicons";
+import { chevronLeft } from "solid-heroicons/solid";
 import { Component } from "solid-js";
+import { Box } from "~/components/Box";
 
 const Rules: Component = () => {
   return (
-    <div class="w-full flex flex-col items-center py-10 gap-6 md:gap-8 lg:gap-12 min-h-screen bg-hack bg-no-repeat bg-top bg-contain">
-      <div class="max-w-4xl p-16 rounded-xl leading-7 shadow-2xl">
+    <div class="max-w-4xl text-lg leading-7 mx-auto text-gray-500">
+      <div class="py-3 pt-10">
+        <div class="text-5xl md:text-[3rem] -leading-1 text-hackblue border-l-8 md:py-4 md:my-6 pl-7 border-hackblue">
+          <div class="font-bold">
+            Solid<span class="text-gray-500">Hack</span>
+            <span class="text-gray-400 font-medium">2024</span>
+          </div>
+          <div class="text-2xl font-medium">
+            Competition Rules & Regulations
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <a href="/" class="flex space-x-5">
+            <Icon path={chevronLeft} class="w-4" /> Back home
+          </a>
+        </div>
+      </div>
+      <Box class="mx-auto">
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           Eligibility
         </h4>
-        <ul class="list-disc ml-3">
+        <ul class="list-disc ml-8">
           <li>
             Contestants of legal age
             <a href="#fn1" id="fn1-anchor">
@@ -18,8 +37,8 @@ const Rules: Component = () => {
             participation.
           </li>
           <li>
-            Projects must include SolidJS as a dependency and use it in a
-            meaningful way.
+            Projects must include SolidJS or StartSolid as a dependency and use
+            them in a meaningful way.
           </li>
           <li>
             Submissions must be posted on Github and remain publicly accessible
@@ -28,32 +47,41 @@ const Rules: Component = () => {
           <li>
             Submissions may be made by an individual or as teams of 2-3 members.
             All members must be clearly stated within the project's
-            documentation or configuration.
+            documentation or configuration (package.json or README.md).
           </li>
         </ul>
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           Submissions
         </h4>
-        <ul class="list-disc ml-3">
+        <ul class="list-disc ml-8">
           <li>
             All projects must have a working demo or video accessible via a URL.
             The URL must be provided with your submission.
           </li>
           <li>
-            Submissions posted after the submission closing date (April 11th
-            23:59 GMT-5) will not be accepted.
+            Submissions posted after the submission closing date will not be
+            accepted.
           </li>
           <li>
-            Submissions must have been started on or after January 7th 2022. Old
+            Submissions must have been started on or after October 1, 2024. Old
             projects and projects that include previously posted code are not
             allowed. Projects ported from other ecosystems are allowed.
           </li>
           <li>
-            Submissions must not change after the submission closing date (April
-            11th). This includes but is not limited to bug fixes, demo updates,
+            Contestants may utilize libraries developed by themselves or members
+            of their team. The use of a library will be scrutinized to ensure it
+            isn't simply a repackaging and hence providing the contestant an
+            unfair advantage. The library must be significantly different from
+            the submission to warrant it being used fairly. This is at the
+            descretion of the Planning Committee.
+          </li>
+          <li>
+            Submissions must not change after the submission closing date. This
+            includes but is not limited to bug fixes, demo updates,
             documentation changes etc. You may continue making changes locally
             or on a separate branch, however main/master must remain untouched
-            until the voting period is over.
+            until the voting period is over. Updating any production deployments
+            after the date also constitutes a disqualification.
           </li>
           <li>
             Submissions will be vetted by SolidHack Planning Committee members.
@@ -82,7 +110,7 @@ const Rules: Component = () => {
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           Disqualification
         </h4>
-        <ul class="list-disc ml-3">
+        <ul class="list-disc ml-8">
           <li>
             Contestants agree to act fairly and responsibly during the contest.
             The SolidHack Planning Committee may vote to disqualify a submission
@@ -103,7 +131,7 @@ const Rules: Component = () => {
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           Voting & Winners
         </h4>
-        <ul class="list-disc ml-3">
+        <ul class="list-disc ml-8">
           <li>
             Voting with fake accounts
             <a href="#fn3" id="fn3-anchor">
@@ -121,16 +149,13 @@ const Rules: Component = () => {
             competition will be required.
           </li>
           <li>
-            Student internship will be awarded at 402's discretion, based on an
-            interview. The internship will be for a duration of 3 months.
-          </li>
-          <li>
             Votes will be tallied from active Github accounts registered before
-            the competition start date (January 7th 2022).
+            the competition start date.
           </li>
           <li>
             Winners of the competition categories will be decided by a community
-            vote.
+            vote. Upon ties in votes the Planning Committe and SolidJS Core team
+            will decide the winner.
           </li>
           <li>
             Prize money will be collected from sponsors and distributed via
@@ -153,7 +178,7 @@ const Rules: Component = () => {
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           General Details
         </h4>
-        <ul class="list-disc ml-3">
+        <ul class="list-disc ml-8">
           <li>
             SolidHack is run by an organizing committee made up of SolidJS
             community members on behalf of corporate and individual sponsors.
@@ -168,10 +193,15 @@ const Rules: Component = () => {
             in any manner. Participating in SolidHack is at your discretion.
           </li>
           <li>
+            This competition is not owned or operated by it's corporate sponsors
+            (Netlify and Sentry). Contests hold harmless all corporates sponsors
+            and organizers.
+          </li>
+          <li>
             Rules &amp; Regulations of this competition may change at the
             discretion of the SolidHack Planning Committee. Contestants will be
-            notified via SolidHack Newsletter and published via a Rules &amp;
-            Regulations changelog.
+            notified via Discord Channel and website of changes to Rules &amp;
+            Regulations.
           </li>
           <li>Submissions may be withdrawn via email to hack@solidjs.com.</li>
           <li>
@@ -181,8 +211,8 @@ const Rules: Component = () => {
             competition.
           </li>
         </ul>
-      </div>
-      <div class="bg-opacity-50 text-black max-w-3xl mx-auto mb-5 rounded-xl">
+      </Box>
+      <div class="bg-opacity-50 text-black max-w-3xl mx-auto mb-5 rounded-xl p-10">
         <small>
           <ol class="list-style-none">
             <li>
@@ -211,6 +241,9 @@ const Rules: Component = () => {
             </li>
           </ol>
         </small>
+      </div>
+      <div class="text-center text-sm pb-10">
+        Rules changed last changed September 4 @ 5:00pm EST
       </div>
     </div>
   );

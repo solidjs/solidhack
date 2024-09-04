@@ -5,9 +5,9 @@ import { Countdown } from "~/components/Countdown";
 export default function Home() {
   return (
     <>
-      <div class="flex flex-col md:flex-row md:mx-auto max-w-6xl w-full font-bold items-center my-10 md:my-0 md:h-[50vh] justify-between p-4">
+      <div class="flex flex-col md:flex-row md:mx-auto max-w-6xl w-full items-center my-10 md:my-0 md:h-[50vh] justify-between p-4">
         <div class="text-5xl md:text-[5rem] leading-0 text-hackblue border-l-8 md:py-7 pl-7 border-hackblue">
-          <div>
+          <div class="font-bold">
             Solid<span class="text-gray-500">Hack</span>
             <span class="text-gray-400 font-medium">2024</span>
           </div>
@@ -44,20 +44,29 @@ export default function Home() {
       </div>
       <div class="max-w-4xl text-lg leading-7 mx-auto text-gray-500">
         <Box title="What">
-          <strong class="text-hackblue">SolidHack</strong> is a public hackathon
-          presented by the Solid Team and our amazing corporate sponsors. This
-          years prize pool is US$15,000 thanks to two of our generous sponsors!
-          The competition is free to enter. You have 6 weeks to build your
-          project and stage it for our community to review. Winners will be
-          selected by public vote. Join the{" "}
-          <a
-            target="_blank"
-            href="https://discord.gg/solidjs"
-            class="underline"
-          >
-            Solid Discord
-          </a>{" "}
-          #solidhack-2024 channel to ask questions and learn more.
+          <p>
+            <strong class="text-hackblue">SolidHack</strong> is a public
+            hackathon presented by the Solid Team and our amazing corporate
+            sponsors. This years prize pool is <strong>US$15,000</strong> thanks
+            to two of our generous sponsors! The competition is free to enter.
+            You have 6 weeks to build your project and stage it for our
+            community to review. Winners will be selected by public vote. Join
+            the{" "}
+            <a
+              target="_blank"
+              href="https://discord.gg/solidjs"
+              class="underline"
+            >
+              Solid Discord
+            </a>{" "}
+            #solidhack-2024 channel to ask questions and learn more.
+          </p>
+          <p class="mt-3">
+            Be sure to read the{" "}
+            <a href="/rules" class="text-hackblue">
+              Rules & Regulations.
+            </a>
+          </p>
         </Box>
         <Box title="When">
           <div class="space-y-3 text-center md:text-left">
@@ -99,8 +108,8 @@ export default function Home() {
           open-source ecosystem.
           <small class="mt-3 block">
             To participate as a sponsor, contact{" "}
-            <a href="mailto:community@solidjs.com" class="text-hackblue">
-              community@solidjs.com
+            <a href="mailto:hack@solidjs.com" class="text-hackblue">
+              hack@solidjs.com
             </a>
             .
           </small>
