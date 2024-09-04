@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
         <img
           class="w-20 md:w-40"
-          src="/img/logo-mark.png"
+          src="/img/logo-mark.svg"
           alt="SolidHack logo"
         />
       </div>
