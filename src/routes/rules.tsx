@@ -248,7 +248,7 @@ const Rules: Component = () => {
         </small>
       </div>
       <div class="text-center text-sm pb-10">
-        Rules changed last changed September 4 @ 5:00pm EST
+        Rules changed last changed September 4, 2024 @ 5:00pm EST
       </div>
     </div>
   );
