@@ -109,8 +109,8 @@ export default function Home() {
           >
             <p>
               Collect this challenge by creating a new component for a
-              participating UI library from the Solid Ecosystem. Comment Suggest
-              edit Edit from here Participating UI libraries:{" "}
+              participating UI library from the Solid Ecosystem. Participating
+              UI libraries:{" "}
               <a
                 target="_blank"
                 class="text-hackblue"
