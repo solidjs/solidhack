@@ -144,11 +144,6 @@ const Rules: Component = () => {
           <li>Submissions may only be submitted to one category.</li>
           <li>Winners may only win one category.</li>
           <li>
-            Only students are eligible to submit to the Best Student Project
-            Award. Proof of student enrollment for the duration of the
-            competition will be required.
-          </li>
-          <li>
             Votes will be tallied from active Github accounts registered before
             the competition start date.
           </li>
