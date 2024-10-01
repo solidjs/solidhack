@@ -37,7 +37,7 @@ const Rules: Component = () => {
             participation.
           </li>
           <li>
-            Projects must include SolidJS or StartSolid as a dependency and use
+            Projects must include SolidJS or SolidStart as a dependency and use
             them in a meaningful way.
           </li>
           <li>
