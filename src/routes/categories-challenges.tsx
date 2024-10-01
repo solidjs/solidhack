@@ -20,8 +20,8 @@ export default function Home() {
             Award Categories
           </h3>
           <div class="bg-neutral-100 my-5 rounded-2xl divide-y-2 divide-white">
-            <div class="flex space-x-10 p-10">
-              <div class="bg-hackblue shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
+            <div class="md:flex md:space-x-10 p-10">
+              <div class="mb-5 md:mb-0 mx-auto bg-hackblue shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
                 <img src={appAward} alt="Best App Award" />
               </div>
               <div>
@@ -38,8 +38,8 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div class="flex space-x-10 p-10">
-              <div class="bg-hackblue shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
+            <div class="md:flex md:space-x-10 p-10">
+              <div class="mb-5 md:mb-0 mx-auto bg-hackblue shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
                 <img src={ecosystemAward} alt="Best Ecosystem Award" />
               </div>
               <div>
