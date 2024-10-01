@@ -1,26 +1,28 @@
 import { Box } from "~/components/Box";
 import { TimelineItem } from "~/components/TimelineItem";
 import { Countdown } from "~/components/Countdown";
+import appAward from "../../public/img/award-best-app.svg";
+import ecosystemAward from "../../public/img/award-ecosystem.svg";
+import { Hero } from "~/components/Hero";
+import { A } from "@solidjs/router";
 
 export default function Home() {
   return (
     <>
-      <div class="flex flex-col md:flex-row md:mx-auto max-w-6xl w-full font-bold items-center my-10 md:my-0 md:h-[50vh] justify-between p-4">
-        <div class="text-5xl md:text-[5rem] leading-0 text-hackblue border-l-8 md:py-7 pl-7 border-hackblue">
-          <div>
-            Solid<span class="text-gray-500">Hack</span>
-            <span class="text-gray-400 font-medium">2024</span>
-          </div>
-        </div>
-        <img
-          class="w-20 md:w-40"
-          src="/img/logo-mark.png"
-          alt="SolidHack logo"
-        />
-      </div>
+      <Hero />
+      <a
+        href="/categories-challenges"
+        class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
+      >
+        The 2024{" "}
+        <span class="text-hackblue font-semibold">
+          Categories and Challenges
+        </span>{" "}
+        have been announced! 🚨✨
+      </a>
       <Countdown
         class="mx-auto shadow-xl"
-        start={1727755200000}
+        start={1731560400000}
         end={1731560400000}
       />
       <div class="flex flex-col text-center w-full py-14">
@@ -44,30 +46,39 @@ export default function Home() {
       </div>
       <div class="max-w-4xl text-lg leading-7 mx-auto text-gray-500">
         <Box title="What">
-          <strong class="text-hackblue">SolidHack</strong> is a public hackathon
-          presented by the Solid Team and our amazing corporate sponsors. This
-          year's prize pool is US$15,000 thanks to two of our generous sponsors!
-          The competition is free to enter. You have 6 weeks to build your
-          project and stage it for our community to review. Winners will be
-          selected by public vote. Join the{" "}
-          <a
-            target="_blank"
-            href="https://discord.gg/solidjs"
-            class="underline"
-          >
-            Solid Discord
-          </a>{" "}
-          #solidhack-2024 channel to ask questions and learn more.
+          <p>
+            <strong class="text-hackblue">SolidHack</strong> is a public
+            hackathon presented by the Solid Team and our amazing corporate
+            sponsors. This years prize pool is <strong>US$15,000+</strong>{" "}
+            thanks to two of our generous sponsors! The competition is free to
+            enter. You have 6 weeks to build your project and stage it for our
+            community to review. Winners will be selected by public vote. Join
+            the{" "}
+            <a
+              target="_blank"
+              href="https://discord.gg/solidjs"
+              class="underline"
+            >
+              Solid Discord
+            </a>{" "}
+            #solidhack-2024 channel to ask questions and learn more.
+          </p>
+          <p class="mt-3">
+            Be sure to read the{" "}
+            <A href="/rules" class="text-hackblue">
+              Rules & Regulations.
+            </A>
+          </p>
         </Box>
         <Box title="When">
           <div class="space-y-3 text-center md:text-left">
             <TimelineItem
-              status="next"
+              status="done"
               date="October 1"
               description="Categories and rules are announced (contest begins)"
             />
             <TimelineItem
-              status="pending"
+              status="next"
               date="October 31st"
               description="Submissions portal opens"
             />
@@ -99,7 +110,7 @@ export default function Home() {
           open-source ecosystem.
           <small class="mt-3 block">
             To participate as a sponsor, contact{" "}
-            <a href="hack:community@solidjs.com" class="text-hackblue">
+            <a href="mailto:hack@solidjs.com" class="text-hackblue">
               hack@solidjs.com
             </a>
             .
@@ -130,7 +141,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated September 3rd @ 5:00pm EST
+          Last updated October 1, 2024 @ 12:00am EST
         </div>
       </div>
     </>
