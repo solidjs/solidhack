@@ -176,6 +176,33 @@ const Rules: Component = () => {
           </li>
         </ul>
         <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
+          Challenge Rules
+        </h4>
+        <ul class="list-disc ml-8">
+          <li>
+            Contestants may participate in multiple challenges as often as
+            they'd like.
+          </li>
+          <li>
+            A challenge cannot be used to directly win an Award Category.
+            However, it can be used within an Award Category.
+          </li>
+          <li>
+            Challenge submissions will be reviewed once a week (every Monday) as
+            they come in and selected by the Planning Committee. The selected
+            winner will have met the winning criteria.
+          </li>
+          <li>
+            If no winner meets the challenge criteria, feedback will be provided
+            and contestants can choose to resubmit their submissions for the
+            following week.
+          </li>
+          <li>
+            The Planning Committe has the final say and payouts are made at
+            their sole discretion.
+          </li>
+        </ul>
+        <h4 class="mt-5 mb-3 font-semibold text-xl text-solid-medium">
           General Details
         </h4>
         <ul class="list-disc ml-8">
