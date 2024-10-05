@@ -125,7 +125,7 @@ export default function Home() {
             possibly win prize money!
           </p>
         </Box>
-        <div class="bg-opacity-50  max-w-3xl mx-auto mt-2 p-10 rounded-xl">
+        <div class="bg-opacity-50 text-black max-w-3xl mx-auto mt-2 p-10 rounded-xl">
           <small>
             SolidHack is operated by volunteers and funded by corporate
             sponsors. The SolidHack Planning Committee is responsible for

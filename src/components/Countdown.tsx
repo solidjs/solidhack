@@ -17,7 +17,7 @@ export const Countdown: Component<CountdownProps> = (props) => {
   return (
     <>
       <div
-        class="flex flex-row w-min rounded-xl bg-hackblue px-5"
+        class="flex flex-row w-min rounded-xl bg-primary px-5"
         classList={{
           [`${props.class}`]: !!props.class,
         }}

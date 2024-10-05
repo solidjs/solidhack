@@ -14,7 +14,7 @@ export const TimelineItem: Component<TimelineItemProps> = (props) => {
     <div
       class="md:grid md:grid-cols-12 border-b py-2"
       classList={{
-        "text-hackblue": props.status === "next",
+        "text-primary": props.status === "next",
         "text-gray-500": props.status === "pending",
         "text-green-700": props.status === "done",
       }}
@@ -23,7 +23,7 @@ export const TimelineItem: Component<TimelineItemProps> = (props) => {
         <figure
           class="rounded-full w-8 h-8 inline-flex justify-center items-center text-white"
           classList={{
-            "bg-hackblue": props.status === "next",
+            "bg-primary": props.status === "next",
             "bg-gray-500": props.status === "pending",
             "bg-green-700": props.status === "done",
           }}

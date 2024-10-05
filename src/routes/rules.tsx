@@ -7,7 +7,7 @@ const Rules: Component = () => {
   return (
     <div class="max-w-4xl text-lg leading-7 mx-auto text-gray-500">
       <div class="py-3 pt-10">
-        <div class="text-5xl md:text-[3rem] -leading-1 text-hackblue border-l-8 md:py-4 md:my-6 pl-7 border-hackblue">
+        <div class="text-5xl md:text-[3rem] -leading-1 text-primary border-l-8 md:py-4 md:my-6 pl-7 border-primary">
           <div class="font-bold">
             Solid<span class="text-gray-500">Hack</span>
             <span class="text-gray-400 font-medium">2024</span>
@@ -115,6 +115,11 @@ const Rules: Component = () => {
             Contestants agree to act fairly and responsibly during the contest.
             The SolidHack Planning Committee may vote to disqualify a submission
             or contestant. One written warning will be supplied.
+          </li>
+          <li>
+            Self-hosted repositories are not allowed and are subject to
+            disqualification. Repositories should be hosted on Github for
+            maximum visibility.
           </li>
           <li>
             Contestants and competition participants will treat each other with
