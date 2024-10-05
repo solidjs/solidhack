@@ -120,7 +120,7 @@ export default function Home() {
               </a>{" "}
               or{" "}
               <a target="_blank" class="text-primary" href="https://corvu.dev/">
-                Corvu
+                corvu
               </a>
               . Some ideas for components include: Meter, Rating, Checkbox
               Group, Status Badge, Color Picker, Date Picker etc.
