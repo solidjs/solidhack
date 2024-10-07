@@ -3,6 +3,7 @@ import { Hero } from "~/components/Hero";
 import { Challenge } from "~/components/Challenge";
 import appAward from "../../public/img/award-best-app.svg";
 import ecosystemAward from "../../public/img/award-ecosystem.svg";
+import { A } from "@solidjs/router";
 
 export default function Home() {
   return (
@@ -70,6 +71,18 @@ export default function Home() {
             challenge. All contestants will be notified of the results via
             email. Challenges are vetted by Solid Core and Planning Committee
             Members.
+          </p>
+          <br></br>
+          <p>
+            You may send your finished submissions via the{" "}
+            <A
+              target="_blank"
+              class="text-primary"
+              href="https://forms.gle/vgMPAcjxJUTxz9Aa9"
+            >
+              Challenge Submission Form
+            </A>
+            .
           </p>
           <Challenge
             image={ecosystemAward}
