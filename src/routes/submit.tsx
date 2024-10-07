@@ -50,7 +50,10 @@ export default function Home() {
       <div class="max-w-2xl mb-20 text-lg leading-7 mx-auto text-gray-500">
         <Box>
           Redirecting to{" "}
-          <a href="https://forms.gle/vgMPAcjxJUTxz9Aa9">submission form</a>...
+          <a class="text-primary" href="https://forms.gle/vgMPAcjxJUTxz9Aa9">
+            SolidHack2024 Challenge submission form
+          </a>
+          ...
           {/* <Form onSubmit={sendSubmission} class="space-y-3">
             <Show when={submissionForm.response.message}>
               <div class="border border-red-500 bg-red-100 p-5 mb-5 rounded">
