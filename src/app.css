@@ -37,7 +37,7 @@ body {
     font-style: normal;
     font-display: swap;
 }
-li {
+.box li {
     list-style: disc;
     margin-left: 30px;
 }

@@ -1,8 +1,18 @@
 import { createSignal, For, Show, type Component } from "solid-js";
-import { action, useNavigate, useAction, A } from "@solidjs/router";
+import {
+  action,
+  useNavigate,
+  useAction,
+  A,
+  useParams,
+  useSearchParams,
+} from "@solidjs/router";
 import { createForm, setValue, valiForm } from "@modular-forms/solid";
 import { ConfettiExplosion } from "solid-confetti-explosion";
+import { v7 as uuidv7 } from "uuid";
+import { formatDateForSQLite, getCurrentESTDate } from "~/utils/date";
 import { db } from "~/utils/db";
+import { CHALLENGES } from "~/utils";
 import {
   type InferInput,
   regex,
@@ -29,13 +39,6 @@ import {
   RadioGroupItemLabel,
 } from "~/components/ui/radio-group";
 
-const CHALLENGES = {
-  "solidstart-tutorial": "Write a SolidStart tutorial",
-  "ui-library": "Contribute to a UI library",
-  "solid-primitive": "Contribute a new Solid Primitive",
-  "animation-lib": "Create an animation library for Solid",
-};
-
 const SubmissionSchema = object({
   name: pipe(string(), minLength(3, "Your name must not be empty.")),
   email: pipe(string(), email("Please enter a valid email address.")),
@@ -60,6 +63,7 @@ const SubmissionSchema = object({
     literal(true, "You cannot proceed without confirming the instructions."),
   ),
 });
+
 type SubmissionForm = InferInput<typeof SubmissionSchema>;
 type SubmissionResponse = { id: string; success: true };
 
@@ -68,19 +72,30 @@ const sendSubmissionAction = action(
     "use server";
     try {
       parse(SubmissionSchema, data);
+      const id = uuidv7();
+      const date = getCurrentESTDate();
+      const created_at = formatDateForSQLite(date);
       await db.execute({
         sql:
           "INSERT INTO submissions " +
-          "(name, email, github_url, challenge_id) VALUES (?, ?, ?, ?)",
-        args: [data.name, data.email, data.github_url, data.challenge_id],
+          "(name, email, github_url, challenge_id, guid, status, created_at) " +
+          "VALUES (?, ?, ?, ?, 'active', ?)",
+        args: [
+          data.name,
+          data.email,
+          data.github_url,
+          data.challenge_id,
+          id,
+          created_at,
+        ],
       });
       return {
-        id: "sdfsdfs",
+        id,
         success: true,
       };
     } catch (err) {
       console.log(err);
-      throw new Error("oops");
+      throw new Error("Could not create submission");
     }
   },
   "form-submission",
@@ -96,10 +111,14 @@ const FieldError: Component<{ error: string }> = (props) => (
 
 export default function Submit() {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const [result, setResult] = createSignal({ success: false });
   const sendSubmission = useAction(sendSubmissionAction);
   const [submissionForm, { Form, Field }] = createForm<SubmissionForm>({
     validate: valiForm(SubmissionSchema),
+    initialValues: {
+      challenge_id: params.challenge_id,
+    },
   });
   return (
     <>
@@ -107,7 +126,9 @@ export default function Submit() {
       <div class="max-w-2xl mb-20 text-lg leading-7 mx-auto text-gray-500">
         <Box>
           {import.meta.env.DB_URL}
-          <h2 class="text-3xl text-primary font-bold">Challenge Submission</h2>
+          <h2 class="text-3xl mb-5 text-primary font-bold">
+            Challenge Submission
+          </h2>
           <Show
             when={!result().success}
             fallback={
@@ -122,7 +143,9 @@ export default function Submit() {
                 <strong class="text-2xl">Thank you!</strong>
                 <p>
                   Your Challenge Submission has been successfully received.
-                  Winners are reviewed and announced on Mondays. 😊
+                  Winners are reviewed and announced on Mondays. You will
+                  receive an email from community@solidjs.com if your submission
+                  has achieved a challenge. 😊
                 </p>
                 <br />
                 <Button onClick={() => navigate("/")}>Continue</Button>
@@ -219,6 +242,7 @@ export default function Submit() {
                       >
                         Submission Challenge
                       </Label>
+                      {field.value}
                       <RadioGroup
                         class="my-3"
                         name={props.name}

@@ -59,18 +59,20 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <h3 class="font-semibold text-2xl my-4 py-2 border-b border-b-neutral-100">
+        </Box>
+        <Box>
+          <h3 class="font-semibold text-2xl mb-4 border-b border-b-neutral-100">
             Challenges
           </h3>
           <p>
-            A Challenge is a first-come, first-served prize bounty. The first
-            team to adequately solve a challenge will instantly win the prize.
-            The same Rules & Regulations apply for Challenges as they do for
-            Award Categories. Submissions will be checked once every Monday and
-            marked as claimed when a submission successfully achieves the
-            challenge. All contestants will be notified of the results via
-            email. Challenges are vetted by Solid Core and Planning Committee
-            Members.
+            A Challenge is a first-come-first-served bounty. The first
+            contributor or team to adequately solve a challenge will instantly
+            win the prize. The same <A href="/rules">Rules & Regulations</A>{" "}
+            apply for Challenges as they do for Award Categories. Submissions
+            will be checked once every Monday and marked as claimed when a
+            submission successfully achieves the challenge. All contestants will
+            be notified of the results via email. Challenges are vetted by Solid
+            Core and Planning Committee Members.
           </p>
           <br></br>
           <p>
@@ -85,8 +87,10 @@ export default function Home() {
             .
           </p>
           <Challenge
+            id="solidstart-tutorial"
             image={ecosystemAward}
             amount={500}
+            claimed={false}
             title="Write a SolidStart tutorial"
           >
             <p>
@@ -116,8 +120,10 @@ export default function Home() {
             </ul>
           </Challenge>
           <Challenge
+            id="ui-library"
             image={ecosystemAward}
             amount={1000}
+            claimed={false}
             title="Contribute to a UI library"
           >
             <p>
@@ -156,8 +162,10 @@ export default function Home() {
             </ul>
           </Challenge>
           <Challenge
+            id="solid-primitive"
             image={ecosystemAward}
             amount={750}
+            claimed={false}
             title="Contribute a new Solid Primitive"
           >
             <p>
@@ -186,8 +194,10 @@ export default function Home() {
             </ul>
           </Challenge>
           <Challenge
+            id="animation-lib"
             image={ecosystemAward}
             amount={2000}
+            claimed={false}
             title="Create an animation library for Solid"
           >
             <p>

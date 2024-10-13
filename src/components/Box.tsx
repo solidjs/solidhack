@@ -7,7 +7,7 @@ interface BoxProps {
 
 export const Box: FlowComponent<BoxProps> = (props) => (
   <div
-    class="bg-white/50 mx-auto mt-5 p-10 rounded-md shadow backdrop-blur-md"
+    class="box bg-white/50 mx-auto mt-5 p-10 rounded-md shadow backdrop-blur-md"
     classList={{
       "md:grid md:grid-cols-12 md:space-x-6": !!props.title,
       [`${props.class}`]: !!props.class,
