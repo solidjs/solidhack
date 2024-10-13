@@ -242,7 +242,6 @@ export default function Submit() {
                       >
                         Submission Challenge
                       </Label>
-                      {field.value}
                       <RadioGroup
                         class="my-3"
                         name={props.name}
