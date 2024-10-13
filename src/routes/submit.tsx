@@ -1,7 +1,8 @@
-import { For, Show, type Component } from "solid-js";
-import { action, useAction, A } from "@solidjs/router";
-import { ConfettiExplosion } from "solid-confetti-explosion";
+import { createSignal, For, Show, type Component } from "solid-js";
+import { action, useNavigate, useAction, A } from "@solidjs/router";
 import { createForm, setValue, valiForm } from "@modular-forms/solid";
+import { ConfettiExplosion } from "solid-confetti-explosion";
+import { db } from "~/utils/db";
 import {
   type InferInput,
   regex,
@@ -27,9 +28,6 @@ import {
   RadioGroupItem,
   RadioGroupItemLabel,
 } from "~/components/ui/radio-group";
-import { useNavigate } from "@solidjs/router";
-import { createSignal } from "solid-js";
-import { db } from "~/utils/db";
 
 const CHALLENGES = {
   "solidstart-tutorial": "Write a SolidStart tutorial",
@@ -109,7 +107,7 @@ export default function Submit() {
       <div class="max-w-2xl mb-20 text-lg leading-7 mx-auto text-gray-500">
         <Box>
           {import.meta.env.DB_URL}
-          <h2 class="text-3xl text-primary font-bold">Challenge Submissions</h2>
+          <h2 class="text-3xl text-primary font-bold">Challenge Submission</h2>
           <Show
             when={!result().success}
             fallback={
