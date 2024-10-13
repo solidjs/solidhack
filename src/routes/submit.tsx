@@ -79,7 +79,7 @@ const sendSubmissionAction = action(
         sql:
           "INSERT INTO submissions " +
           "(name, email, github_url, challenge_id, guid, status, created_at) " +
-          "VALUES (?, ?, ?, ?, 'active', ?)",
+          "VALUES (?, ?, ?, ?, 'active', ?, ?)",
         args: [
           data.name,
           data.email,
