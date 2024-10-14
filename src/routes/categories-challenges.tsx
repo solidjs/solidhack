@@ -1,9 +1,12 @@
+import { For } from "solid-js";
+import { A } from "@solidjs/router";
 import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
 import { Challenge } from "~/components/Challenge";
+
 import appAward from "../../public/img/award-best-app.svg";
 import ecosystemAward from "../../public/img/award-ecosystem.svg";
-import { A } from "@solidjs/router";
+import { JSXElement } from "solid-js";
 
 export default function Home() {
   return (
@@ -86,148 +89,174 @@ export default function Home() {
             </A>
             .
           </p>
-          <Challenge
-            id="solidstart-tutorial"
-            image={ecosystemAward}
-            amount={500}
-            claimed={false}
-            title="Write a SolidStart tutorial"
+          <For
+            each={Object.entries(CHALLENGE_DETAILS).sort(([, a], [, b]) =>
+              !a.claimed ? -1 : 0,
+            )}
           >
-            <p>
-              Write a new guide that describes how to solve a problem in
-              SolidStart according to best practices. The guide can cover any
-              topic, such as authentication, styling, implementation,
-              WebSockets, or how to use data APIs.
-            </p>
-            <div class="my-5 font-semibold">Winning Criteria:</div>
-            <ul>
-              <li>
-                Uniqueness: the guide is new and the topic is not covered by
-                Solid Docs or ecosystem contributors.
-              </li>
-              <li>
-                Technical Accuracy: does the guide cover the topic well and are
-                examples clearly explained and well written.
-              </li>
-              <li>
-                Writing Quality: is the guide well written and does it use
-                proper English? Is it clear and concise.
-              </li>
-              <li>
-                Edge-Cases and UX goodies: it goes the extra mile in providing a
-                consistent and ergonomic User Experience.
-              </li>
-            </ul>
-          </Challenge>
-          <Challenge
-            id="ui-library"
-            image={ecosystemAward}
-            amount={1000}
-            claimed={false}
-            title="Contribute to a UI library"
-          >
-            <p>
-              Collect this challenge by creating a new component for a
-              participating UI library from the Solid Ecosystem. Participating
-              UI libraries:{" "}
-              <a
-                target="_blank"
-                class="text-primary"
-                href="https://kobalte.dev/"
+            {([id, challenge]) => (
+              <Challenge
+                id={id}
+                image={ecosystemAward}
+                amount={challenge.amount}
+                claimed={challenge.claimed}
+                title={challenge.title}
               >
-                Kobalte
-              </a>{" "}
-              or{" "}
-              <a target="_blank" class="text-primary" href="https://corvu.dev/">
-                corvu
-              </a>
-              . Some ideas for components include: Meter, Rating, Checkbox
-              Group, Status Badge, Color Picker, Date Picker etc.
-            </p>
-            <div class="my-5 font-semibold">Winning Criteria:</div>
-            <ul>
-              <li>
-                Uniqueness: the component contributed does not exist in the
-                ecosystem yet.
-              </li>
-              <li>
-                Usage of the Web Platform: how it leverages the Web to create
-                interop with Solid.
-              </li>
-              <li>Accessibility: it is fully accessible.</li>
-              <li>
-                Edge-Cases and UX goodies: it goes the extra mile in providing a
-                consistent and ergonomic User Experience.
-              </li>
-            </ul>
-          </Challenge>
-          <Challenge
-            id="solid-primitive"
-            image={ecosystemAward}
-            amount={750}
-            claimed={false}
-            title="Contribute a new Solid Primitive"
-          >
-            <p>
-              Create a new primitive and contribute it to the{" "}
-              <a
-                class="text-primary"
-                target="_blank"
-                href="https://github.com/solidjs-community/solid-primitives"
-              >
-                Solid Primitive
-              </a>{" "}
-              project. The primitive should be complex in nature and solve a
-              difficult challenge that improves the DX of Solid developers.
-            </p>
-            <div class="my-5 font-semibold">Winning Criteria:</div>
-            <ul>
-              <li>
-                Technical Innovation: it uses a newly available platform API,
-                it&#39;s more efficient than existing alternatives.
-              </li>
-              <li>Accessibility: it is fully accessible.</li>
-              <li>
-                Edge-Cases and UX goodies: it goes the extra mile in providing a
-                consistent and ergonomic User Experience.
-              </li>
-            </ul>
-          </Challenge>
-          <Challenge
-            id="animation-lib"
-            image={ecosystemAward}
-            amount={2000}
-            claimed={false}
-            title="Create an animation library for Solid"
-          >
-            <p>
-              Create an animation library that leverages the Solid ecosystem and
-              supports ergonomic ways to define performant and whimsical
-              component/element animations. Strive to create a high-quality
-              developer experience (DX) and maximize performance.
-            </p>
-            <div class="my-5 font-semibold">Winning Criteria:</div>
-            <ul>
-              <li>
-                Uniqueness: the component contributed does not exist in the
-                ecosystem yet.
-              </li>
-              <li>
-                Usage of the Web Platform: how it leverages the Web to create
-                interop with Solid.
-              </li>
-              <li>
-                DX & Performance: does it perform well and is it easy to write?
-              </li>
-              <li>Accessibility: is it fully accessible.</li>
-              <li>
-                Edge-Cases and UX goodies: it goes the extra mile in providing a
-                consistent and ergonomic User Experience.
-              </li>
-            </ul>
-          </Challenge>
+                {challenge.description}
+              </Challenge>
+            )}
+          </For>
         </Box>
       </div>
     </>
   );
 }
+
+interface ChallengeDetails {
+  amount: number;
+  claimed: boolean;
+  title: string;
+  description: JSXElement;
+}
+
+const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
+  "solidstart-tutorial": {
+    amount: 500,
+    claimed: true,
+    title: "Write a SolidStart tutorial",
+    description: (
+      <>
+        <p>
+          Write a new guide that describes how to solve a problem in SolidStart
+          according to best practices. The guide can cover any topic, such as
+          authentication, styling, implementation, WebSockets, or how to use
+          data APIs.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Uniqueness: the guide is new and the topic is not covered by Solid
+            Docs or ecosystem contributors.
+          </li>
+          <li>
+            Technical Accuracy: does the guide cover the topic well and are
+            examples clearly explained and well written.
+          </li>
+          <li>
+            Writing Quality: is the guide well written and does it use proper
+            English? Is it clear and concise.
+          </li>
+          <li>
+            Edge-Cases and UX goodies: it goes the extra mile in providing a
+            consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  "ui-library": {
+    amount: 1000,
+    claimed: false,
+    title: "Contribute to a UI library",
+    description: (
+      <>
+        <p>
+          Collect this challenge by creating a new component for a participating
+          UI library from the Solid Ecosystem. Participating UI libraries:{" "}
+          <a target="_blank" class="text-primary" href="https://kobalte.dev/">
+            Kobalte
+          </a>{" "}
+          or{" "}
+          <a target="_blank" class="text-primary" href="https://corvu.dev/">
+            corvu
+          </a>
+          . Some ideas for components include: Meter, Rating, Checkbox Group,
+          Status Badge, Color Picker, Date Picker etc.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Uniqueness: the component contributed does not exist in the
+            ecosystem yet.
+          </li>
+          <li>
+            Usage of the Web Platform: how it leverages the Web to create
+            interop with Solid.
+          </li>
+          <li>Accessibility: it is fully accessible.</li>
+          <li>
+            Edge-Cases and UX goodies: it goes the extra mile in providing a
+            consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  "solid-primitive": {
+    amount: 750,
+    claimed: true,
+    title: "Contribute a new Solid Primitive",
+    description: (
+      <>
+        <p>
+          Create a new primitive and contribute it to the{" "}
+          <a
+            class="text-primary"
+            target="_blank"
+            href="https://github.com/solidjs-community/solid-primitives"
+          >
+            Solid Primitive
+          </a>{" "}
+          project. The primitive should be complex in nature and solve a
+          difficult challenge that improves the DX of Solid developers.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Technical Innovation: it uses a newly available platform API,
+            it&#39;s more efficient than existing alternatives.
+          </li>
+          <li>Accessibility: it is fully accessible.</li>
+          <li>
+            Edge-Cases and UX goodies: it goes the extra mile in providing a
+            consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  "animation-lib": {
+    amount: 2000,
+    claimed: false,
+    title: "Create an animation library for Solid",
+    description: (
+      <>
+        <p>
+          Create an animation library that leverages the Solid ecosystem and
+          supports ergonomic ways to define performant and whimsical
+          component/element animations. Strive to create a high-quality
+          developer experience (DX) and maximize performance.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Uniqueness: the component contributed does not exist in the
+            ecosystem yet.
+          </li>
+          <li>
+            Usage of the Web Platform: how it leverages the Web to create
+            interop with Solid.
+          </li>
+          <li>
+            DX & Performance: does it perform well and is it easy to write?
+          </li>
+          <li>Accessibility: is it fully accessible.</li>
+          <li>
+            Edge-Cases and UX goodies: it goes the extra mile in providing a
+            consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+};

@@ -184,13 +184,20 @@ const Rules: Component = () => {
             they'd like.
           </li>
           <li>
-            A challenge cannot be used to directly win an Award Category.
-            However, it can be used within an Award Category.
+            A challenge cannot be used to directly/solely win an Award Category.
+            However, it can be used/composed within a submission to an Award
+            Category.
           </li>
           <li>
             Challenge submissions will be reviewed once a week (every Monday) as
             they come in and selected by the Planning Committee. The selected
             winner will have met the winning criteria.
+          </li>
+          <li>
+            Submissions must be submitted by midnight Sunday to be review the
+            following Monday. A best effort attempt will be made to fully review
+            the winners and announce them the same Monday. New challenges will
+            be announced the next day.
           </li>
           <li>
             If no winner meets the challenge criteria, feedback will be provided

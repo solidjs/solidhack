@@ -139,7 +139,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated October 1, 2024 @ 12:00am EST
+          Last updated October 14, 2024 @ 6:30pm EST
         </div>
       </div>
     </>
