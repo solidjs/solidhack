@@ -11,8 +11,8 @@ export const preventSmoothScrollOnTabbing = () => {
 };
 
 export const CHALLENGES = {
-  "solidstart-tutorial": "Write a SolidStart tutorial",
   "ui-library": "Contribute to a UI library",
-  "solid-primitive": "Contribute a new Solid Primitive",
   "animation-lib": "Create an animation library for Solid",
+  // "solidstart-tutorial": "Write a SolidStart tutorial",
+  // "solid-primitive": "Contribute a new Solid Primitive",
 };
