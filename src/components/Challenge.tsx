@@ -15,7 +15,7 @@ export const Challenge: FlowComponent<ChallengeProps> = (props) => (
     <div
       class="text-center md:absolute bg-neutral-300 text-sm px-5 py-2 rounded-t-lg bottom-0 md:left-10"
       classList={{
-        "!bg-green-500 text-white": props.claimed,
+        "!bg-green-500 text-white": !!props.claimed,
       }}
     >
       <Show fallback="Unclaimed" when={props.claimed}>
