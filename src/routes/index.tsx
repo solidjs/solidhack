@@ -47,9 +47,9 @@ export default function Home() {
           <p>
             <strong class="text-primary">SolidHack</strong> is a public
             hackathon presented by the Solid Team and our amazing corporate
-            sponsors. This years prize pool is <strong>US$20,000</strong> thanks
-            to two of our generous sponsors! The competition is free to enter.
-            You have 6 weeks to build your project and stage it for our
+            sponsors. This year's prize pool is <strong>US$20,000+</strong>{" "}
+            thanks to two of our generous sponsors! The competition is free to
+            enter. You have 6 weeks to build your project and stage it for our
             community to review. Winners will be selected by public vote. Join
             the{" "}
             <a
@@ -139,7 +139,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated October 14, 2024 @ 6:30pm EST
+          Last updated October 22, 2024 @ 1:00pm EST
         </div>
       </div>
     </>

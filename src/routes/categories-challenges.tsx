@@ -7,6 +7,7 @@ import { Challenge } from "~/components/Challenge";
 import appAward from "../../public/img/award-best-app.svg";
 import ecosystemAward from "../../public/img/award-ecosystem.svg";
 import { JSXElement } from "solid-js";
+import { Show } from "solid-js";
 
 export default function Home() {
   return (
@@ -101,6 +102,7 @@ export default function Home() {
                 amount={challenge.amount}
                 claimed={challenge.claimed}
                 title={challenge.title}
+                winners={challenge.winners}
               >
                 {challenge.description}
               </Challenge>
@@ -117,6 +119,11 @@ interface ChallengeDetails {
   claimed: boolean;
   title: string;
   description: JSXElement;
+  winners?: Array<{
+    name: string;
+    authors: string[];
+    url?: string;
+  }>;
 }
 
 const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
@@ -124,6 +131,13 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
     amount: 500,
     claimed: true,
     title: "Write a SolidStart tutorial",
+    winners: [
+      {
+        name: "Protected Routes With Clerk and SolidStart",
+        authors: ["Brenley Dueck"],
+        url: "https://www.brenelz.com/posts/protected-routes-with-clerk-solidstart/",
+      },
+    ],
     description: (
       <>
         <p>
@@ -157,7 +171,13 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
   "ui-library": {
     amount: 1000,
     claimed: false,
-    title: "Contribute to a UI library",
+    title: "Contribute to a UI library (continued)",
+    winners: [
+      {
+        name: "Contributed Meter, CheckmarkGroup and Badge",
+        authors: ["Shubhdeep Chhabra"],
+      },
+    ],
     description: (
       <>
         <p>
@@ -171,7 +191,8 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
             corvu
           </a>
           . Some ideas for components include: Meter, Rating, Checkbox Group,
-          Status Badge, Color Picker, Date Picker etc.
+          Status Badge, Color Picker, Date Picker etc. This Challenge has been
+          claimed but is renewed and still active for additional submissions.
         </p>
         <div class="my-5 font-semibold">Winning Criteria:</div>
         <ul>
@@ -196,6 +217,13 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
     amount: 750,
     claimed: true,
     title: "Contribute a new Solid Primitive",
+    winners: [
+      {
+        name: "solid-events",
+        authors: ["Dev Agrawal"],
+        url: "https://github.com/devagrawal09/solid-events",
+      },
+    ],
     description: (
       <>
         <p>
@@ -254,6 +282,45 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
           <li>
             Edge-Cases and UX goodies: it goes the extra mile in providing a
             consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  "data-api-guide": {
+    amount: 1000,
+    claimed: false,
+    title: "Write a SolidStart Data API Guide",
+    description: (
+      <>
+        <p>
+          Contribute to Solid Docs by writing a guide that describes how to use
+          SolidStart's data management API. This guide should include
+          descriptions, best practices, examples and edge cases for the core
+          primitives. Bonus if you can include information on optimistic UI and
+          Single Flight Mutations.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Writing quality: follows the recommendations of
+            https://diataxis.fr/how-to-guides/. Must be in well-written,
+            grammatically correct English.
+          </li>
+          <li>
+            Technical accuracy: provides the relevant and correct information
+            about createAsync, cache, action, useAction, useSubmission,
+            useSubmissions. Should also include Suspense, ErrorBoundary and
+            other API's as required. Note SolidStart is renaming cache to query
+            soon.
+          </li>
+          <li>
+            Uniqueness: the guide is new and has not been covered by SolidDocs
+            or ecosystem contributors
+          </li>
+          <li>
+            Edge-cases and UX goodies: provides a coherent and consistent user
+            experience.
           </li>
         </ul>
       </>
