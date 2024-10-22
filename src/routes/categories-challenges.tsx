@@ -65,7 +65,10 @@ export default function Home() {
           </div>
         </Box>
         <Box>
-          <h3 class="font-semibold text-2xl mb-4 border-b border-b-neutral-100">
+          <h3
+            id="challenges"
+            class="font-semibold text-2xl mb-4 border-b border-b-neutral-100"
+          >
             Challenges
           </h3>
           <p>
