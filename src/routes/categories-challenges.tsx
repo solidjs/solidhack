@@ -24,7 +24,7 @@ export default function Home() {
           <h3 class="font-semibold my-4 text-2xl py-2 border-b border-b-neutral-100">
             Award Categories
           </h3>
-          <div class="bg-neutral-100 my-5 rounded-2xl divide-y-2 divide-white">
+          <div class="bg-neutral-100 my-5 rounded-xl divide-y-2 divide-white">
             <div class="md:flex md:space-x-10 p-10">
               <div class="mb-5 md:mb-0 mx-auto bg-primary shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
                 <img src={appAward} alt="Best App Award" />
@@ -177,7 +177,7 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
     title: "Contribute to a UI library (continued)",
     winners: [
       {
-        name: "Contributed Meter, CheckmarkGroup and Badge",
+        name: "Contributed Meter, CheckboxGroup and Badge",
         authors: ["Shubhdeep Chhabra"],
       },
     ],
@@ -193,7 +193,7 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
           <a target="_blank" class="text-primary" href="https://corvu.dev/">
             corvu
           </a>
-          . Some ideas for components include: Meter, Rating, Checkbox Group,
+          . Some ideas for components include: Meter, Rating, CheckboxGroup,
           Status Badge, Color Picker, Date Picker etc. This Challenge has been
           claimed but is renewed and still active for additional submissions.
         </p>
@@ -306,9 +306,24 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
         <div class="my-5 font-semibold">Winning Criteria:</div>
         <ul>
           <li>
-            Writing quality: follows the recommendations of
-            https://diataxis.fr/how-to-guides/. Must be in well-written,
-            grammatically correct English.
+            Writing quality: follows the recommendations of{" "}
+            <a
+              target="_blank"
+              class="text-primary"
+              href="https://diataxis.fr/how-to-guides/"
+            >
+              Diataxis' How-To
+            </a>
+            . Must be in well-written, grammatically correct English. Also
+            abides by{" "}
+            <a
+              target="_blank"
+              class="text-primary"
+              href="https://github.com/solidjs/solid-docs/blob/main/WRITING.md"
+            >
+              Solid Docs Writing Guide
+            </a>
+            .
           </li>
           <li>
             Technical accuracy: provides the relevant and correct information

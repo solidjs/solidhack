@@ -18,7 +18,7 @@ interface ChallengeProps {
 }
 
 export const Challenge: FlowComponent<ChallengeProps> = (props) => (
-  <div class="bg-neutral-100 my-5 rounded-2xl divide-y-2 divide-white relative">
+  <div class="bg-neutral-100 my-5 rounded-xl divide-y-2 divide-white relative">
     <div
       class="text-center md:absolute bg-neutral-300 text-sm px-5 py-2 rounded-t-lg bottom-0 md:left-6"
       classList={{
@@ -63,7 +63,11 @@ export const Challenge: FlowComponent<ChallengeProps> = (props) => (
                   </figure>
                   <div>
                     <Show fallback={winner.name} when={winner.url}>
-                      <a target="_blank" href={winner.url}>
+                      <a
+                        target="_blank"
+                        href={winner.url}
+                        class="hover:text-primary"
+                      >
                         {winner.name}
                       </a>
                     </Show>
