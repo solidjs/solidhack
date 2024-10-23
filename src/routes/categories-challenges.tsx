@@ -94,9 +94,11 @@ export default function Home() {
             .
           </p>
           <For
-            each={Object.entries(CHALLENGE_DETAILS).sort(([, a], [, b]) =>
-              !a.claimed ? -1 : 0,
-            )}
+            each={Object.entries(CHALLENGE_DETAILS).sort(([, a], [, b]) => {
+              if (a.claimed && !b.claimed) return 1;
+              if (!a.claimed && b.claimed) return -1;
+              return a.title.localeCompare(b.title);
+            })}
           >
             {([id, challenge]) => (
               <Challenge
