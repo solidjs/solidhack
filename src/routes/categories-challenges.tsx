@@ -1,4 +1,4 @@
-import { For } from "solid-js";
+import { For, type JSXElement } from "solid-js";
 import { A } from "@solidjs/router";
 import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
@@ -6,8 +6,6 @@ import { Challenge } from "~/components/Challenge";
 
 import appAward from "../../public/img/award-best-app.svg";
 import ecosystemAward from "../../public/img/award-ecosystem.svg";
-import { JSXElement } from "solid-js";
-import { Show } from "solid-js";
 
 export default function Home() {
   return (
