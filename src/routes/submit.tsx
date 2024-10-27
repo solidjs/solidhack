@@ -46,7 +46,7 @@ const SubmissionSchema = object({
     string(),
     url("Please enter a valid URL."),
     regex(
-      /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/,
+      /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+(?:\/pull\/\d+)?$/,
       "Please enter a valid Github repo URL.",
     ),
   ),
