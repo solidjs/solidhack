@@ -180,6 +180,10 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
         name: "Contributed Meter, CheckboxGroup and Badge",
         authors: ["Shubhdeep Chhabra"],
       },
+      {
+        name: "Contributed ColorArea, ColorSlider, ColorChannelField",
+        authors: ["H. Salim"],
+      },
     ],
     description: (
       <>
@@ -292,8 +296,15 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
   },
   "data-api-guide": {
     amount: 1000,
-    claimed: false,
+    claimed: true,
     title: "Write a SolidStart Data API Guide",
+    winners: [
+      {
+        name: "Data Loading in SolidJS",
+        authors: ["ORJDev"],
+        url: "https://github.com/OrJDev/solidstart-data",
+      },
+    ],
     description: (
       <>
         <p>
