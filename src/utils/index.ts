@@ -10,8 +10,13 @@ export const preventSmoothScrollOnTabbing = () => {
   });
 };
 
+export const CATEGORIES = {
+  "best-app": "Best SolidStart App",
+  "best-ecosystem": "Best Solid/SolidStart Ecosystem Utility",
+};
+
 export const CHALLENGES = {
   "ui-library": "Contribute to a UI library",
   "animation-lib": "Create an animation library for Solid",
-  "data-api-guide": "Write a SolidStart Data API Guide",
+  // "data-api-guide": "Write a SolidStart Data API Guide",
 };

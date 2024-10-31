@@ -1,4 +1,11 @@
-import { createSignal, For, Show, type Component } from "solid-js";
+import {
+  createSignal,
+  For,
+  Match,
+  Show,
+  Switch,
+  type Component,
+} from "solid-js";
 import {
   action,
   useNavigate,
@@ -7,12 +14,12 @@ import {
   useParams,
   useSearchParams,
 } from "@solidjs/router";
-import { createForm, setValue, valiForm } from "@modular-forms/solid";
+import { createForm, setValue, valiForm, getValue } from "@modular-forms/solid";
 import { ConfettiExplosion } from "solid-confetti-explosion";
 import { v7 as uuidv7 } from "uuid";
 import { formatDateForSQLite, getCurrentESTDate } from "~/utils/date";
 import { db } from "~/utils/db";
-import { CHALLENGES } from "~/utils";
+import { CATEGORIES, CHALLENGES } from "~/utils";
 import {
   type InferInput,
   regex,
@@ -21,6 +28,7 @@ import {
   parse,
   url,
   pipe,
+  optional,
   boolean,
   string,
   picklist,
@@ -44,15 +52,19 @@ const SubmissionSchema = object({
   email: pipe(string(), email("Please enter a valid email address.")),
   github_url: pipe(
     string(),
-    url("Please enter a valid URL."),
+    url("Please enter a valid GitHub URL."),
     regex(
       /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+(?:\/pull\/\d+)?$/,
-      "Please enter a valid Github repo URL.",
+      "Please enter a valid GitHub repo URL.",
     ),
   ),
-  challenge_id: pipe(
-    string("Please specify a category for your submission."),
-    picklist(Object.keys(CHALLENGES), "Select a defined category."),
+  demo_url: optional(string()),
+  category_id: pipe(
+    string("Please specify a category/challenge for your submission."),
+    picklist(
+      [...Object.keys(CHALLENGES), ...Object.keys(CATEGORIES)],
+      "Select a defined category.",
+    ),
   ),
   agreement: pipe(
     boolean("You cannot proceed without agreeing to the rules."),
@@ -78,13 +90,14 @@ const sendSubmissionAction = action(
       await db.execute({
         sql:
           "INSERT INTO submissions " +
-          "(name, email, github_url, challenge_id, guid, status, created_at) " +
-          "VALUES (?, ?, ?, ?, ?, 'active', ?)",
+          "(name, email, github_url, demo_url, category_id, guid, status, created_at) " +
+          "VALUES (?, ?, ?, ?, ?, ?, 'active', ?)",
         args: [
           data.name,
           data.email,
           data.github_url,
-          data.challenge_id,
+          data.demo_url,
+          data.category_id,
           id,
           created_at,
         ],
@@ -111,13 +124,13 @@ const FieldError: Component<{ error: string }> = (props) => (
 
 export default function Submit() {
   const navigate = useNavigate();
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const [result, setResult] = createSignal({ success: false });
   const sendSubmission = useAction(sendSubmissionAction);
   const [submissionForm, { Form, Field }] = createForm<SubmissionForm>({
     validate: valiForm(SubmissionSchema),
     initialValues: {
-      challenge_id: params.challenge_id,
+      category_id: params.id as string,
     },
   });
   return (
@@ -126,9 +139,7 @@ export default function Submit() {
       <div class="max-w-2xl mb-20 text-lg leading-7 mx-auto text-gray-500">
         <Box>
           {import.meta.env.DB_URL}
-          <h2 class="text-3xl mb-5 text-primary font-bold">
-            Challenge Submission
-          </h2>
+          <h2 class="text-3xl mb-5 text-primary font-bold">Submission Form</h2>
           <Show
             when={!result().success}
             fallback={
@@ -142,10 +153,27 @@ export default function Submit() {
                 </div>
                 <strong class="text-2xl">Thank you!</strong>
                 <p>
-                  Your Challenge Submission has been successfully received.
-                  Winners are reviewed and announced on Mondays. You will
-                  receive an email from community@solidjs.com if your submission
-                  has achieved a challenge. 😊
+                  <Switch>
+                    <Match
+                      when={["best-app", "best-ecosystem"].includes(
+                        params.id as string,
+                      )}
+                    >
+                      Your 2024 Submission has been successfully received. Note
+                      that you may continue working on your submission until the
+                      competition closing date (November 14th). If your
+                      submission requires adjustments or does not abide by the
+                      Rules & Regulations, you may receive an email from
+                      community@solidjs.com. Thank you for participating! 😊
+                    </Match>
+                    <Match when={true}>
+                      Your Challenge Submission has been successfully received.
+                      Winners are reviewed and announced on Mondays. You will
+                      receive an email from community@solidjs.com if your
+                      submission has achieved a challenge. Thank you for
+                      participating! 😊
+                    </Match>
+                  </Switch>
                 </p>
                 <br />
                 <Button onClick={() => navigate("/")}>Continue</Button>
@@ -216,7 +244,7 @@ export default function Submit() {
                         for="github_url"
                         class="text-neutral-400 font-semibold"
                       >
-                        Github URL
+                        GitHub URL
                       </Label>
                       <TextField disabled={submissionForm.submitting}>
                         <TextFieldInput
@@ -233,33 +261,79 @@ export default function Submit() {
                 </Field>
               </div>
               <div>
-                <Field name="challenge_id">
+                <Field name="demo_url">
                   {(field, props) => (
                     <>
                       <Label
-                        for="challenge_id"
+                        for="demo_url"
                         class="text-neutral-400 font-semibold"
                       >
-                        Submission Challenge
+                        Demo URL{" "}
+                        <span class="text-neutral-300">(optional)</span>
                       </Label>
+                      <TextField disabled={submissionForm.submitting}>
+                        <TextFieldInput
+                          {...props}
+                          value={field.value}
+                          error={field.error}
+                          name="demo_url"
+                          type="text"
+                        />
+                        <FieldError error={field.error} />
+                      </TextField>
+                    </>
+                  )}
+                </Field>
+              </div>
+              <div>
+                <Field name="category_id">
+                  {(field, props) => (
+                    <>
                       <RadioGroup
                         class="my-3"
                         name={props.name}
                         value={field.value}
                         disabled={submissionForm.submitting}
-                        onChange={(selection) =>
-                          setValue(submissionForm, "challenge_id", selection)
-                        }
+                        onChange={(selection) => {
+                          setValue(submissionForm, "category_id", selection);
+                          setParams({ id: selection });
+                        }}
                       >
-                        <For each={Object.entries(CHALLENGES)}>
-                          {([id, category]) => (
-                            <RadioGroupItem value={id}>
-                              <RadioGroupItemLabel>
-                                {category}
-                              </RadioGroupItemLabel>
-                            </RadioGroupItem>
-                          )}
-                        </For>
+                        <Label
+                          for="category_id"
+                          class="mt-3 text-neutral-400 font-semibold"
+                        >
+                          Award Categories
+                        </Label>
+                        <div class="my-3 space-y-3">
+                          <RadioGroupItem value="best-app">
+                            <RadioGroupItemLabel>
+                              Best SolidStart App
+                            </RadioGroupItemLabel>
+                          </RadioGroupItem>
+                          <RadioGroupItem value="best-ecosystem">
+                            <RadioGroupItemLabel>
+                              Best Solid/SolidStart Ecosystem Utility
+                            </RadioGroupItemLabel>
+                          </RadioGroupItem>
+                        </div>
+                        <Label
+                          for="category_id"
+                          class="mt-3 text-neutral-400 font-semibold"
+                        >
+                          Challenges
+                        </Label>
+                        <div class="my-3 space-y-3">
+                          <For each={Object.entries(CHALLENGES)}>
+                            {([id, category]) => (
+                              <RadioGroupItem value={id}>
+                                <RadioGroupItemLabel>
+                                  {category}
+                                </RadioGroupItemLabel>
+                              </RadioGroupItem>
+                            )}
+                          </For>
+                        </div>
                         <FieldError error={field.error} />
                       </RadioGroup>
                     </>
@@ -353,7 +427,7 @@ export default function Submit() {
                     fallback={<div class="loader" />}
                     when={!submissionForm.submitting}
                   >
-                    Send Submission
+                    Send submission
                   </Show>
                 </Button>
                 <Button type="reset" variant="secondary">

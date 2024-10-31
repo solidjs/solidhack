@@ -41,11 +41,7 @@ export const Challenge: FlowComponent<ChallengeProps> = (props) => (
         </div>
         <Show when={!props.claimed}>
           <div class="text-center mt-2 md:text-right p-5 md:p-0">
-            <Button
-              as={A}
-              href={`/submit?challenge_id=${props.id}`}
-              class="mt-5"
-            >
+            <Button as={A} href={`/submit?id=${props.id}`} class="mt-5">
               Send submission
             </Button>
           </div>

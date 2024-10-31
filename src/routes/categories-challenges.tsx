@@ -6,6 +6,7 @@ import { Challenge } from "~/components/Challenge";
 
 import appAward from "../../public/img/award-best-app.svg";
 import ecosystemAward from "../../public/img/award-ecosystem.svg";
+import { Button } from "~/components/ui/button";
 
 export default function Home() {
   return (
@@ -36,8 +37,13 @@ export default function Home() {
                   technical merit, uniqueness and how well they maximize
                   SolidStart's features.
                 </p>
-                <div class="mt-2 text-right">
+                <div class="mt-2">
                   <strong>Prize:</strong> US$5000
+                </div>
+                <div class="text-right">
+                  <Button as={A} href={`/submit?id=best-app`} class="mt-5">
+                    Send submission
+                  </Button>
                 </div>
               </div>
             </div>
@@ -55,8 +61,17 @@ export default function Home() {
                   they solve a need in the Solid or SolidStart ecosystems, their
                   uniqueness, and the technical soundness of their solution.
                 </p>
-                <div class="mt-2 text-right">
+                <div class="mt-2">
                   <strong>Prize:</strong> US$7000
+                </div>
+                <div class="text-right">
+                  <Button
+                    as={A}
+                    href={`/submit?id=best-ecosystem`}
+                    class="mt-5"
+                  >
+                    Send submission
+                  </Button>
                 </div>
               </div>
             </div>
