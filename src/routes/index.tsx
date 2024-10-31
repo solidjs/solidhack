@@ -76,12 +76,12 @@ export default function Home() {
               description="Categories and rules are announced (contest begins)"
             />
             <TimelineItem
-              status="next"
+              status="done"
               date="October 31st"
               description="Submissions portal opens"
             />
             <TimelineItem
-              status="pending"
+              status="next"
               date="November 14"
               description="Submissions close and voting begins in 24h"
             />
@@ -139,7 +139,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated October 22, 2024 @ 9:00pm EST
+          Last updated October 30, 2024 @ 10:30pm EST
         </div>
       </div>
     </>
