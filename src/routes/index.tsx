@@ -9,14 +9,14 @@ export default function Home() {
     <>
       <Hero />
       <a
-        href="/categories-challenges"
+        href="/submit"
         class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
       >
-        The 2024{" "}
+        🚨 The{" "}
         <span class="text-primary font-semibold">
-          Categories and Challenges
+          2024 Award Category Submission Form
         </span>{" "}
-        have been announced! 🚨✨
+        is now available! ✨
       </a>
       <Countdown
         class="mx-auto shadow-xl"
