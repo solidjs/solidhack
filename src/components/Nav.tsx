@@ -43,15 +43,9 @@ export const Nav: Component = () => (
             activeClass="text-primary"
             href="/submit"
           >
-            <NavigationMenuLabel>Submit Challenge</NavigationMenuLabel>
+            <NavigationMenuLabel>Send A Submission</NavigationMenuLabel>
             <NavigationMenuDescription>
-              Send your submission for a SolidHack Challenge.
-            </NavigationMenuDescription>
-          </NavigationMenuLink>
-          <NavigationMenuLink class="opacity-50" disabled={true}>
-            <NavigationMenuLabel>Submit Category</NavigationMenuLabel>
-            <NavigationMenuDescription>
-              Submissions portal for categories opens on October 31st.
+              Submit for a SolidHack Challenge and Award Category.
             </NavigationMenuDescription>
           </NavigationMenuLink>
           <NavigationMenuLink
@@ -72,6 +66,15 @@ export const Nav: Component = () => (
             <NavigationMenuLabel>Solid Discord</NavigationMenuLabel>
             <NavigationMenuDescription>
               Join the #solidhack-2024 channel on our Discord.
+            </NavigationMenuDescription>
+          </NavigationMenuLink>
+          <NavigationMenuLink
+            target="_blank"
+            href="https://opencollective.com/solid"
+          >
+            <NavigationMenuLabel>OpenCollective</NavigationMenuLabel>
+            <NavigationMenuDescription>
+              Consider donating to Solid and supporting the project.
             </NavigationMenuDescription>
           </NavigationMenuLink>
         </NavigationMenuContent>
