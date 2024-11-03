@@ -83,12 +83,11 @@ export const Nav: Component = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuTrigger
+          href="#"
           onClick={(evt) => {
             evt.preventDefault();
-            auth.signIn();
+            auth.signIn("github");
           }}
-          activeClass="text-primary"
-          href="/categories-challenges"
         >
           Sign In
         </NavigationMenuTrigger>
