@@ -14,9 +14,10 @@ import {
   useParams,
   useSearchParams,
 } from "@solidjs/router";
-import { createForm, setValue, valiForm, getValue } from "@modular-forms/solid";
+import { createForm, setValue, valiForm } from "@modular-forms/solid";
 import { ConfettiExplosion } from "solid-confetti-explosion";
 import { v7 as uuidv7 } from "uuid";
+import isGithubUrl from "is-github-url";
 import { formatDateForSQLite, getCurrentESTDate } from "~/utils/date";
 import { db } from "~/utils/db";
 import { CATEGORIES, CHALLENGES } from "~/utils";
@@ -24,6 +25,7 @@ import {
   type InferInput,
   regex,
   object,
+  custom,
   email,
   parse,
   url,
@@ -53,10 +55,7 @@ const SubmissionSchema = object({
   github_url: pipe(
     string(),
     url("Please enter a valid GitHub URL."),
-    regex(
-      /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+(?:\/pull\/\d+)?$/,
-      "Please enter a valid GitHub repo URL.",
-    ),
+    custom(isGithubUrl, "Please enter a valid GitHub repo URL."),
   ),
   demo_url: optional(string()),
   category_id: pipe(
@@ -252,6 +251,7 @@ export default function Submit() {
                           value={field.value}
                           error={field.error}
                           name="github_url"
+                          placeholder="Please use a proper fully formed GitHutb repo URL"
                           type="text"
                         />
                         <FieldError error={field.error} />
