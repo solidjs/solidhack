@@ -11,8 +11,10 @@ export default function App() {
     <Router
       root={(props) => (
         <Suspense>
-          <Nav />
-          <SessionProvider>{props.children}</SessionProvider>
+          <SessionProvider>
+            <Nav />
+            {props.children}
+          </SessionProvider>
         </Suspense>
       )}
     >
