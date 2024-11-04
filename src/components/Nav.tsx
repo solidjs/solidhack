@@ -1,9 +1,6 @@
-import { A, createAsync } from "@solidjs/router";
-import { Component } from "solid-js";
-import { cache } from "@solidjs/router";
-import { getRequestEvent } from "solid-js/web";
+import { A } from "@solidjs/router";
+import { Component, Show } from "solid-js";
 import { useAuth } from "@solid-mediakit/auth/client";
-import { getSession } from "@solid-mediakit/auth";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,21 +11,9 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "~/components/ui/navigation-menu";
-import { authOpts } from "~/auth";
-
-const getUser = cache(async () => {
-  "use server";
-  const event = getRequestEvent()!;
-  const session = await getSession(event, authOpts);
-  if (!session) {
-    return null;
-  }
-  return session;
-}, "user");
 
 export const Nav: Component = () => {
   const auth = useAuth();
-  const user = createAsync(() => getUser(), { deferStream: true });
   return (
     <div class="flex justify-center fixed top-0 left-0 w-full z-50">
       <NavigationMenu class="shadow-md p-1 bg-white rounded-b-md">
@@ -97,14 +82,28 @@ export const Nav: Component = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuTrigger
+          as="a"
           href="#"
           onClick={(evt) => {
             evt.preventDefault();
-            auth.signIn("github");
+            if (auth.status() === "authenticated") {
+              auth.signOut();
+            } else {
+              auth.signIn("github");
+            }
           }}
         >
-          {JSON.stringify(user())}
-          Sign In
+          <Show
+            fallback="Sign in"
+            when={auth.status() === "authenticated" && auth.session()}
+          >
+            <div class="ml-3">Logout</div>
+            <img
+              class="rounded-full mx-2 w-8"
+              src={auth.session()!.user.image!}
+              alt={auth.session()!.user.username}
+            />
+          </Show>
         </NavigationMenuTrigger>
       </NavigationMenu>
     </div>
