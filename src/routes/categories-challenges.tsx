@@ -152,11 +152,11 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
     description: (
       <>
         <p>
-          Create a live-streaming library or SDK that leverages the SolidStart
-          ecosystem and supports ergonomic ways to define performant and stable
-          real-time streaming updates to a web app. This challenge is focused on
-          SolidStart, all libraries must be friendly for full-stack and should
-          leverage the server runtime when possible.
+          Create a local-first sync engine library or SDK that leverages the
+          SolidStart ecosystem and supports ergonomic ways to define performant
+          and stable local-first updates to a web app. This challenge is focused
+          on SolidStart, all libraries must be friendly for full-stack and
+          should leverage the server runtime when possible.
         </p>
         <div class="my-5 font-semibold">Winning Criteria:</div>
         <ul>
