@@ -18,5 +18,6 @@ export const CATEGORIES = {
 export const CHALLENGES = {
   "ui-library": "Contribute to a UI library",
   "animation-lib": "Create an animation library for Solid",
+  "local-first-lib": "SolidStart Local-first Library/SDK",
   // "data-api-guide": "Write a SolidStart Data API Guide",
 };
