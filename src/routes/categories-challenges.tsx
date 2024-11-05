@@ -199,6 +199,10 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
         name: "Contributed ColorArea, ColorSlider, ColorChannelField",
         authors: ["H. Salim"],
       },
+      {
+        name: "Contributed Combobox and Search",
+        authors: ["Meng Ling"],
+      },
     ],
     description: (
       <>
