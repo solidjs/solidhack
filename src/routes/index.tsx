@@ -20,7 +20,7 @@ export default function Home() {
       </a>
       <Countdown
         class="mx-auto shadow-xl"
-        start={1731560400000}
+        start={1727758800000}
         end={1731646740000}
       />
       <div class="flex flex-col text-center w-full py-14">
