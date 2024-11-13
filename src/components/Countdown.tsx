@@ -25,7 +25,7 @@ export const Countdown: Component<CountdownProps> = (props) => {
         <For each={counts()}>
           {([label, value]) => {
             const fixed =
-              value >= 10 ? value.toString() : "0" + value.toString();
+              value < 0 ? "00" : value >= 10 ? value.toString() : "0" + value.toString();
             return (
               <div class="flex flex-col items-center text-white text-[length:clamp(5px,4vw,18px)] px-[clamp(5px,4vw,16px)] py-5 md:py-5 md:px-5">
                 <div class="font-mono text-[length:clamp(5px,4vw,18px)] sm:text-[length:clamp(5px,6vw,48px)] leading-[1]">
