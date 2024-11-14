@@ -251,7 +251,7 @@ export default function Submit() {
                           value={field.value}
                           error={field.error}
                           name="github_url"
-                          placeholder="Please use a proper fully formed GitHutb repo URL"
+                          placeholder="Please use a proper fully formed GitHub repo URL"
                           type="text"
                         />
                         <FieldError error={field.error} />

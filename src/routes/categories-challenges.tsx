@@ -146,6 +146,45 @@ interface ChallengeDetails {
 }
 
 const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
+  "local-first-lib": {
+    amount: 1500,
+    claimed: true,
+    title: "SolidStart Local-first Library/SDK",
+    winners: [
+      {
+        name: "SolidWire",
+        authors: ["Paul Roque"],
+        url: "https://github.com/pauloevpr/solid-wire",
+      },
+    ],
+    description: (
+      <>
+        <p>
+          Create a local-first sync engine library or SDK that leverages the
+          SolidStart ecosystem and supports ergonomic ways to define performant
+          and stable local-first updates to a web app. This challenge is focused
+          on SolidStart, all libraries must be friendly for full-stack and
+          should leverage the server runtime when possible.
+        </p>
+        <div class="my-5 font-semibold">Winning Criteria:</div>
+        <ul>
+          <li>
+            Technical Innovation: it uses a newly available platform API or it's
+            more efficient than existing options. Ports of existing
+            implementation at other ecosystems are accepted.
+          </li>
+          <li>
+            Writing Quality: is the guide well written and does it use proper
+            English? Is it clear and concise.
+          </li>
+          <li>
+            Edge-Cases and UX goodies: it goes the extra mile in providing a
+            consistent and ergonomic User Experience.
+          </li>
+        </ul>
+      </>
+    ),
+  },
   "solidstart-tutorial": {
     amount: 500,
     claimed: true,
@@ -198,6 +237,14 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
       },
       {
         name: "Contributed ColorArea, ColorSlider, ColorChannelField",
+        authors: ["H. Salim"],
+      },
+      {
+        name: "Contributed Combobox and Search",
+        authors: ["Meng Ling"],
+      },
+      {
+        name: "Contributed RatingGroup",
         authors: ["H. Salim"],
       },
     ],
