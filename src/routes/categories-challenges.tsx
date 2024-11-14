@@ -147,8 +147,15 @@ interface ChallengeDetails {
 const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
   "local-first-lib": {
     amount: 1500,
-    claimed: false,
+    claimed: true,
     title: "SolidStart Local-first Library/SDK",
+    winners: [
+      {
+        name: "SolidWire",
+        authors: ["Paul Roque"],
+        url: "https://github.com/pauloevpr/solid-wire",
+      },
+    ],
     description: (
       <>
         <p>
@@ -234,6 +241,10 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
       {
         name: "Contributed Combobox and Search",
         authors: ["Meng Ling"],
+      },
+      {
+        name: "Contributed RatingGroup",
+        authors: ["H. Salim"],
       },
     ],
     description: (
