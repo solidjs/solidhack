@@ -82,6 +82,12 @@ const sendSubmissionAction = action(
   async (data: SubmissionForm): Promise<SubmissionResponse> => {
     "use server";
     try {
+      if (
+        data.category_id === "best-app" ||
+        data.category_id === "best-ecosystem"
+      ) {
+        throw new Error("Submission to these categories is closed.");
+      }
       parse(SubmissionSchema, data);
       const id = uuidv7();
       const date = getCurrentESTDate();
@@ -299,7 +305,7 @@ export default function Submit() {
                           setParams({ id: selection });
                         }}
                       >
-                        <Label
+                        {/* <Label
                           for="category_id"
                           class="mt-3 text-neutral-400 font-semibold"
                         >
@@ -320,7 +326,7 @@ export default function Submit() {
                         <div class="text-xs border border-red-100 p-4 rounded-md text-red-500">
                           Submissions for Award Categories received after{" "}
                           <b>November 14 @ 23:59 EST</b> will not be accepted.
-                        </div>
+                        </div> */}
                         <Label
                           for="category_id"
                           class="mt-3 text-neutral-400 font-semibold"

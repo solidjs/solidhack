@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Countdown
+      {/* <Countdown
         class="mx-auto shadow-xl"
         start={1727758800000}
         end={1731646740000}
-      />
+      /> */}
       <div class="flex flex-col text-center w-full py-14">
         <span class="font-semibold text-gray-600">Sponsored by:</span>
         <div class="flex justify-center w-full items-center space-x-4 py-3">
@@ -76,6 +76,11 @@ export default function Home() {
               description="Submissions close and voting begins in 24h"
             />
             <TimelineItem
+              status="next"
+              date="November 15"
+              description="Public voting begins"
+            />
+            <TimelineItem
               status="pending"
               date="December 1"
               description="Voting ends"
@@ -129,7 +134,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated November 14, 2024 @ 9:30pm EST
+          Last updated November 15, 2024 @ 9:00am EST
         </div>
       </div>
     </>
