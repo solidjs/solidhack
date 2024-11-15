@@ -317,6 +317,10 @@ export default function Submit() {
                             </RadioGroupItemLabel>
                           </RadioGroupItem>
                         </div>
+                        <div class="text-xs border border-red-100 p-4 rounded-md text-red-500">
+                          Submissions for Award Categories received after{" "}
+                          <b>November 14 @ 23:59 EST</b> will not be accepted.
+                        </div>
                         <Label
                           for="category_id"
                           class="mt-3 text-neutral-400 font-semibold"

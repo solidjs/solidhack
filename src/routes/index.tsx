@@ -8,16 +8,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <a
-        href="/submit"
-        class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
-      >
-        🚨 The{" "}
-        <span class="text-primary font-semibold">
-          2024 Award Category Submission Form
-        </span>{" "}
-        is now available! ✨
-      </a>
       <Countdown
         class="mx-auto shadow-xl"
         start={1727758800000}
@@ -81,7 +71,7 @@ export default function Home() {
               description="Submissions portal opens"
             />
             <TimelineItem
-              status="next"
+              status="done"
               date="November 14"
               description="Submissions close and voting begins in 24h"
             />
@@ -139,7 +129,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated October 30, 2024 @ 10:30pm EST
+          Last updated November 14, 2024 @ 9:30pm EST
         </div>
       </div>
     </>
