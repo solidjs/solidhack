@@ -29,9 +29,9 @@ export const Nav: Component = () => {
           as={A}
           end={true}
           activeClass="text-primary"
-          href="/categories-challenges"
+          href="/submissions"
         >
-          Categories & Challenges
+          Submissions List
         </NavigationMenuTrigger>
         <NavigationMenuItem>
           <NavigationMenuTrigger>
@@ -43,18 +43,18 @@ export const Nav: Component = () => {
               as={A}
               end={true}
               activeClass="text-primary"
-              href="/submit"
+              href="/categories-challenges"
             >
-              <NavigationMenuLabel>Send A Submission</NavigationMenuLabel>
+              <NavigationMenuLabel>Categories & Challenges</NavigationMenuLabel>
               <NavigationMenuDescription>
-                Submit for a SolidHack Challenge and Award Category.
+                Read about the 2024 competition details.
               </NavigationMenuDescription>
             </NavigationMenuLink>
             <NavigationMenuLink
               as={A}
               end={true}
               activeClass="text-primary"
-              href="/rules"
+              href="/submissions"
             >
               <NavigationMenuLabel>Rules & Regulations</NavigationMenuLabel>
               <NavigationMenuDescription>
@@ -77,6 +77,12 @@ export const Nav: Component = () => {
               <NavigationMenuLabel>OpenCollective</NavigationMenuLabel>
               <NavigationMenuDescription>
                 Consider donating to Solid and supporting the project.
+              </NavigationMenuDescription>
+            </NavigationMenuLink>
+            <NavigationMenuLink target="_blank" href="/submit">
+              <NavigationMenuLabel>Send A Submission</NavigationMenuLabel>
+              <NavigationMenuDescription>
+                Submit to a SolidHack Challenge.
               </NavigationMenuDescription>
             </NavigationMenuLink>
           </NavigationMenuContent>

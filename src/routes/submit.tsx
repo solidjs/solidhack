@@ -11,7 +11,6 @@ import {
   useNavigate,
   useAction,
   A,
-  useParams,
   useSearchParams,
 } from "@solidjs/router";
 import { createForm, setValue, valiForm } from "@modular-forms/solid";
@@ -49,6 +48,8 @@ import {
   RadioGroupItemLabel,
 } from "~/components/ui/radio-group";
 
+const ENABLE_SUBMISSIONS = true;
+
 const SubmissionSchema = object({
   name: pipe(string(), minLength(3, "Your name must not be empty.")),
   email: pipe(string(), email("Please enter a valid email address.")),
@@ -81,6 +82,9 @@ type SubmissionResponse = { id: string; success: true };
 const sendSubmissionAction = action(
   async (data: SubmissionForm): Promise<SubmissionResponse> => {
     "use server";
+    if (!ENABLE_SUBMISSIONS) {
+      throw new Error("Submissions are disabled");
+    }
     try {
       parse(SubmissionSchema, data);
       const id = uuidv7();
@@ -299,24 +303,26 @@ export default function Submit() {
                           setParams({ id: selection });
                         }}
                       >
-                        <Label
-                          for="category_id"
-                          class="mt-3 text-neutral-400 font-semibold"
-                        >
-                          Award Categories
-                        </Label>
-                        <div class="my-3 space-y-3">
-                          <RadioGroupItem value="best-app">
-                            <RadioGroupItemLabel>
-                              Best SolidStart App
-                            </RadioGroupItemLabel>
-                          </RadioGroupItem>
-                          <RadioGroupItem value="best-ecosystem">
-                            <RadioGroupItemLabel>
-                              Best Solid/SolidStart Ecosystem Utility
-                            </RadioGroupItemLabel>
-                          </RadioGroupItem>
-                        </div>
+                        <Show when={Object.entries(CATEGORIES).length !== 0}>
+                          <Label
+                            for="category_id"
+                            class="mt-3 text-neutral-400 font-semibold"
+                          >
+                            Award Categories
+                          </Label>
+                          <div class="my-3 space-y-3">
+                            <RadioGroupItem value="best-app">
+                              <RadioGroupItemLabel>
+                                Best SolidStart App
+                              </RadioGroupItemLabel>
+                            </RadioGroupItem>
+                            <RadioGroupItem value="best-ecosystem">
+                              <RadioGroupItemLabel>
+                                Best Solid/SolidStart Ecosystem Utility
+                              </RadioGroupItemLabel>
+                            </RadioGroupItem>
+                          </div>
+                        </Show>
                         <Label
                           for="category_id"
                           class="mt-3 text-neutral-400 font-semibold"

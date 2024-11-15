@@ -12,11 +12,8 @@ export default function Home() {
         href="/submit"
         class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
       >
-        🚨 The{" "}
-        <span class="text-primary font-semibold">
-          2024 Award Category Submission Form
-        </span>{" "}
-        is now available! ✨
+        Submissions are now <b class="text-primary">closed</b>! Category
+        submission listings are now available. 🚨
       </a>
       <Countdown
         class="mx-auto shadow-xl"
@@ -81,9 +78,14 @@ export default function Home() {
               description="Submissions portal opens"
             />
             <TimelineItem
-              status="next"
+              status="done"
               date="November 14"
               description="Submissions close and voting begins in 24h"
+            />
+            <TimelineItem
+              status="next"
+              date="November 15"
+              description="Voting begins in 24h"
             />
             <TimelineItem
               status="pending"
@@ -116,13 +118,13 @@ export default function Home() {
         </Box>
         <Box title="Why">
           <p class="mb-3">
-            Solid has made its mark on the JavaScript ecosystem. It's a
-            flourishing community and we want you to be a part of it. Hackathons
-            aren't new to the open-source world, but we're looking to push the
-            boundaries of what a hackathon can be and what open-source projects
-            can do. More importantly, we want to give you an opportunity to give
-            Solid a try. What better reason than to learn something new and
-            possibly win prize money!
+            Solid has made its mark on the JavaScript ecosystem. It has a
+            flourishing community, and we want you to be a part of it.
+            Hackathons aren't new to the open-source world, but we're looking to
+            push the boundaries of what a hackathon can be and what open-source
+            projects can do. More importantly, we want to give you an
+            opportunity to try Solid. What better reason than to learn something
+            new and possibly win prize money?
           </p>
         </Box>
         <div class="bg-opacity-50  max-w-3xl mx-auto mt-2 p-10 rounded-xl">
@@ -139,7 +141,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated October 30, 2024 @ 10:30pm EST
+          Last updated November 14, 2024 @ 10:00pm EST
         </div>
       </div>
     </>
