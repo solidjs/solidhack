@@ -18,7 +18,7 @@ export default function Home() {
       <Countdown
         class="mx-auto shadow-xl"
         start={1727758800000}
-        end={1731646740000}
+        end={1733115540000}
       />
       <div class="flex flex-col text-center w-full py-14">
         <span class="font-semibold text-gray-600">Sponsored by:</span>

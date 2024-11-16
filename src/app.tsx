@@ -10,12 +10,12 @@ export default function App() {
   return (
     <Router
       root={(props) => (
-        <Suspense>
-          <SessionProvider>
+        <SessionProvider>
+          <Suspense>
             <Nav />
             {props.children}
-          </SessionProvider>
-        </Suspense>
+          </Suspense>
+        </SessionProvider>
       )}
     >
       <FileRoutes />
