@@ -38,11 +38,11 @@ export default function Home() {
                 <div class="mt-2">
                   <strong>Prize:</strong> US$5000
                 </div>
-                <div class="text-right">
+                {/* <div class="text-right">
                   <Button as={A} href={`/submit?id=best-app`} class="mt-5">
                     Send submission
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div class="md:flex md:space-x-10 p-10">
@@ -65,7 +65,7 @@ export default function Home() {
                 <div class="mt-2">
                   <strong>Prize:</strong> US$7000
                 </div>
-                <div class="text-right">
+                {/* <div class="text-right">
                   <Button
                     as={A}
                     href={`/submit?id=best-ecosystem`}
@@ -73,7 +73,7 @@ export default function Home() {
                   >
                     Send submission
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
