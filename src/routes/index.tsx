@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <a
-        href="/submit"
+        href="/submissions"
         class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
       >
         Submissions are now <b class="text-primary">closed</b>! Category
@@ -85,7 +85,7 @@ export default function Home() {
             <TimelineItem
               status="next"
               date="November 15"
-              description="Voting begins in 24h"
+              description="Public voting begins"
             />
             <TimelineItem
               status="pending"

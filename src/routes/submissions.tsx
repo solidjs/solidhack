@@ -1,55 +1,18 @@
-import { action, query, createAsync, json, useAction } from "@solidjs/router";
-import { useAuth, getSession } from "@solid-mediakit/auth/client";
+import { createAsync, useAction } from "@solidjs/router";
+import { useAuth } from "@solid-mediakit/auth/client";
 import { Component, For, Show } from "solid-js";
 import { Icon } from "solid-heroicons";
-import { link } from "solid-heroicons/outline";
-import { star as starOutline } from "solid-heroicons/outline";
-import { db } from "~/utils/db";
+import { link, star as starOutline } from "solid-heroicons/outline";
+import { star } from "solid-heroicons/solid";
 import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
-
-interface Submission {
-  guid: string;
-  github_url: string;
-  email: string;
-  name: string;
-  category_id: "best-ecosystem" | "best-app";
-  demo_url: string;
-  project_name: string;
-}
-
-const toggleVote = action(async (submission_id: string, enable: boolean) => {
-  "use server";
-  const session = await getSession();
-  console.log(session);
-  if (!session.user.id!) {
-    throw new Error("you're not logged in");
-  }
-  let sql: string;
-  if (enable) {
-    sql = `INSERT INTO votes (user_id, submission_id) VALUES ($1, $2)`;
-  } else {
-    sql = `DELETE votes WHERE user_id = $1 AND submission_id = $2`;
-  }
-  await db.execute({
-    sql,
-    args: [session!.user.id!, submission_id],
-  });
-  return json({}, { revalidate: ["user-votes"] });
-});
-
-const getVotes = query(async () => {
-  "use server";
-  const auth = useAuth();
-  if (!auth.session()!.user.id!) {
-    return [];
-  }
-  const request = await db.execute({
-    sql: `SELECT submission_id FROM votes WHERE user_id = ?`,
-    args: [auth.session()!.user.id!],
-  });
-  return request.rows.map((row) => row.submission_id);
-}, "user-votes");
+import {
+  getSubmissions,
+  getVotes,
+  Submission,
+  toggleVote,
+} from "./submissions.data";
+import { Button } from "~/components/ui/button";
 
 const SubmissionRow: Component<Submission> = (props) => {
   const auth = useAuth();
@@ -74,11 +37,15 @@ const SubmissionRow: Component<Submission> = (props) => {
       </a>
       <Show when={auth.status() === "authenticated" && auth.session()}>
         <button
-          onClick={() => sendVote(props.guid, true)}
+          onClick={() => sendVote(props.guid)}
           class="hover:opacity-60 transition duration-200"
           title="Click to vote"
         >
-          <Icon class="w-12 text-primary" stroke-width={1} path={starOutline} />
+          <Icon
+            class="w-12 text-primary"
+            stroke-width={1}
+            path={props.selected ? star : starOutline}
+          />
         </button>
       </Show>
     </div>
@@ -86,36 +53,7 @@ const SubmissionRow: Component<Submission> = (props) => {
 };
 
 export default function Submissions() {
-  const getSubmissions = query(async () => {
-    "use server";
-    const request = await db.execute({
-      sql: `SELECT
-          guid, github_url, email, name, category_id,
-          demo_url, project_name
-        FROM
-          submissions
-        WHERE
-          status = 'active' AND
-          category_id IN ('best-app', 'best-ecosystem')
-        ORDER BY
-          project_name ASC`,
-      args: [],
-    });
-    return (request.rows as unknown as Submission[]).reduce(
-      (memo, row) => {
-        if (row.category_id === "best-ecosystem") {
-          memo.ecosystem.push(row);
-        } else {
-          memo.app.push(row);
-        }
-        return memo;
-      },
-      {
-        app: [],
-        ecosystem: [],
-      } as { [key: string]: Submission[] },
-    );
-  }, "submissions");
+  const auth = useAuth();
   const submissions = createAsync(() => getSubmissions());
   const votes = createAsync(() => getVotes());
   return (
@@ -125,24 +63,46 @@ export default function Submissions() {
         <Box>
           <p>
             The following are submissions for the SolidHack 2024 Award
-            Categories. You may vote for as many entries as you'd like. Please
-            strive to vote for projects that merit recognition.
+            Categories. You may vote for as many entries as you like. Cast your
+            vote for projects that you believe merit recognition based on their
+            quality and utility.
           </p>
-          <Show when={submissions()}>
-            <h2 class="mt-5 text-primary text-xl font-semibold border-b border-neutral-200 mb-5 py-3">
+          <Show when={auth.status() !== "authenticated" && !auth.session()}>
+            <p class="pt-5 text-center">
+              <Button
+                onClick={() => auth.signIn("github")}
+                class="h-auto rounded-lg font-semibold text-gray-500 px-7 bg-neutral-100 hover:bg-neutral-200"
+              >
+                <img class="w-8" src="/github.svg" />
+                <div class="px-3">Sign in with GitHub to vote</div>
+              </Button>
+            </p>
+          </Show>
+          <Show when={submissions() && votes()}>
+            <h2 class="mt-5 text-primary text-2xl font-semibold border-b border-neutral-200 mb-5 py-3">
               Best SolidStart App
             </h2>
             <div class="space-y-2">
               <For each={submissions()!.app}>
-                {(submission) => <SubmissionRow {...submission} />}
+                {(submission) => (
+                  <SubmissionRow
+                    selected={votes().includes(submission.guid)}
+                    {...submission}
+                  />
+                )}
               </For>
             </div>
-            <h2 class="mt-5 text-primary text-xl font-semibold border-b border-neutral-200 mb-5 py-3">
+            <h2 class="mt-5 text-primary text-2xl font-semibold border-b border-neutral-200 mb-5 py-3">
               Best Solid/SolidStart Ecosystem Utility
             </h2>
             <div class="space-y-2">
               <For each={submissions()!.ecosystem}>
-                {(submission) => <SubmissionRow {...submission} />}
+                {(submission) => (
+                  <SubmissionRow
+                    selected={votes().includes(submission.guid)}
+                    {...submission}
+                  />
+                )}
               </For>
             </div>
           </Show>
