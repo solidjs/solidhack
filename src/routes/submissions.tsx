@@ -30,6 +30,7 @@ const SubmissionRow: Component<Submission> = (props) => {
         <div class="text-sm">Submitted by {props.name}</div>
       </div>
       <a
+        target="_blank"
         class="flex items-center hover:opacity-80 transition duration-200"
         href={props.github_url}
       >
