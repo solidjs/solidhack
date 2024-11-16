@@ -11,8 +11,8 @@ export const preventSmoothScrollOnTabbing = () => {
 };
 
 export const CATEGORIES = {
-  "best-app": "Best SolidStart App",
-  "best-ecosystem": "Best Solid/SolidStart Ecosystem Utility",
+  // "best-app": "Best SolidStart App",
+  // "best-ecosystem": "Best Solid/SolidStart Ecosystem Utility",
 };
 
 export const CHALLENGES = {

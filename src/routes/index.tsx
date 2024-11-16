@@ -8,11 +8,18 @@ export default function Home() {
   return (
     <>
       <Hero />
-      {/* <Countdown
+      <a
+        href="/submissions"
+        class="mb-10 block text-center p-10 bg-neutral-50 hover:bg-neutral-100  text-xl"
+      >
+        Submissions are now <b class="text-primary">closed</b>! Category
+        submission listings are now available. 🚨
+      </a>
+      <Countdown
         class="mx-auto shadow-xl"
         start={1727758800000}
-        end={1731646740000}
-      /> */}
+        end={1733115540000}
+      />
       <div class="flex flex-col text-center w-full py-14">
         <span class="font-semibold text-gray-600">Sponsored by:</span>
         <div class="flex justify-center w-full items-center space-x-4 py-3">
@@ -111,13 +118,13 @@ export default function Home() {
         </Box>
         <Box title="Why">
           <p class="mb-3">
-            Solid has made its mark on the JavaScript ecosystem. It's a
-            flourishing community and we want you to be a part of it. Hackathons
-            aren't new to the open-source world, but we're looking to push the
-            boundaries of what a hackathon can be and what open-source projects
-            can do. More importantly, we want to give you an opportunity to give
-            Solid a try. What better reason than to learn something new and
-            possibly win prize money!
+            Solid has made its mark on the JavaScript ecosystem. It has a
+            flourishing community, and we want you to be a part of it.
+            Hackathons aren't new to the open-source world, but we're looking to
+            push the boundaries of what a hackathon can be and what open-source
+            projects can do. More importantly, we want to give you an
+            opportunity to try Solid. What better reason than to learn something
+            new and possibly win prize money?
           </p>
         </Box>
         <div class="bg-opacity-50  max-w-3xl mx-auto mt-2 p-10 rounded-xl">
@@ -134,7 +141,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated November 15, 2024 @ 9:00am EST
+          Last updated November 14, 2024 @ 10:00pm EST
         </div>
       </div>
     </>

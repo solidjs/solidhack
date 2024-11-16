@@ -4,8 +4,6 @@ import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
 import { Challenge } from "~/components/Challenge";
 
-import appAward from "../../public/img/award-best-app.svg";
-import ecosystemAward from "../../public/img/award-ecosystem.svg";
 import { Button } from "~/components/ui/button";
 
 export default function Home() {
@@ -26,7 +24,7 @@ export default function Home() {
           <div class="bg-neutral-100 my-5 rounded-xl divide-y-2 divide-white">
             <div class="md:flex md:space-x-10 p-10">
               <div class="mb-5 md:mb-0 mx-auto bg-primary shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
-                <img src={appAward} alt="Best App Award" />
+                <img src="/img/award-best-app.svg" alt="Best App Award" />
               </div>
               <div>
                 <div class="font-semibold text-2xl">Best SolidStart App</div>
@@ -49,7 +47,10 @@ export default function Home() {
             </div>
             <div class="md:flex md:space-x-10 p-10">
               <div class="mb-5 md:mb-0 mx-auto bg-primary shadow-xl min-w-32 h-32 p-2 aspect-square rounded-full">
-                <img src={ecosystemAward} alt="Best Ecosystem Award" />
+                <img
+                  src="/img/award-ecosystem.svg"
+                  alt="Best Ecosystem Award"
+                />
               </div>
               <div>
                 <div class="font-semibold text-2xl">
@@ -116,7 +117,7 @@ export default function Home() {
             {([id, challenge]) => (
               <Challenge
                 id={id}
-                image={ecosystemAward}
+                image="/img/award-ecosystem.svg"
                 amount={challenge.amount}
                 claimed={challenge.claimed}
                 title={challenge.title}

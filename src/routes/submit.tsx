@@ -11,7 +11,6 @@ import {
   useNavigate,
   useAction,
   A,
-  useParams,
   useSearchParams,
 } from "@solidjs/router";
 import { createForm, setValue, valiForm } from "@modular-forms/solid";
@@ -49,6 +48,8 @@ import {
   RadioGroupItemLabel,
 } from "~/components/ui/radio-group";
 
+const ENABLE_SUBMISSIONS = true;
+
 const SubmissionSchema = object({
   name: pipe(string(), minLength(3, "Your name must not be empty.")),
   email: pipe(string(), email("Please enter a valid email address.")),
@@ -81,13 +82,10 @@ type SubmissionResponse = { id: string; success: true };
 const sendSubmissionAction = action(
   async (data: SubmissionForm): Promise<SubmissionResponse> => {
     "use server";
+    if (!ENABLE_SUBMISSIONS) {
+      throw new Error("Submissions are disabled");
+    }
     try {
-      if (
-        data.category_id === "best-app" ||
-        data.category_id === "best-ecosystem"
-      ) {
-        throw new Error("Submission to these categories is closed.");
-      }
       parse(SubmissionSchema, data);
       const id = uuidv7();
       const date = getCurrentESTDate();
@@ -305,28 +303,26 @@ export default function Submit() {
                           setParams({ id: selection });
                         }}
                       >
-                        {/* <Label
-                          for="category_id"
-                          class="mt-3 text-neutral-400 font-semibold"
-                        >
-                          Award Categories
-                        </Label>
-                        <div class="my-3 space-y-3">
-                          <RadioGroupItem value="best-app">
-                            <RadioGroupItemLabel>
-                              Best SolidStart App
-                            </RadioGroupItemLabel>
-                          </RadioGroupItem>
-                          <RadioGroupItem value="best-ecosystem">
-                            <RadioGroupItemLabel>
-                              Best Solid/SolidStart Ecosystem Utility
-                            </RadioGroupItemLabel>
-                          </RadioGroupItem>
-                        </div>
-                        <div class="text-xs border border-red-100 p-4 rounded-md text-red-500">
-                          Submissions for Award Categories received after{" "}
-                          <b>November 14 @ 23:59 EST</b> will not be accepted.
-                        </div> */}
+                        <Show when={Object.entries(CATEGORIES).length !== 0}>
+                          <Label
+                            for="category_id"
+                            class="mt-3 text-neutral-400 font-semibold"
+                          >
+                            Award Categories
+                          </Label>
+                          <div class="my-3 space-y-3">
+                            <RadioGroupItem value="best-app">
+                              <RadioGroupItemLabel>
+                                Best SolidStart App
+                              </RadioGroupItemLabel>
+                            </RadioGroupItem>
+                            <RadioGroupItem value="best-ecosystem">
+                              <RadioGroupItemLabel>
+                                Best Solid/SolidStart Ecosystem Utility
+                              </RadioGroupItemLabel>
+                            </RadioGroupItem>
+                          </div>
+                        </Show>
                         <Label
                           for="category_id"
                           class="mt-3 text-neutral-400 font-semibold"
