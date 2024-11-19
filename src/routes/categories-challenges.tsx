@@ -228,7 +228,7 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
   },
   "ui-library": {
     amount: 1000,
-    claimed: false,
+    claimed: true,
     title: "Contribute to a UI library (continued)",
     winners: [
       {
@@ -245,6 +245,10 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
       },
       {
         name: "Contributed RatingGroup",
+        authors: ["H. Salim"],
+      },
+      {
+        name: "Contributed TimeField",
         authors: ["H. Salim"],
       },
     ],
@@ -325,8 +329,15 @@ const CHALLENGE_DETAILS: { [key: string]: ChallengeDetails } = {
   },
   "animation-lib": {
     amount: 2000,
-    claimed: false,
+    claimed: true,
     title: "Create an animation library for Solid",
+    winners: [
+      {
+        name: "AraraJS",
+        authors: ["Felipe Emos"],
+        url: "https://github.com/FelipeEmos/ararajs",
+      },
+    ],
     description: (
       <>
         <p>

@@ -79,12 +79,12 @@ export const Nav: Component = () => {
                 Consider donating to Solid and supporting the project.
               </NavigationMenuDescription>
             </NavigationMenuLink>
-            <NavigationMenuLink target="_blank" href="/submit">
+            {/* <NavigationMenuLink target="_blank" href="/submit">
               <NavigationMenuLabel>Send A Submission</NavigationMenuLabel>
               <NavigationMenuDescription>
                 Submit to a SolidHack Challenge.
               </NavigationMenuDescription>
-            </NavigationMenuLink>
+            </NavigationMenuLink> */}
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuTrigger

@@ -82,6 +82,7 @@ type SubmissionResponse = { id: string; success: true };
 const sendSubmissionAction = action(
   async (data: SubmissionForm): Promise<SubmissionResponse> => {
     "use server";
+    throw new Error("Submissions are now closed");
     if (!ENABLE_SUBMISSIONS) {
       throw new Error("Submissions are disabled");
     }
