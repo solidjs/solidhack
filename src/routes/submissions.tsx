@@ -15,8 +15,8 @@ import {
 import { Button } from "~/components/ui/button";
 
 const SubmissionRow: Component<Submission> = (props) => {
-  const auth = useAuth();
-  const sendVote = useAction(toggleVote);
+  // const auth = useAuth();
+  // const sendVote = useAction(toggleVote);
   return (
     <div class="flex items-center space-x-4 p-7 bg-neutral-50 rounded-lg">
       <div class="w-full">
@@ -36,7 +36,7 @@ const SubmissionRow: Component<Submission> = (props) => {
       >
         <img class="w-11" src="/github.svg" />
       </a>
-      <Show when={auth.status() === "authenticated" && auth.session()}>
+      {/* <Show when={auth.status() === "authenticated" && auth.session()}>
         <button
           onClick={() => sendVote(props.guid)}
           class="hover:opacity-60 transition duration-200"
@@ -48,7 +48,7 @@ const SubmissionRow: Component<Submission> = (props) => {
             path={props.selected ? star : starOutline}
           />
         </button>
-      </Show>
+      </Show> */}
     </div>
   );
 };

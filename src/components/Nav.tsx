@@ -87,7 +87,7 @@ export const Nav: Component = () => {
             </NavigationMenuLink> */}
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuTrigger
+        {/* <NavigationMenuTrigger
           as="a"
           href="#"
           onClick={(evt) => {
@@ -110,7 +110,7 @@ export const Nav: Component = () => {
               alt={auth.session()!.user.username}
             />
           </Show>
-        </NavigationMenuTrigger>
+        </NavigationMenuTrigger> */}
       </NavigationMenu>
     </div>
   );
