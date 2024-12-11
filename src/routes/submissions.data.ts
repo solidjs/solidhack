@@ -10,6 +10,7 @@ export interface Submission {
   email: string;
   name: string;
   selected: boolean;
+  winner: boolean;
   category_id: "best-ecosystem" | "best-app";
   demo_url: string;
   project_name: string;
@@ -68,7 +69,7 @@ export const getSubmissions = query(async () => {
   const request = await db.execute({
     sql: `SELECT
         guid, github_url, email, name, category_id,
-        demo_url, project_name
+        demo_url, project_name, winner
       FROM
         submissions
       WHERE

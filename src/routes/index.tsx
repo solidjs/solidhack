@@ -8,15 +8,15 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div class="mb-10 block text-center p-10 bg-neutral-50 text-xl">
+      {/* <div class="mb-10 block text-center p-10 bg-neutral-50 text-xl">
         Public voting is now closed. Results will be posted{" "}
         <strong class="text-primary">December 3 @ 12:00pm EST</strong>
-      </div>
-      <Countdown
+      </div> */}
+      {/* <Countdown
         class="mx-auto shadow-xl"
         start={1727758800000}
         end={1733245200000}
-      />
+      /> */}
       <div class="flex flex-col text-center w-full py-14">
         <span class="font-semibold text-gray-600">Sponsored by:</span>
         <div class="flex justify-center w-full items-center space-x-4 py-3">
@@ -90,7 +90,7 @@ export default function Home() {
               description="Voting ends"
             />
             <TimelineItem
-              status="next"
+              status="done"
               date="December 3"
               description="Winners announced"
             />
@@ -138,7 +138,7 @@ export default function Home() {
           </small>
         </div>
         <div class="text-center text-sm p-10">
-          Last updated December 1, 2024 @ 7:00am EST
+          Last updated December 10, 2024 @ 5:30pm EST
         </div>
       </div>
     </>

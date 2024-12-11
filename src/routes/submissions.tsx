@@ -2,7 +2,7 @@ import { createAsync, useAction } from "@solidjs/router";
 import { useAuth } from "@solid-mediakit/auth/client";
 import { Component, For, Show } from "solid-js";
 import { Icon } from "solid-heroicons";
-import { link, star as starOutline } from "solid-heroicons/outline";
+import { link, star as starOutline, trophy } from "solid-heroicons/outline";
 import { star } from "solid-heroicons/solid";
 import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
@@ -18,7 +18,12 @@ const SubmissionRow: Component<Submission> = (props) => {
   // const auth = useAuth();
   // const sendVote = useAction(toggleVote);
   return (
-    <div class="flex items-center space-x-4 p-7 bg-neutral-50 rounded-lg">
+    <div
+      class="flex items-center space-x-4 p-7 bg-neutral-50 rounded-lg"
+      classList={{
+        "bg-neutral-200": props.winner,
+      }}
+    >
       <div class="w-full">
         <a
           target="_blank"
@@ -29,12 +34,19 @@ const SubmissionRow: Component<Submission> = (props) => {
         </a>
         <div class="text-sm">Submitted by {props.name}</div>
       </div>
+      <Show when={props.winner}>
+        <div class="items-center font-semibold text-yellow-400 ">
+          <figure class="flex items-center justify-center rounded-full bg-yellow-400 w-12 h-12">
+            <Icon class="text-white w-8 h-8" path={trophy} />
+          </figure>
+        </div>
+      </Show>
       <a
         target="_blank"
         class="flex items-center hover:opacity-80 transition duration-200"
         href={props.github_url}
       >
-        <img class="w-11" src="/github.svg" />
+        <img class="w-14 h-14" src="/github.svg" />
       </a>
       {/* <Show when={auth.status() === "authenticated" && auth.session()}>
         <button

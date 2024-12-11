@@ -1,5 +1,7 @@
 import { For, type JSXElement } from "solid-js";
 import { A } from "@solidjs/router";
+import { Icon } from "solid-heroicons";
+import { trophy } from "solid-heroicons/outline";
 import { Box } from "~/components/Box";
 import { Hero } from "~/components/Hero";
 import { Challenge } from "~/components/Challenge";
@@ -38,6 +40,31 @@ export default function Home() {
                 <div class="mt-2">
                   <strong>Prize:</strong> US$5000
                 </div>
+                <div>
+                  <h3 class="mt-7 text-primary font-semibold pb-2 border-b border-neutral-200">
+                    2024 Winner
+                  </h3>
+                  <div class="flex py-4 space-x-3">
+                    <figure class="flex items-center justify-center rounded-full bg-yellow-400 w-12 h-12">
+                      <Icon class="text-white w-6" path={trophy} />
+                    </figure>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://github.com/devagrawal09/solid-socket/"
+                        class="hover:text-primary"
+                      >
+                        Solid Socket
+                      </a>
+                      <div class="text-xs">
+                        By{" "}
+                        <a target="_blank" href="https://x.com/devagrawal09">
+                          Dev Agrawal
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 {/* <div class="text-right">
                   <Button as={A} href={`/submit?id=best-app`} class="mt-5">
                     Send submission
@@ -64,6 +91,31 @@ export default function Home() {
                 </p>
                 <div class="mt-2">
                   <strong>Prize:</strong> US$7000
+                </div>{" "}
+                <div>
+                  <h3 class="mt-7 text-primary font-semibold pb-2 border-b border-neutral-200">
+                    2024 Winner
+                  </h3>
+                  <div class="flex py-4 space-x-3">
+                    <figure class="flex items-center justify-center rounded-full bg-yellow-400 w-12 h-12">
+                      <Icon class="text-white w-6" path={trophy} />
+                    </figure>
+                    <div>
+                      <a
+                        target="_blank"
+                        href="https://www.giffium.com"
+                        class="hover:text-primary"
+                      >
+                        Giffium
+                      </a>
+                      <div class="text-xs">
+                        By{" "}
+                        <a target="_blank" href="https://x.com/cmgriffing">
+                          Chris Griffing
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 {/* <div class="text-right">
                   <Button
