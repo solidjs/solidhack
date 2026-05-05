@@ -1,0 +1,237 @@
+{
+  "_Box-DTgWWgSt.js": {
+    "file": "assets/Box-DTgWWgSt.js",
+    "name": "Box",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_Hero-RhBuAX7Z.js": {
+    "file": "assets/Hero-RhBuAX7Z.js",
+    "name": "Hero",
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_utils-d2XQ1MEC.js"
+    ]
+  },
+  "_UKTBL2JL-BA465_qZ.js": {
+    "file": "assets/UKTBL2JL-BA465_qZ.js",
+    "name": "UKTBL2JL",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_action-jYS-5f0m.js": {
+    "file": "assets/action-jYS-5f0m.js",
+    "name": "action",
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_routing-DYyIfS0E.js"
+    ]
+  },
+  "_button-DysMIvuS.js": {
+    "file": "assets/button-DysMIvuS.js",
+    "name": "button",
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_utils-d2XQ1MEC.js",
+      "_UKTBL2JL-BA465_qZ.js"
+    ]
+  },
+  "_client-Cju3mp3j.js": {
+    "file": "assets/client-Cju3mp3j.js",
+    "name": "client",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_components-sEFMagV9.js": {
+    "file": "assets/components-sEFMagV9.js",
+    "name": "components",
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_routing-DYyIfS0E.js"
+    ]
+  },
+  "_icon-B1yfzuow.js": {
+    "file": "assets/icon-B1yfzuow.js",
+    "name": "icon",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_index-BK0JkDJV.js": {
+    "file": "assets/index-BK0JkDJV.js",
+    "name": "index",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_index-D0idjLbw.js": {
+    "file": "assets/index-D0idjLbw.js",
+    "name": "index",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_index-KUNf793K.js": {
+    "file": "assets/index-KUNf793K.js",
+    "name": "index",
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_UKTBL2JL-BA465_qZ.js"
+    ]
+  },
+  "_routing-DYyIfS0E.js": {
+    "file": "assets/routing-DYyIfS0E.js",
+    "name": "routing",
+    "imports": [
+      "_web-C7mC96Oo.js"
+    ]
+  },
+  "_server-runtime-Cpiz-iRr.js": {
+    "file": "assets/server-runtime-Cpiz-iRr.js",
+    "name": "server-runtime"
+  },
+  "_utils-d2XQ1MEC.js": {
+    "file": "assets/utils-d2XQ1MEC.js",
+    "name": "utils"
+  },
+  "_web-C7mC96Oo.js": {
+    "file": "assets/web-C7mC96Oo.js",
+    "name": "web"
+  },
+  "src/routes/[...404].tsx?pick=default&pick=$css": {
+    "file": "assets/_...404_-TK6wPVXI.js",
+    "name": "_...404_",
+    "src": "src/routes/[...404].tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_components-sEFMagV9.js",
+      "_routing-DYyIfS0E.js"
+    ]
+  },
+  "src/routes/categories-challenges.tsx?pick=default&pick=$css": {
+    "file": "assets/categories-challenges-CURmFcRK.js",
+    "name": "categories-challenges",
+    "src": "src/routes/categories-challenges.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_icon-B1yfzuow.js",
+      "_index-D0idjLbw.js",
+      "_Box-DTgWWgSt.js",
+      "_Hero-RhBuAX7Z.js",
+      "_button-DysMIvuS.js",
+      "_components-sEFMagV9.js",
+      "_utils-d2XQ1MEC.js",
+      "_UKTBL2JL-BA465_qZ.js",
+      "_routing-DYyIfS0E.js"
+    ]
+  },
+  "src/routes/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-C7mR-Edz.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_Box-DTgWWgSt.js",
+      "_icon-B1yfzuow.js",
+      "_index-BK0JkDJV.js",
+      "_index-D0idjLbw.js",
+      "_Hero-RhBuAX7Z.js",
+      "_components-sEFMagV9.js",
+      "_utils-d2XQ1MEC.js",
+      "_routing-DYyIfS0E.js"
+    ]
+  },
+  "src/routes/rules.tsx?pick=default&pick=$css": {
+    "file": "assets/rules-GztFLXlq.js",
+    "name": "rules",
+    "src": "src/routes/rules.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_icon-B1yfzuow.js",
+      "_index-BK0JkDJV.js",
+      "_Box-DTgWWgSt.js"
+    ]
+  },
+  "src/routes/submissions.tsx?pick=default&pick=$css": {
+    "file": "assets/submissions-MCjfpG51.js",
+    "name": "submissions",
+    "src": "src/routes/submissions.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_client-Cju3mp3j.js",
+      "_icon-B1yfzuow.js",
+      "_index-D0idjLbw.js",
+      "_Box-DTgWWgSt.js",
+      "_Hero-RhBuAX7Z.js",
+      "_server-runtime-Cpiz-iRr.js",
+      "_action-jYS-5f0m.js",
+      "_button-DysMIvuS.js",
+      "_utils-d2XQ1MEC.js",
+      "_routing-DYyIfS0E.js",
+      "_UKTBL2JL-BA465_qZ.js"
+    ]
+  },
+  "src/routes/submit.tsx?pick=default&pick=$css": {
+    "file": "assets/submit-D6R8EgtJ.js",
+    "name": "submit",
+    "src": "src/routes/submit.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_server-runtime-Cpiz-iRr.js",
+      "_Box-DTgWWgSt.js",
+      "_Hero-RhBuAX7Z.js",
+      "_button-DysMIvuS.js",
+      "_utils-d2XQ1MEC.js",
+      "_index-KUNf793K.js",
+      "_UKTBL2JL-BA465_qZ.js",
+      "_routing-DYyIfS0E.js",
+      "_action-jYS-5f0m.js",
+      "_components-sEFMagV9.js"
+    ],
+    "css": [
+      "assets/submit-DKhkRY6-.css"
+    ]
+  },
+  "virtual:$vinxi/handler/client": {
+    "file": "assets/client-BMEImzXK.js",
+    "name": "client",
+    "src": "virtual:$vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_web-C7mC96Oo.js",
+      "_client-Cju3mp3j.js",
+      "_UKTBL2JL-BA465_qZ.js",
+      "_index-KUNf793K.js",
+      "_utils-d2XQ1MEC.js",
+      "_components-sEFMagV9.js",
+      "_routing-DYyIfS0E.js",
+      "_action-jYS-5f0m.js"
+    ],
+    "dynamicImports": [
+      "src/routes/[...404].tsx?pick=default&pick=$css",
+      "src/routes/categories-challenges.tsx?pick=default&pick=$css",
+      "src/routes/index.tsx?pick=default&pick=$css",
+      "src/routes/rules.tsx?pick=default&pick=$css",
+      "src/routes/submissions.tsx?pick=default&pick=$css",
+      "src/routes/submit.tsx?pick=default&pick=$css"
+    ],
+    "css": [
+      "assets/client-rg-NbUE-.css"
+    ]
+  }
+}

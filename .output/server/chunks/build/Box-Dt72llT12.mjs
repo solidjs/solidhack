@@ -1,0 +1,2 @@
+import{s,e as t,c as e,a,S as d}from"../nitro/nitro.mjs";var r=["<h2",' class="text-3xl col-span-2 text-gray-500 font-semibold mb-5">',"</h2>"],i=["<div",' class="','">\x3c!--$--\x3e','\x3c!--/--\x3e<div class="col-span-10">',"</div></div>"];const c=l=>s(i,a(),`box bg-white/50 mx-auto mt-5 p-10 rounded-md shadow backdrop-blur-md ${l.title?"md:grid md:grid-cols-12 md:space-x-6":""} ${l.class?t(t(`${l.class}`,!0),!0):""}`,t(e(d,{get when(){return l.title},get children(){return s(r,a(),t(l.title))}})),t(l.children));export{c};
+//# sourceMappingURL=Box-Dt72llT12.mjs.map

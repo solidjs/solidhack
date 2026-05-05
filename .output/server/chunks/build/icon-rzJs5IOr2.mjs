@@ -1,0 +1,2 @@
+import{j as t,l as r,e,m as o}from"../nitro/nitro.mjs";const l=n=>{const[i,a]=t(n,["path"]);return r("svg",o({get viewBox(){return i.path.mini?"0 0 20 20":"0 0 24 24"},get fill(){return i.path.outline?"none":"currentColor"},get stroke(){return i.path.outline?"currentColor":"none"},get"stroke-width"(){return i.path.outline?1.5:void 0}},a),()=>e(i.path.path))};export{l};
+//# sourceMappingURL=icon-rzJs5IOr2.mjs.map

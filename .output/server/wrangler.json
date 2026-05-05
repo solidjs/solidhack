@@ -1,0 +1,13 @@
+{
+  "compatibility_date": "2024-11-27",
+  "main": "index.mjs",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "../public"
+  },
+  "name": "solidjs-solidhack",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "no_nodejs_compat_v2"
+  ]
+}
